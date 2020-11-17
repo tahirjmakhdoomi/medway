@@ -2,6 +2,7 @@ package com.stackroute.UserService.controller;
 
 
 import com.stackroute.UserService.model.User;
+import com.stackroute.UserService.service.RabbitMqSender;
 import com.stackroute.UserService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,15 +16,19 @@ import java.util.List;
 @RequestMapping("api/v1")
 public class UserController {
 
+    private RabbitMqSender sender;
+
     UserService service;
 
     @Autowired
-    public UserController(UserService service) {
+    public UserController(UserService service,RabbitMqSender sender) {
         this.service = service;
+        this.sender = sender;
     }
 
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user){
+        sender.send(user);
         return new ResponseEntity<>(service.saveUser(user), HttpStatus.CREATED);
     }
 
