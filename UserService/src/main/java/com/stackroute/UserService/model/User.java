@@ -1,6 +1,8 @@
 package com.stackroute.UserService.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,11 +11,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import java.io.Serializable;
 
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"user_name","user_email","user_phone"})})
 @Document("users")
-public class User {
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "id" ,scope = User.class)
+public class User implements Serializable {
 
     private String user_name;
     private String user_email;

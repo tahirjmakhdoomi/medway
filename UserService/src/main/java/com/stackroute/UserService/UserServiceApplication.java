@@ -16,17 +16,17 @@ import javax.print.attribute.standard.MediaSize;
 public class UserServiceApplication {
 
 	@Value("${spring.rabbitmq.host}")
-	private String host;
+	String host;
 
 	@Value("${spring.rabbitmq.username}")
-	private String userName;
+	String userName;
 
 	@Value("${spring.rabbitmq.password}")
-	private String password;
+	String password;
 
 	@Bean
 	public CachingConnectionFactory factory(){
-		CachingConnectionFactory factory = new CachingConnectionFactory();
+		CachingConnectionFactory factory = new CachingConnectionFactory(host);
 		factory.setUsername(userName);
 		factory.setPassword(password);
 		return factory;

@@ -16,10 +16,10 @@ public class RabbitMqSender {
     }
 
     @Value("${spring.rabbitmq.exchange}")
-    private String exchange;
+    String exchange;
 
     @Value("${spring.rabbitmq.routingkey}")
-    private String routingKey;
+    String routingKey;
 
     public void send(User user){
         template.convertAndSend(exchange,routingKey,user);
