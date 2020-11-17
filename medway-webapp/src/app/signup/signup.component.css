@@ -1,0 +1,48 @@
+
+.background-image{
+  background-color: lightblue ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.container-fluid{
+  width: 50%;
+  align-items: center;
+  justify-items: center;
+  font-family: Poppins;
+  height: 100%;
+}
+@media(max-width:700px){
+  .container-fluid{
+    width: 100%;
+  }
+}
+
+
+
+.lblError{
+  color:red;
+}
+
+.Sign_up_options{
+  text-align: center;
+}
+
+.Sign_up_options  a{
+  text-decoration: none;
+  margin: 10px 10px;
+}
+
+.fa-google{
+  color: red;
+}
+
+.fa-facebook{
+  color: blueviolet;
+}
+
