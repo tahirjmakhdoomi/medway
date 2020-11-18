@@ -28,8 +28,9 @@ public class User implements Serializable {
     private String user_city;
     private int user_pin;
     private String user_state;
+    private String role;
 
-    public User(String name,String user_name, String user_email, String user_password, long user_phone, String user_storeName, String user_city, int user_pin, String user_state) {
+    public User(String name,String user_name, String user_email, String user_password, long user_phone, String user_storeName, String user_city, int user_pin, String user_state,String role) {
         this.name = name;
         this.user_name = user_name;
         this.user_email = user_email;
@@ -39,9 +40,18 @@ public class User implements Serializable {
         this.user_city = user_city;
         this.user_pin = user_pin;
         this.user_state = user_state;
+        this.role = role;
     }
 
     public User() {
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getName() {

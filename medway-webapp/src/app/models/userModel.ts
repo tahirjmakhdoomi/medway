@@ -8,6 +8,6 @@ export class UserModel {
     public user_storeName : string,
     public user_city: string,
     public user_pin: number,
-    public user_state: string
+    public user_state: string,
   ) {}
 }
