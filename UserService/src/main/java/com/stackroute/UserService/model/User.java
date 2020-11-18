@@ -106,4 +106,18 @@ public class User implements Serializable {
     public void setUser_state(String user_state) {
         this.user_state = user_state;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_name='" + user_name + '\'' +
+                ", user_email='" + user_email + '\'' +
+                ", user_password='" + user_password + '\'' +
+                ", user_phone=" + user_phone +
+                ", user_storeName='" + user_storeName + '\'' +
+                ", user_city='" + user_city + '\'' +
+                ", user_pin=" + user_pin +
+                ", user_state='" + user_state + '\'' +
+                '}';
+    }
 }
