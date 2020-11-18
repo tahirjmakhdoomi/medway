@@ -12,6 +12,8 @@ import {
 import { UserModel } from "../models/userModel";
 import { UserService } from "../services/user.service";
 import { DuplicateEmailCheck } from "../Validators/duplicateEmailCheck";
+import { DuplicatePhoneCheck } from '../Validators/duplicatePhone';
+import { DuplicateUserNameCheck } from '../Validators/duplicateUserNameCheck';
 import { MatchPasswords} from "../Validators/matchPasswords";
 
 @Component({
@@ -26,12 +28,15 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
+
+      name : new FormControl(null,[Validators.required]),
+
       user_name: new FormControl(null, [
-        Validators.required,
-      ]),
+        Validators.required,],DuplicateUserNameCheck.checkUserName(this._userServiceObj)),
+
       user_email: new FormControl(
         null,
-        [Validators.email, Validators.required],
+        [Validators.email, Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.(com|in)$")],
          DuplicateEmailCheck.checkEmail(this._userServiceObj)
       ),
 
@@ -43,7 +48,10 @@ export class SignupComponent implements OnInit {
         [MatchPasswords.matchPasswords]
       ),
 
-      user_phone: new FormControl(null,[Validators.required,Validators.min(1000000000),Validators.max(9999999999)]),
+      user_phone: new FormControl(null,[Validators.required,Validators.min(1000000000),Validators.max(9999999999)],
+      DuplicatePhoneCheck.checkPhone(this._userServiceObj)),
+
+
       supplierInfo_group:new FormGroup(
         {user_storeName : new FormControl(null),
           user_city : new FormControl(null),
@@ -60,6 +68,7 @@ export class SignupComponent implements OnInit {
 
 
     const userItem: UserModel = new UserModel(
+      this.signupForm.get("name").value,
       this.signupForm.get("user_name").value,
       this.signupForm.get("user_email").value,
       this.signupForm.get("password_group").get("user_password").value,

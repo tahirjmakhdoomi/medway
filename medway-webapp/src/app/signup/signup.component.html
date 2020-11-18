@@ -8,10 +8,29 @@
             Sign Up
         </h3>
 
+        <div class="form-group">
+          <!-- Username -->
+          <label for="name">Name: <span class="lblError">*</span></label>
+          <div class="controls">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </span>
+              </div>
+              <input type="text" id="name" placeholder="Name" class="form-control" formControlName="name">
+            </div>
+            <p class="lblError" *ngIf="signupForm.get('name').hasError('required')
+                        && !signupForm.get('name').pristine">
+                Name is Required
+            </p>
+          </div>
+    </div>
+
 
         <div class="form-group">
               <!-- Username -->
-              <label for="username">Name: <span class="lblError">*</span></label>
+              <label for="username">Username: <span class="lblError">*</span></label>
               <div class="controls">
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -19,17 +38,15 @@
                       <i class="fa fa-user" aria-hidden="true"></i>
                     </span>
                   </div>
-                  <input type="text" id="username" placeholder="Name" class="form-control" formControlName="user_name">
+                  <input type="text" id="username" placeholder="Username" class="form-control" formControlName="user_name">
                 </div>
                 <p class="lblError" *ngIf="signupForm.get('user_name').hasError('required')
                             && !signupForm.get('user_name').pristine">
-                    Name is Required
+                    Userame is Required
                 </p>
-                <p class="lblError"
-                   *ngIf="signupForm.get('user_name').hasError('invalidName')
-                            && !signupForm.get('user_name').pristine">
-                    Name is Invalid
-                </p>
+                <p class="lblError" style="color:blue" *ngIf="(signupForm.get('user_name').status == 'PENDING' && !signupForm.get('user_name').pristine)">Checking...</p>
+                  <p class="lblError" style="color:green" *ngIf="(signupForm.get('user_name').status == 'VALID'  && !signupForm.get('user_name').pristine && (!signupForm.get('user_name').value == '' ))">Username is Available</p>
+                  <p class="lblError" style="color:red" *ngIf="signupForm.get('user_name').hasError('duplicateUserName')">Userame is already Taken</p>
               </div>
         </div>
 
@@ -45,17 +62,17 @@
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                       </span>
                     </div>
-                    <input type="text" id="email" placeholder="E-mail" class="form-control" formControlName="user_email">
+                    <input type="email" id="email" placeholder="E-mail" class="form-control" formControlName="user_email">
                     
                   </div>
                   <p class="lblError" *ngIf="signupForm.get('user_email').hasError('required') && !signupForm.get('user_email').pristine">
                     Please provide your E-mail
                   </p>
-                  <p class="lblError" *ngIf="signupForm.get('user_email').hasError('email') && !signupForm.get('user_email').pristine">E-mail is Invalid</p>
+                  <p class="lblError" *ngIf="signupForm.get('user_email').hasError('pattern') && !signupForm.get('user_email').pristine">E-mail is Invalid</p>
 
                   <p class="lblError" style="color:blue" *ngIf="(signupForm.get('user_email').status == 'PENDING' && !signupForm.get('user_email').pristine)">Checking...</p>
                   <p class="lblError" style="color:green" *ngIf="(signupForm.get('user_email').status == 'VALID'  && !signupForm.get('user_email').pristine && (!signupForm.get('user_email').value == '' ))">Email is Available</p>
-                  <p class="lblError" style="color:red" *ngIf="signupForm.get('user_email').hasError('duplicateEmail')">Email is already Taken</p>
+                  <p class="lblError" style="color:red" *ngIf="signupForm.get('user_email').hasError('duplicateEmail')">Email is already registered</p>
               </div>
             </div>
           </div>
@@ -80,6 +97,9 @@
                 <p class="lblError" *ngIf="signupForm.get('user_phone').hasError('min') || signupForm.get('user_phone').hasError('max')">
                   Phone must be of 10 digits
                 </p>
+                <p class="lblError" style="color:blue" *ngIf="(signupForm.get('user_phone').status == 'PENDING' && !signupForm.get('user_phone').pristine)">Checking...</p>
+                  <p class="lblError" style="color:green" *ngIf="(signupForm.get('user_phone').status == 'VALID'  && !signupForm.get('user_phone').pristine && (!signupForm.get('user_phone').value == '' ))">Phone is Available</p>
+                  <p class="lblError" style="color:red" *ngIf="signupForm.get('user_phone').hasError('duplicatePhone')">Phone is already registered</p>
               </div>
             </div>
           </div>
@@ -195,7 +215,7 @@
           </button>
         </div>
 
-        <p>Already have an account?<a href="">Log in</a></p>
+        <p>Already have an account?<a href="" style="margin-left: 5px;">Log in</a></p>
 
         <div class="Sign_up_options" *ngIf="!checked">
           <p>Continue with : <br></p>

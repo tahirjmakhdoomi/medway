@@ -17,9 +17,9 @@ import java.io.Serializable;
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"user_name","user_email","user_phone"})})
 @Document("users")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "id" ,scope = User.class)
 public class User implements Serializable {
 
+    private String name;
     private String user_name;
     private String user_email;
     private String user_password;
@@ -29,7 +29,8 @@ public class User implements Serializable {
     private int user_pin;
     private String user_state;
 
-    public User(String user_name, String user_email, String user_password, long user_phone, String user_storeName, String user_city, int user_pin, String user_state) {
+    public User(String name,String user_name, String user_email, String user_password, long user_phone, String user_storeName, String user_city, int user_pin, String user_state) {
+        this.name = name;
         this.user_name = user_name;
         this.user_email = user_email;
         this.user_password = user_password;
@@ -41,6 +42,14 @@ public class User implements Serializable {
     }
 
     public User() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUser_name() {
