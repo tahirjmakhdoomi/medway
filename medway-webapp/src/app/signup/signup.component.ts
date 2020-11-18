@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
         [MatchPasswords.matchPasswords]
       ),
 
-      user_phone: new FormControl(null,[Validators.required]),
+      user_phone: new FormControl(null,[Validators.required,Validators.min(1000000000),Validators.max(9999999999)]),
       supplierInfo_group:new FormGroup(
         {user_storeName : new FormControl(null),
           user_city : new FormControl(null),

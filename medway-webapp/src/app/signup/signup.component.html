@@ -77,6 +77,9 @@
                 <p class="lblError" *ngIf="signupForm.get('user_phone').hasError('required') && !signupForm.get('user_phone').pristine">
                   Phone is Required
                 </p>
+                <p class="lblError" *ngIf="signupForm.get('user_phone').hasError('min') || signupForm.get('user_phone').hasError('max')">
+                  Phone must be of 10 digits
+                </p>
               </div>
             </div>
           </div>
