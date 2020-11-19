@@ -1,0 +1,74 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over" class="side-nav">
+        <nav class="navbar" style="background-color: cyan;">
+            <span class="navbar-brand mb-0 h1">
+                <a href="#">
+                    <i class="material-icons nav-icon">account_circle</i>
+                    Hello, Sign Up
+                </a>
+            </span>
+        </nav>
+        <div class="sidenav-content">
+            <ul>
+                <li class="location-mob">
+                    <i class="material-icons">location_on</i>
+                    <form class="form-inline my-2 my-lg-0 nav-item">
+                        <input class="form-control" type="search" placeholder="Pincode" aria-label="Search">
+                        <button class="search-button" type="submit">
+                            <i class="material-icons">arrow_forward</i>
+                        </button>
+                    </form>
+                </li>
+                <li><a href=""><i class="material-icons">home</i>Home</a></li>
+                <li><a href=""><i class="material-icons">local_offer</i>Offer Zone</a></li>
+                <li><a href=""><i class="material-icons">shopping_bag</i>Sell On Medway</a></li>
+                <hr>
+                <li><a href=""><i class="material-icons">filter_frames</i>My Orders</a></li>
+                <li><a href=""><i class="material-icons">shopping_cart</i>My Cart</a></li>
+                <li><a href=""><i class="material-icons">favorite</i>My Wishlist</a></li>
+                <li><a href=""><i class="material-icons">person</i>My Account</a></li>
+                <li><a href=""><i class="material-icons">notifications</i>Notification</a></li>
+                <li><a href=""><i class="material-icons">settings</i>Settings</a></li>
+                <hr>
+                <li><a href=""><small> Customer Service </small></a></li>
+            </ul>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+        <nav class="navbar  fixed-top" style="background-color: cyan;">
+            <a href="#" (click)="sidenav.toggle()" mat-icon-button class="example-icon menu-button"
+                aria-label="Example icon-button with menu icon" class="mr-sm-2">
+                <i class="material-icons menu-icon">menu</i>
+            </a>
+            <h4 class="pull-left mr-auto title">MEDWAY</h4>
+            <div class="nav-item float-lg-left cart-icon" *ngIf="!showcart">
+                <a href="#"><i class="material-icons loc-icon">shopping_cart</i></a>
+            </div>
+            <div class="mini-nav float-right">
+                <div class="location float-left">
+                    <a href="#" (click)="locationOn=!locationOn" class="location-icon mr-sm-2 nav-item float-left">
+                        <i class="material-icons loc-icon">location_on</i>
+                    </a>
+                    <form class="form-inline my-2 my-lg-0 nav-item float-left mob-search" *ngIf="locationOn">
+                        <input class="form-control" type="search" placeholder="Pincode" aria-label="Search">
+                        <button class="search-button" type="submit">
+                            <i class="material-icons search-icon">arrow_forward</i>
+                        </button>
+                    </form>
+                </div>
+                <form class="form-inline my-2 my-lg-0 mr-sm-2 float-left mob-search" ngSubmit="searchClick()">
+                    <input class="form-control" type="search" placeholder="Search" 
+                    aria-label="Search" [(ngModel)]="searchText" name="search">
+                    <button class="search-button" type="submit">
+                        <i class="material-icons search-icon">search</i>
+                    </button>
+                </form>
+                <div class="nav-item float-lg-left cart-icon" *ngIf="showcart">
+                    <a href="#"><i class="material-icons loc-icon">shopping_cart</i></a>
+                </div>
+            </div>
+        </nav>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>
