@@ -2,7 +2,7 @@
     <mat-sidenav #sidenav mode="over" class="side-nav">
         <nav class="navbar" style="background-color: cyan;">
             <span class="navbar-brand mb-0 h1">
-                <a href="#">
+                <a class="btn" [routerLink]="['/signup']">
                     <i class="material-icons nav-icon">account_circle</i>
                     Hello, Sign Up
                 </a>
@@ -37,7 +37,7 @@
     <mat-sidenav-content>
 
         <nav class="navbar  fixed-top" style="background-color: cyan;">
-            <a href="#" (click)="sidenav.toggle()" mat-icon-button class="example-icon menu-button"
+            <a class="btn" (click)="sidenav.toggle()" mat-icon-button class="example-icon menu-button"
                 aria-label="Example icon-button with menu icon" class="mr-sm-2">
                 <i class="material-icons menu-icon">menu</i>
             </a>
@@ -47,7 +47,7 @@
             </div>
             <div class="mini-nav float-right">
                 <div class="location float-left">
-                    <a href="#" (click)="locationOn=!locationOn" class="location-icon mr-sm-2 nav-item float-left">
+                    <a (click)="locationOn=!locationOn" class="location-icon mr-sm-2 nav-item float-left">
                         <i class="material-icons loc-icon">location_on</i>
                     </a>
                     <form class="form-inline my-2 my-lg-0 nav-item float-left mob-search" *ngIf="locationOn">

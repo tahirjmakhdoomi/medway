@@ -1,58 +1,60 @@
-<div class="hero-unit">
-    <div class="hero-text">
-        <h2>Welcome To Medway <br> Your Own Medical Store</h2>
-    </div>
-    <div class="buttons">
-        <button class="btn btn-outline-primary mr-sm-5" (click)="logIn()">Log In</button>
-        <button class="btn btn-outline-primary" (click)="signUp()">Sign Up</button>
-    </div>
-</div>
-<div class="discounts">
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="disc-text" *ngIf="!isMobileView">
-                <h5>MEDWAY</h5>
-                <h6>FOR ALL YOUR <br>MEDICAL NEEDS</h6>
-            </div>
+<app-navbar>
+    <div class="hero-unit" style="font-family: Poppins;">
+        <div class="hero-text">
+            <h2>Welcome To Medway <br> Your Own Medical Store</h2>
         </div>
-        <div class="col-lg-9 col-sm-12">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <a href=""><img class="d-block w-100" src="../../assets/img/discount1.png" alt="First slide"></a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href=""><img class="d-block w-100" src="../../assets/img/discount2.png" alt="Second slide"></a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href=""><img class="d-block w-100" src="../../assets/img/discount3.png" alt="Third slide"></a>
-                    </div>
+        <div class="buttons">
+            <button class="btn btn-outline-primary mr-sm-5" (click)="logIn()">Log In</button>
+            <button class="btn btn-outline-primary" (click)="signUp()">Sign Up</button>
+        </div>
+    </div>
+    <div class="discounts">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="disc-text" *ngIf="!isMobileView">
+                    <h5>MEDWAY</h5>
+                    <h6>FOR ALL YOUR <br>MEDICAL NEEDS</h6>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+            </div>
+            <div class="col-lg-9 col-sm-12">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href=""><img class="d-block w-100" src="../../assets/img/discount1.png" alt="First slide"></a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href=""><img class="d-block w-100" src="../../assets/img/discount2.png" alt="Second slide"></a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href=""><img class="d-block w-100" src="../../assets/img/discount3.png" alt="Third slide"></a>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row services">
-    <div class="col-lg-6 col-sm-12 service-logo">
-        <h3>OUR SERVICES</h3>
+    <div class="row services">
+        <div class="col-lg-6 col-sm-12 service-logo">
+            <h3>OUR SERVICES</h3>
+        </div>
+        <div class="col-lg-6 col-sm-12 service-text">
+            <h5>1. ENSURE LOWEST PRICE</h5>
+            <p>Search lowest price possible for the user <br> specified medicine from nearby medical stores.</p>
+            <h5>2. GENERIC MEDICINES</h5>
+            <p>One stop destination for getting info about <br> generic medicines provided by different stores.</p>
+        </div>
     </div>
-    <div class="col-lg-6 col-sm-12 service-text">
-        <h5>1. ENSURE LOWEST PRICE</h5>
-        <p>Search lowest price possible for the user <br> specified medicine from nearby medical stores.</p>
-        <h5>2. GENERIC MEDICINES</h5>
-        <p>One stop destination for getting info about <br> generic medicines provided by different stores.</p>
-    </div>
-</div>
+</app-navbar>

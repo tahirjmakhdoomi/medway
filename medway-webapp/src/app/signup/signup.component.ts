@@ -10,6 +10,7 @@ import {
 } from "@angular/forms";
 
 import { UserModel } from "../models/userModel";
+import { NavigationService } from '../services/navigation.service';
 import { UserService } from "../services/user.service";
 import { DuplicateEmailCheck } from "../Validators/duplicateEmailCheck";
 import { DuplicatePhoneCheck } from '../Validators/duplicatePhone';
@@ -24,7 +25,7 @@ import { MatchPasswords} from "../Validators/matchPasswords";
 export class SignupComponent implements OnInit {
   signupForm : FormGroup;
 
-  constructor(private _userServiceObj: UserService) {}
+  constructor(private _userServiceObj: UserService,private navigate : NavigationService) {}
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -115,6 +116,10 @@ export class SignupComponent implements OnInit {
   fieldTextType1 : boolean = false;
   toggleFieldTextType1(){
     this.fieldTextType1 = !this.fieldTextType1;
+  }
+
+  login(){
+    this.navigate.loginIn();
   }
     
 }

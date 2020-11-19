@@ -9,7 +9,7 @@ import { NavigationService } from '../services/navigation.service';
 })
 export class LandingViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private navigate : NavigationService) { }
 
   isMobileView: boolean = false;
   ngOnInit(): void {
@@ -19,11 +19,11 @@ export class LandingViewComponent implements OnInit {
   }
 
   logIn(){
-
+    this.navigate.loginIn();
   }
 
   signUp(){
-   
+    this.navigate.signUp();
   }
 
 }

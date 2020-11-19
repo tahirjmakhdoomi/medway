@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
@@ -11,6 +12,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { LandingViewComponent } from './landing-view/landing-view.component';
+import { NavigationService } from './services/navigation.service';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -18,7 +21,8 @@ import { LandingViewComponent } from './landing-view/landing-view.component';
     AppComponent,
     SignupComponent,
     LandingViewComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +30,10 @@ import { LandingViewComponent } from './landing-view/landing-view.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    FormsModule 
+    FormsModule,
+    AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService,NavigationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

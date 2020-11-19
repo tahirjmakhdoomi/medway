@@ -1,7 +1,7 @@
 
 <div class="background-image">
 <div class="container-fluid">
-  <div class="col-md-6 mx-auto"></div>
+  <h1 style="text-align:center"><a href="#">MEDWAY</a></h1>
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 
         <h3 style="text-align:center">
@@ -171,7 +171,7 @@
               </div>
             </div>
             <div class="col-sm-12 col-lg-6">
-              <input type="checkbox" name="colorCheckBox" id="checkbox" style="margin-right: 10px;" (click)="supplierInfo()" [formControl] = "checked"><label>Are you a medicine supplier?</label>
+              <input type="checkbox" name="colorCheckBox" id="checkbox" style="margin-right: 10px;" (click)="supplierInfo()" ><label>Are you a medicine supplier?</label>
             </div>
         </div>
 
@@ -210,12 +210,12 @@
         </div>
 
         <div class="form-group">
-          <button class="btn btn-primary btn-success" type="submit" [disabled]="signupForm.invalid" >
+          <button class="btn btn-primary btn-success" type="submit" [disabled]="signupForm.invalid" (click)="login()">
             Sign Up
           </button>
         </div>
 
-        <p>Already have an account?<a href="" style="margin-left: 5px;">Log in</a></p>
+        <p>Already have an account?<a class="btn" style="margin-left: 5px;" (click)="login()">Log in</a></p>
 
         <div class="Sign_up_options" *ngIf="!checked">
           <p>Continue with : <br></p>

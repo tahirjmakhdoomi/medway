@@ -10,10 +10,14 @@
   justify-items: center;
 }
 
+h1 a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
 .container-fluid{
   width: 53%;
-  align-items: center;
-  justify-items: center;
   font-family: Poppins;
   height: 100%;
 }
@@ -36,7 +40,7 @@
 
 .Sign_up_options  a{
   text-decoration: none;
-  margin: 10px 10px;
+  margin: -10px 10px;
 }
 
 .fa-google{

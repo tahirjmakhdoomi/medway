@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { SignupComponent } from '../signup/signup.component';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,10 @@ export class NavigationService {
 
   signUp(){
     this.router.navigate(['/signup']);
+  }
+
+  loginIn(){
+    this.router.navigate(['/login']);
   }
 
 }
