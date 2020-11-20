@@ -22,9 +22,10 @@ public class Consumer {
 
         System.out.println(data);
         UserDTO dto = objectMapper.readValue(data,UserDTO.class);
-
+        String userrole = "patient";
+        if(dto.getUser_storeName() != null) userrole = "supplier";
         System.out.println(dto.getUser_name());
-        //service.add();
+        service.add(new User(dto.getUser_name(), dto.getUser_password(), dto.getUser_email(), dto.getUser_phone(), userrole));
         //System.out.println(string);
     }
 
