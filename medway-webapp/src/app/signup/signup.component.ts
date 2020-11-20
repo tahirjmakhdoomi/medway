@@ -132,7 +132,7 @@ export class SignupComponent implements OnInit {
   }
 
   gotoHome(){
-    this.navigate.gotoHome();
+    this.navigate.home();
   }
     
 }

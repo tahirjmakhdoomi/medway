@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
   }
 
   goToHome(){
-    this.navigate.gotoHome();
+    this.navigate.home();
   }
 
 }
