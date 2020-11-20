@@ -42,12 +42,12 @@
                 <i class="material-icons menu-icon">menu</i>
             </a>
             <h4 class="pull-left mr-auto title">MEDWAY</h4>
-            <div class="nav-item float-lg-left cart-icon" *ngIf="!showcart">
+            <div class="nav-item float-lg-left cart-icon d-md-none">
                 <a href="#"><i class="material-icons loc-icon">shopping_cart</i></a>
             </div>
             <div class="mini-nav float-right">
                 <div class="location float-left">
-                    <a (click)="locationOn=!locationOn" class="location-icon mr-sm-2 nav-item float-left">
+                    <a (click)="locationOn=!locationOn" class="location-icon mr-sm-2 nav-item float-left btn">
                         <i class="material-icons loc-icon">location_on</i>
                     </a>
                     <form class="form-inline my-2 my-lg-0 nav-item float-left mob-search" *ngIf="locationOn">
@@ -60,11 +60,11 @@
                 <form class="form-inline my-2 my-lg-0 mr-sm-2 float-left mob-search" ngSubmit="searchClick()">
                     <input class="form-control" type="search" placeholder="Search" 
                     aria-label="Search" [(ngModel)]="searchText" name="search">
-                    <button class="search-button" type="submit">
+                    <button class="search-button" type="submit" style="padding: none;border: none;background: none;outline: none;">
                         <i class="material-icons search-icon">search</i>
                     </button>
                 </form>
-                <div class="nav-item float-lg-left cart-icon" *ngIf="showcart">
+                <div class="nav-item float-lg-left cart-icon d-none d-md-block">
                     <a href="#"><i class="material-icons loc-icon">shopping_cart</i></a>
                 </div>
             </div>
