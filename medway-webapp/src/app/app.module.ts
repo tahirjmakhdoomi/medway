@@ -9,6 +9,7 @@ import { SignupComponent } from './signup/signup.component';
 import { UserService } from './services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { LandingViewComponent } from './landing-view/landing-view.component';
@@ -31,7 +32,8 @@ import { LoginComponent } from './login/login.component';
     BrowserAnimationsModule,
     MatSidenavModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatBadgeModule
   ],
   providers: [UserService,NavigationService],
   bootstrap: [AppComponent]
