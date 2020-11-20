@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User find(User user) {
         User u = r.findByUserNameAndPassword(user.getUserName(),user.getPassword());
-
+        //System.out.println(u.toString());
         return u;
     }
 }
