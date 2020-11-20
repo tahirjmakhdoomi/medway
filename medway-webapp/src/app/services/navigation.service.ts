@@ -17,4 +17,8 @@ export class NavigationService {
     this.router.navigate(['/login']);
   }
 
+  home(){
+    this.router.navigate(['/home']);
+  }
+
 }

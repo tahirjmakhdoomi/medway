@@ -121,5 +121,14 @@ export class SignupComponent implements OnInit {
   login(){
     this.navigate.loginIn();
   }
+
+  checkStatus(){
+    this._userServiceObj.getUser().subscribe(data => {
+      if(data.toString() === "Logged"){
+        this.navigate.home();
+        console.log("check");
+      }
+    });
+  }
     
 }

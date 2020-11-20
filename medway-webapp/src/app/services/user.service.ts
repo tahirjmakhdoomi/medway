@@ -34,4 +34,8 @@ export class UserService {
     }
     return throwError('Something went wrong!');
   }
+
+  getUser(){
+    return this._http.get("http://localhost:8100/api/v1/facebook",{responseType : 'text' as 'json'});
+  }
 }
