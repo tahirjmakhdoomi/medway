@@ -36,6 +36,6 @@ export class UserService {
   }
 
   getUser(){
-    return this._http.get("http://localhost:8100/api/v1/facebook",{responseType : 'text' as 'json'});
+    return this._http.get("http://localhost:8080/user",{responseType : 'text' as 'json'});
   }
 }

@@ -16,7 +16,7 @@
               <div class="col-sm-12 col-lg-12">
                 <div class="form-group">
                   <!-- Mobile -->
-                  <label for="phone">Phone <span class="lblError">*</span></label>
+                  <label for="phone">Username <span class="lblError">*</span></label>
                   <div class="controls">
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -24,11 +24,11 @@
                           <i class="fa fa-phone" aria-hidden="true"></i>
                         </span>
                       </div>
-                      <input type="number" id="phone" placeholder="Phone" class="form-control" formControlName="user_phone">
+                      <input type="text" id="phone" placeholder="username" class="form-control" formControlName="user_name">
                       
                     </div>
-                    <p class="lblError" *ngIf="loginForm.get('user_phone').hasError('required') && !loginForm.get('user_phone').pristine">
-                      Phone is Required
+                    <p class="lblError" *ngIf="loginForm.get('user_name').hasError('required') && !loginForm.get('user_name').pristine">
+                      Username is Required
                     </p>
                   </div>
                 </div>
@@ -61,9 +61,6 @@
                         </div>
                         <p class="lblError" *ngIf="loginForm.get('password_group').get('user_password').hasError('required') && !loginForm.get('password_group').get('user_password').pristine">
                           Password is Required
-                        </p>
-                        <p class="lblError" *ngIf="loginForm.get('password_group').get('user_password').hasError('minlength')">
-                          Password must be minimum of 7 characters
                         </p>
                       </div>
                     </div>
