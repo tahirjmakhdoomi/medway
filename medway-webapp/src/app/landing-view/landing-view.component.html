@@ -1,211 +1,215 @@
 <body>
-    <app-navbar>
-        <div class="hero-unit" style="font-family: Poppins;">
-            <div class="hero-text">
-                <h1 class="display-1">MEDWAY</h1>
-                <h4 class="d-md-block">Your medicine store in your hands</h4>
-            </div>
-            <div class="buttons">
-                <button class="btn btn-primary mr-sm-5" (click)="logIn()">Log In</button>
-                <button class="btn btn-primary" (click)="signUp()">Sign Up</button>
-            </div>
-        </div>
+  <app-navbar>
+    <div class="hero-unit" style="font-family: Poppins;">
+      <div class="hero-text">
+        <h1 class="display-1">MEDWAY</h1>
+        <h4 class="d-md-block">Your medicine store in your hands</h4>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-primary mr-sm-5" (click)="logIn()">Log In</button>
+        <button class="btn btn-primary" (click)="signUp()">Sign Up</button>
+      </div>
+    </div>
 
-            <!-- ======= Why Us Section ======= -->
+    <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
-        <div class="container-fluid">
-  
-
-            <div class="col-lg-12 d-flex align-items-stretch my-5">
-              <div class="icon-boxes d-flex flex-column justify-content-center">
-                <div class="row">
-
-                      <div class="col-xl-3 d-flex align-items-stretch ">
-                        <div class="icon-box mt-4 mt-xl-0">
-                          <i class="bx bx-receipt"></i>
-                          <h4>Why Medway</h4>
-                          <p>We provide accurate and detailed pricing,discount avaliable for medicines from different stores</p>
-                        </div>
-                      </div>
-
-                  <div class="col-xl-3 d-flex align-items-stretch">
-                    <div class="icon-box mt-4 mt-xl-0">
-                      <i class="bx bx-receipt"></i>
-                      <h4>Know where to Buy</h4>
-                      <p>Get Location of stores to buy medicine at lowest price avaliable</p>
-                    </div>
-                  </div>
-                  <div class="col-xl-3 d-flex align-items-stretch">
-                    <div class="icon-box mt-4 mt-xl-0">
-                      <i class="bx bx-cube-alt"></i>
-                      <h4>Pre-order Facility</h4>
-                      <p>Pre-order medicines in case medicine is out of stock</p>
-                    </div>
-                  </div>
-                  <div class="col-xl-3 d-flex align-items-stretch">
-                    <div class="icon-box mt-4 mt-xl-0">
-                      <i class="bx bx-images"></i>
-                      <h4>Promote Generic medicines</h4>
-                      <p>Provide low-cost medicines provided by trusted stores</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- End .content-->
-            </div>
+      <div class="container-fluid">
 
 
-  
-        </div>
-      </section><!-- End Why Us Section -->
-
-<hr class="featurette-divider">
-<br>
-        <section id="gallery">
-            <div class="container-fluid">
-                 <div class="row justify-content-center align-items-center">
-                  <div class="row">
-                    <div class="col-lg-4 mb-4">
-                      <div class="card">
-                          <img class="card-img-top" src="../../assets/img/christina-victoria-craft-ZHys6xN7sUE-unsplash (1).jpg" alt="">
-                          <div class="card-body">
-                              <h5 class="card-title">Order Medicine Now</h5>
-                              <p class="card-text">Search For Medicine Right Away !!</p>
-                              <a href="" class="btn btn-danger">Go now</a>
-                              <a href="" class="btn btn-outline-danger ml-3"><i class="fa fa-heart" aria-hidden="true"></i>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-4 mb-4">
-                      <div class="card">
-                          <img class="card-img-top" src="../../assets/img/adam-niescioruk-hWzrJsS8gwI-unsplash.jpg" alt="" height="310px">
-                          <div class="card-body">
-                              <h5 class="card-title">Out of Stock</h5>
-                              <p class="card-text">Pre-order Medicine(Only premium users)</p>
-                              <a href="" class="btn btn-info">Know more</a>
-                              <a href="" class="btn btn-outline-danger ml-3"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-4 mb-4">
-                      <div class="card">
-                          <img class="card-img-top" src="../../assets/img/hush-naidoo-yo01Z-9HQAw-unsplash.jpg" alt="">
-                          <div class="card-body">
-                              <h5 class="card-title">Medway Premium</h5>
-                              <p class="card-text">Subscribe for a better and rich Experience</p>
-                              <a href="" class="btn btn-success">Apply</a>
-                              <a href="" class="btn btn-outline-danger ml-3"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                          </div>
-                      </div>
-                  </div>
-                  </div>
-                 </div>
-            </div>
-         </section>
-
-
-
-
-
-
-
-
-
-         <hr class="featurette-divider">
-         <br>
-
-
-
-
-
-
-
-         
-
-
-        <div class="discounts">
+        <div class="col-lg-12 d-flex align-items-stretch my-5">
+          <div class="icon-boxes d-flex flex-column justify-content-center">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="disc-text" *ngIf="!isMobileView">
-                        <h5>MEDWAY</h5>
-                        <h6>FOR ALL YOUR <br>MEDICAL NEEDS</h6>
-                    </div>
+
+              <div class="col-xl-3 d-flex align-items-stretch ">
+                <div class="icon-box mt-4 mt-xl-0">
+                  <i class="bx bx-receipt"></i>
+                  <h4>Why Medway</h4>
+                  <p>We provide accurate and detailed pricing,discount avaliable for medicines from different stores</p>
                 </div>
-                <div class="col-lg-9 col-sm-12">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                              <img class="d-block w-100" src="../../assets/img/discount1.png" alt="First slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="../../assets/img/discount2.png" alt="Second slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="../../assets/img/discount3.png" alt="Third slide">
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
+              </div>
+
+              <div class="col-xl-3 d-flex align-items-stretch">
+                <div class="icon-box mt-4 mt-xl-0">
+                  <i class="bx bx-receipt"></i>
+                  <h4>Know where to Buy</h4>
+                  <p>Get Location of stores to buy medicine at lowest price avaliable</p>
                 </div>
+              </div>
+              <div class="col-xl-3 d-flex align-items-stretch">
+                <div class="icon-box mt-4 mt-xl-0">
+                  <i class="bx bx-cube-alt"></i>
+                  <h4>Pre-order Facility</h4>
+                  <p>Pre-order medicines in case medicine is out of stock</p>
+                </div>
+              </div>
+              <div class="col-xl-3 d-flex align-items-stretch">
+                <div class="icon-box mt-4 mt-xl-0">
+                  <i class="bx bx-images"></i>
+                  <h4>Promote Generic medicines</h4>
+                  <p>Provide low-cost medicines provided by trusted stores</p>
+                </div>
+              </div>
             </div>
+          </div><!-- End .content-->
         </div>
 
 
 
+      </div>
+    </section><!-- End Why Us Section -->
 
-
-
-
-
-        <hr class="featurette-divider">
-        <br>
-
-
-
-
-
-
-        
-
-        <div class="container-fluid">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-6 col-sm-12 mb-4 mt-4 ">
-                    <div class="card-transparent">
-                        <img class="card-img-top" src="../../assets/img/scott-graham-5fNmWej4tAA-unsplash.jpg" alt="">
-
-                    </div>
+    <hr class="featurette-divider">
+    <br>
+    <section id="gallery">
+      <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+          <div class="row">
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <img class="card-img-top" src="../../assets/img/christina-victoria-craft-ZHys6xN7sUE-unsplash (1).jpg"
+                  alt="">
+                <div class="card-body">
+                  <h5 class="card-title">Order Medicine Now</h5>
+                  <p class="card-text">Search For Medicine Right Away !!</p>
+                  <a href="" class="btn btn-danger">Go now</a>
+                  <a href="" class="btn btn-outline-danger ml-3"><i class="fa fa-heart" aria-hidden="true"></i>
+                  </a>
                 </div>
-                <div class="col-lg-6 col-sm-12 mb-4 mt-4">
-                    <div class="card-transparent">
-                        <div class="card-body">
-
-                            <div class="col-lg-6 col-sm-12 card-text service-text " style="margin:auto">
-                              <h5 class="card-title text-center">OUR SERVICE</h5>
-                              <p class="card-text text-center">WE TREAT OUR CUSTOMERS RIGHT !!</p>
-                                <h5 class="text-center">1. ENSURE LOWEST PRICE</h5>
-                                <p class="text-center">Search lowest price possible for the user <br> specified medicine from nearby medical stores.</p>
-                                <h5 class="text-center">2. GENERIC MEDICINES</h5>
-                                <p class="text-center">One stop destination for getting info about <br> generic medicines provided by different stores.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-       </div>
-    </app-navbar>
-    
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <img class="card-img-top" src="../../assets/img/adam-niescioruk-hWzrJsS8gwI-unsplash.jpg" alt=""
+                  height="310px">
+                <div class="card-body">
+                  <h5 class="card-title">Out of Stock</h5>
+                  <p class="card-text">Pre-order Medicine(Only premium users)</p>
+                  <a href="" class="btn btn-info">Know more</a>
+                  <a href="" class="btn btn-outline-danger ml-3"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <img class="card-img-top" src="../../assets/img/hush-naidoo-yo01Z-9HQAw-unsplash.jpg" alt="">
+                <div class="card-body">
+                  <h5 class="card-title">Medway Premium</h5>
+                  <p class="card-text">Subscribe for a better and rich Experience</p>
+                  <a href="" class="btn btn-success">Apply</a>
+                  <a href="" class="btn btn-outline-danger ml-3"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <hr class="featurette-divider">
+    <br>
+
+
+
+
+
+
+
+
+
+
+    <div class="discounts">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="disc-text" *ngIf="!isMobileView">
+            <h5>MEDWAY</h5>
+            <h6>FOR ALL YOUR <br>MEDICAL NEEDS</h6>
+          </div>
+        </div>
+        <div class="col-lg-9 col-sm-12">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="../../assets/img/discount1.png" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="../../assets/img/discount2.png" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="../../assets/img/discount3.png" alt="Third slide">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <hr class="featurette-divider">
+    <br>
+
+
+
+
+
+
+
+
+    <div class="container-fluid">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-lg-6 col-sm-12 mb-4 mt-4 ">
+          <div class="card-transparent">
+            <img class="card-img-top" src="../../assets/img/scott-graham-5fNmWej4tAA-unsplash.jpg" alt="">
+
+          </div>
+        </div>
+        <div class="col-lg-6 col-sm-12 mb-4 mt-4">
+          <div class="card-transparent">
+            <div class="card-body">
+
+              <div class="col-lg-6 col-sm-12 card-text service-text " style="margin:auto">
+                <h5 class="card-title text-center">OUR SERVICE</h5>
+                <p class="card-text text-center">WE TREAT OUR CUSTOMERS RIGHT !!</p>
+                <h5 class="text-center">1. ENSURE LOWEST PRICE</h5>
+                <p class="text-center">Search lowest price possible for the user <br> specified medicine from nearby
+                  medical stores.</p>
+                <h5 class="text-center">2. GENERIC MEDICINES</h5>
+                <p class="text-center">One stop destination for getting info about <br> generic medicines provided by
+                  different stores.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
 
 
@@ -217,78 +221,73 @@
 
     <footer id="footer">
 
-        <div class="footer-top">
-          <div class="container">
-            <div class="row">
-    
-              <div class="col-lg-3 col-md-6 footer-contact">
-                <h3>Medway</h3>
-                <p>
-                  XYZ Street <br>
-                  Bangalore, Karnataka<br>
-                  India <br><br>
-                  <strong>Phone:</strong> +91 5589 5548 55<br>
-                  <strong>Email:</strong> info@example.com<br>
-                </p>
-              </div>
-    
-              <div class="col-lg-2 col-md-6 footer-links">
-                <h4>Useful Links</h4>
-                <ul>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-                </ul>
-              </div>
-    
-              <div class="col-lg-3 col-md-6 footer-links">
-                <h4>Our Services</h4>
-                <ul>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Sell on Medway</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Rate & Review</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                </ul>
-              </div>
-    
-              <div class="col-lg-4 col-md-6 footer-newsletter">
-                <h4>Join Us</h4>
-                <p>Get info on new medicines and many more</p>
-                <form action="" method="post">
-                  <input type="email" name="email"><input type="submit" value="Subscribe">
-                </form>
-              </div>
-    
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>Medway</h3>
+              <p>
+                XYZ Street <br>
+                Bangalore, Karnataka<br>
+                India <br><br>
+                <strong>Phone:</strong> +91 5589 5548 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
             </div>
-          </div>
-        </div>
-    
-        <div class="container d-md-flex py-4">
-    
-          <div class="mr-md-auto text-center text-md-left">
-            <div class="copyright">
-              &copy; Copyright <strong><span>Medway</span></strong>. All Rights Reserved
+
+            <div class="col-lg-2 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              </ul>
             </div>
-            <div class="credits">
-              Designed by <a href="#">stackroute</a>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Services</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Sell on Medway</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Rate & Review</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              </ul>
             </div>
-          </div>
-          <div class="social-links text-center text-md-right pt-3 pt-md-0">
-            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+
+            <div class="col-lg-4 col-md-6 footer-newsletter">
+              <h4>Join Us</h4>
+              <p>Get info on new medicines and many more</p>
+              <form action="" method="post">
+                <input type="email" name="email"><input type="submit" value="Subscribe">
+              </form>
+            </div>
 
           </div>
         </div>
-<<<<<<< HEAD
-    </div>
-</app-navbar>
-=======
-      </footer><!-- End Footer -->
-    
-    
+      </div>
+
+      <div class="container d-md-flex py-4">
+
+        <div class="mr-md-auto text-center text-md-left">
+          <div class="copyright">
+            &copy; Copyright <strong><span>Medway</span></strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+            Designed by <a href="#">stackroute</a>
+          </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+
+        </div>
+      </div>
+    </footer><!-- End Footer -->
+  </app-navbar>
+
+
 </body>
-
->>>>>>> e00e9036d286520ad104d66f4963949fb861dc33
