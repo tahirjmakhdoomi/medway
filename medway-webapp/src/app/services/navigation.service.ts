@@ -17,7 +17,11 @@ export class NavigationService {
     this.router.navigate(['/login']);
   }
 
+<<<<<<< HEAD
   gotoHome(){
+=======
+  home(){
+>>>>>>> 13f14012adb8b5fbad4df2025a67b56987dfcb70
     this.router.navigate(['/home']);
   }
 

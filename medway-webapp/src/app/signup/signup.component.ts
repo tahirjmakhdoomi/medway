@@ -67,7 +67,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
 
-
+    this.navigate.loginIn();
     const userItem: UserModel = new UserModel(
       this.signupForm.get("name").value,
       this.signupForm.get("user_name").value,
@@ -116,6 +116,15 @@ export class SignupComponent implements OnInit {
   fieldTextType1 : boolean = false;
   toggleFieldTextType1(){
     this.fieldTextType1 = !this.fieldTextType1;
+  }
+
+  checkStatus(){
+    this._userServiceObj.getUser().subscribe(data => {
+      if(data.toString() === "Logged"){
+        this.navigate.home();
+        console.log("check");
+      }
+    });
   }
 
   login(){

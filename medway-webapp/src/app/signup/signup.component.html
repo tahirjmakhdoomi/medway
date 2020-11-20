@@ -210,7 +210,7 @@
         </div>
 
         <div class="form-group">
-          <button class="btn btn-primary btn-success" type="submit" [disabled]="signupForm.invalid" (click)="login()">
+          <button class="btn btn-primary btn-success" type="submit" [disabled]="signupForm.invalid">
             Sign Up
           </button>
         </div>
@@ -219,9 +219,15 @@
 
         <div class="Sign_up_options" *ngIf="!checked">
           <p>Continue with : <br></p>
-          <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="http://localhost:8100/api/v1/google"><i class="fa fa-google" aria-hidden="true"></i></a>
+          <a class="btn" (click)="checkStatus()"><i class="fa fa-facebook" aria-hidden="true"></i></a>
         </div>
+
+        <script>
+            $.get("/login/facebook",function(data){
+              $.get(app-landing-view).send
+            })
+        </script>
 
   </form>
 </div>

@@ -34,4 +34,8 @@ export class UserService {
     }
     return throwError('Something went wrong!');
   }
+
+  getUser(){
+    return this._http.get("http://localhost:8080/user",{responseType : 'text' as 'json'});
+  }
 }
