@@ -21,10 +21,16 @@ import java.io.Serializable;
 @Getter
 public class UserDTO implements Serializable {
 
-    private String userName;
-    private String password;
-    private String email;
-    private int contact;
-    private String userrole;
+    private String name;
+    private String user_name;
+    private String user_email;
+    private String user_password;
+    private String user_phone;
+    private String user_storeName;
+    private String user_city;
+    private String user_pin;
+    private String user_state;
+
+
 
 }

@@ -23,7 +23,7 @@ public class Consumer {
         System.out.println(data);
         UserDTO dto = objectMapper.readValue(data,UserDTO.class);
 
-        System.out.println(dto.getUserName());
+        System.out.println(dto.getUser_name());
         //service.add();
         //System.out.println(string);
     }
