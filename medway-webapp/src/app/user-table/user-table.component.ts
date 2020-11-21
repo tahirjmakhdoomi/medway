@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { UpdateMedicineService } from '../services/update-medicine.service';
 
 @Component({
   selector: 'app-user-table',
@@ -12,7 +13,7 @@ export class UserTableComponent implements OnInit {
   control: FormArray;
   mode: boolean;
   touchedRows: any;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private updateMedicineService : UpdateMedicineService) { }
 
   ngOnInit(): void {
     this.touchedRows = [];
@@ -75,15 +76,19 @@ export class UserTableComponent implements OnInit {
     if(this.userTable.status==="INVALID"){
       this.message="Please verify entered details!!!";
     }
-    // else if(this.userTable.status==="VALID"){
-    //   this.medicineService.addMedicine(this.userTable.value).subscribe(()=>{this.message="Medicine added";}, 
-    //   ()=>{this.message="Failed to add Medicine!!";});
-    // }
+    else if(this.userTable.status==="VALID"){
+      this.touchedRows.forEach(element => {
+        this.updateMedicineService.addMedicine(element).subscribe(()=>{this.message="Medicine added";}, 
+      ()=>{this.message="Failed to add Medicine!!";});
+      });
+    }
     this.clearForm();
   }  
   clearForm(){
     const control =  this.userTable.get('tableRows') as FormArray;
-    control.reset();
+    while(control.length >0){
+      control.removeAt(0);
+    }
     control.push(this.initiateForm());
   }
   toggleTheme() {
