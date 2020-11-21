@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private navigate:NavigationService) { }
 
   showcart=true;
   locationOn: boolean = false;
@@ -23,5 +24,8 @@ export class NavbarComponent implements OnInit {
 
   searchClick(){
     console.log("Search Button Click");
+  }
+  gotoHome(){
+    this.navigate.home();
   }
 }
