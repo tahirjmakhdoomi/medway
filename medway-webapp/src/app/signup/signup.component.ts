@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit,ViewChild,ElementRef } from "@angular/core";
 import {
   FormGroup,
   FormControl,
@@ -8,7 +8,6 @@ import {
   ValidatorFn,
   FormControlName
 } from "@angular/forms";
-import { ViewChild,ElementRef } from '@angular/core';
 
 import { UserModel } from "../models/userModel";
 import { NavigationService } from '../services/navigation.service';
@@ -27,7 +26,7 @@ declare var FB: any;
 })
 export class SignupComponent implements OnInit {
   signupForm : FormGroup;
-  @ViewChild('loginRef') loginElement: ElementRef;
+  @ViewChild('loginRef', {}) loginElement: ElementRef;
 
   constructor(private _userServiceObj: UserService,private navigate : NavigationService) {}
 
@@ -111,10 +110,12 @@ export class SignupComponent implements OnInit {
     Swal.fire({
           icon: 'success',
           title: 'Success',
-          text: 'You have registered succesfully!'
+          text: 'Welcome'+this.signupForm.get("name").value
         })
   }
 
+
+  //Google login
   auth2:any;
   googleInitialize() {
     window['googleSDKLoaded'] = () => {
@@ -136,17 +137,33 @@ export class SignupComponent implements OnInit {
     }(document, 'script', 'google-jssdk'));
   }
 
+
+  flag1 : boolean = false;
+  name: String = '';
   loginGoogle() {
+    this.flag1 = true;
     this.auth2.attachClickHandler(this.loginElement.nativeElement, {},
       (googleUser) => {
         let profile = googleUser.getBasicProfile();
         console.log('Token || ' + googleUser.getAuthResponse().id_token);
         console.log(profile.getName());
+        this.name = profile.getName();
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
       }, (error) => {
         alert(JSON.stringify(error, undefined, 2));
       });
+  }
+
+  goToHome(){
+    if(this.name != null){
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Welcome '+this.name,
+      })
+      this.navigate.home();
+    }
   }
 
 
@@ -185,7 +202,9 @@ export class SignupComponent implements OnInit {
     this.fieldTextType1 = !this.fieldTextType1;
   }
 
-  flag: boolean = false;
+
+  //Facebook login
+  var: any;
   checkStatus(){
     console.log("submit login to facebook");
     // FB.login();
@@ -194,13 +213,11 @@ export class SignupComponent implements OnInit {
           console.log('submitLogin',response);
           if (response.authResponse)
           {
+            this.var = response.status;
             Swal.fire({
               icon: 'success',
               title: 'Success',
               text: 'You have registered succesfully!',
-            }).then((result) => {
-              if(result.isConfirmed){
-                this.flag = true;}
             })
           }
            else
@@ -212,7 +229,7 @@ export class SignupComponent implements OnInit {
             })
           }
       });
-        if(this.flag == true){
+        if(this.var == "connected"){
           this.navigate.home();
       }
   }
