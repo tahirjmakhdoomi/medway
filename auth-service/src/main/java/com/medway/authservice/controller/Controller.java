@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(value = "*",allowCredentials = "true")
 @RestController
 @RequestMapping("/api/v1")
 public class Controller {

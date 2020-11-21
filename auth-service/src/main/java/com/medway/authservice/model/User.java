@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class User {
     @Id
     @Column(name = "username")
-    private String userName;
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -28,7 +28,7 @@ public class User {
     private String email;
 
     @Column(name = "contact")
-    private int contact;
+    private long contact;
 
     @Column(name = "userrole")
     private String role;
