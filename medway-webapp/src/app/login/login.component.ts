@@ -21,7 +21,6 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  message : any;
   
   constructor(private userService: LoginService,
               private navigate : NavigationService) {
@@ -42,20 +41,21 @@ export class LoginComponent implements OnInit {
     
     const user:LoginModel=new LoginModel(
       this.loginForm.get('user_name').value,
-      this.loginForm.get('user_password').value
+      this.loginForm.get('password_group').get('user_password').value
     );
     this.userService.postUserData(user).subscribe(resp=>{
-      if(resp == "Success"){
+      if(resp == "Invalid Credentials"){
           Swal.fire({
-          icon: 'success',
-          title: resp,
-          text: 'Logged in successfully'});
-      }
-      else{
-        Swal.fire({
           icon: 'error',
           title: 'Oops',
           text: resp});
+      }
+      else{
+        Swal.fire({
+          icon: 'success',
+          title: 'Welcome '+resp,
+          text: 'Logged in successfully'});
+          this.navigate.home();
       }
     })
   }

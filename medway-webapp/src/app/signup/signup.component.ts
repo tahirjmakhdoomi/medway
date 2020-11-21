@@ -110,7 +110,7 @@ export class SignupComponent implements OnInit {
     Swal.fire({
           icon: 'success',
           title: 'Success',
-          text: 'Welcome'+this.signupForm.get("name").value
+          text: 'Welcome '+this.signupForm.get("name").value
         })
   }
 
@@ -150,6 +150,11 @@ export class SignupComponent implements OnInit {
         this.name = profile.getName();
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Welcome '+this.name,
+        })
       }, (error) => {
         alert(JSON.stringify(error, undefined, 2));
       });
@@ -157,11 +162,6 @@ export class SignupComponent implements OnInit {
 
   goToHome(){
     if(this.name != null){
-      Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Welcome '+this.name,
-      })
       this.navigate.home();
     }
   }
