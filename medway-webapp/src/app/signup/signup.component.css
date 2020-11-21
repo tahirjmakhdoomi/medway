@@ -40,10 +40,27 @@ h1 a{
   text-align: center;
 }
 
-.Sign_up_options  a{
-  text-decoration: none;
+
+
+
+
+.Sign_up_options a {
+  font-size: 18px;
+  display: inline-block;
+  background: #1977cc;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+.Sign_up_options a:hover {
   background: #1c84e3;
   color: #fff;
   text-decoration: none;
 }
-
