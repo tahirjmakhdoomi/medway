@@ -220,5 +220,9 @@ export class SignupComponent implements OnInit {
   login(){
     this.navigate.loginIn();
   }
+
+  gotoHome(){
+    this.navigate.home();
+  }
     
 }
