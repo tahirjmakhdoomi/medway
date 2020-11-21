@@ -14,7 +14,7 @@ export class LoginService {
   constructor(private http:HttpClient) {
     
    }
-   postUserData(val:LoginModel):Observable<any>{
-     return this.http.post('http://localhost:4202/users',val)
+   postUserData(val:LoginModel){
+     return this.http.post('http://localhost:4202/users',val,{responseType : 'text' as 'json'});
    }
 }

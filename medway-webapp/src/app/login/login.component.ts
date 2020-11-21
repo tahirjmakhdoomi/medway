@@ -20,6 +20,7 @@ import { NavigationService } from '../services/navigation.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  message : any;
   
   constructor(private userService: LoginService,
               private navigate : NavigationService) {
@@ -42,8 +43,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.get('user_name').value,
       this.loginForm.get('user_password').value
     );
-    this.userService.postUserData(user).subscribe(resp=>{
-    })
+    this.userService.postUserData(user).subscribe(resp=>{this.message = resp})
   }
   
   checked : boolean =  false;

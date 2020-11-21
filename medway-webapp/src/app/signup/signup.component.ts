@@ -8,6 +8,7 @@ import {
   ValidatorFn,
   FormControlName
 } from "@angular/forms";
+import { ViewChild,ElementRef } from '@angular/core';
 
 import { UserModel } from "../models/userModel";
 import { NavigationService } from '../services/navigation.service';
@@ -16,7 +17,9 @@ import { DuplicateEmailCheck } from "../Validators/duplicateEmailCheck";
 import { DuplicatePhoneCheck } from '../Validators/duplicatePhone';
 import { DuplicateUserNameCheck } from '../Validators/duplicateUserNameCheck';
 import { MatchPasswords} from "../Validators/matchPasswords";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
+declare var FB: any;
 @Component({
   selector: "app-signup",
   templateUrl: "./signup.component.html",
@@ -24,6 +27,7 @@ import { MatchPasswords} from "../Validators/matchPasswords";
 })
 export class SignupComponent implements OnInit {
   signupForm : FormGroup;
+  @ViewChild('loginRef') loginElement: ElementRef;
 
   constructor(private _userServiceObj: UserService,private navigate : NavigationService) {}
 
@@ -62,7 +66,29 @@ export class SignupComponent implements OnInit {
       )
       
     });
-    this.signupForm.get("user")
+    this.signupForm.get("user");
+
+    //facebook login
+    (window as any).fbAsyncInit = function() {
+      FB.init({
+        appId      : '2262299493914073',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v3.1'
+      });
+      FB.AppEvents.logPageView();
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+     /*google login*/
+     this.googleInitialize();
   }
 
   onSubmit() {
@@ -81,7 +107,48 @@ export class SignupComponent implements OnInit {
     );
 
     this._userServiceObj.addUser(userItem).subscribe((data: any) => {this.signupForm.reset();},error => {});
+    // alert("Registered Successfully!!!");
+    Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'You have registered succesfully!'
+        })
   }
+
+  auth2:any;
+  googleInitialize() {
+    window['googleSDKLoaded'] = () => {
+      window['gapi'].load('auth2', () => {
+        this.auth2 = window['gapi'].auth2.init({
+          client_id: '72148707537-etpdbp483gdlriiqr9mjpdcb9eesca1d.apps.googleusercontent.com',
+          cookie_policy: 'single_host_origin',
+          scope: 'profile email'
+        });
+        this.loginGoogle();
+      });
+    }
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "https://apis.google.com/js/platform.js?onload=googleSDKLoaded";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'google-jssdk'));
+  }
+
+  loginGoogle() {
+    this.auth2.attachClickHandler(this.loginElement.nativeElement, {},
+      (googleUser) => {
+        let profile = googleUser.getBasicProfile();
+        console.log('Token || ' + googleUser.getAuthResponse().id_token);
+        console.log(profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
+      }, (error) => {
+        alert(JSON.stringify(error, undefined, 2));
+      });
+  }
+
 
   checked : boolean =  false;
   supplierInfo(){
@@ -118,13 +185,36 @@ export class SignupComponent implements OnInit {
     this.fieldTextType1 = !this.fieldTextType1;
   }
 
+  flag: boolean = false;
   checkStatus(){
-    this._userServiceObj.getUser().subscribe(data => {
-      if(data.toString() === "Logged"){
-        this.navigate.home();
-        console.log("check");
+    console.log("submit login to facebook");
+    // FB.login();
+    FB.login((response)=>
+        {
+          console.log('submitLogin',response);
+          if (response.authResponse)
+          {
+            Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: 'You have registered succesfully!',
+            }).then((result) => {
+              if(result.isConfirmed){
+                this.flag = true;}
+            })
+          }
+           else
+           {
+            Swal.fire({
+              icon: 'error',
+              title: 'Sorry!!!',
+              text: 'Registration failed'
+            })
+          }
+      });
+        if(this.flag == true){
+          this.navigate.home();
       }
-    });
   }
 
   login(){

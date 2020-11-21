@@ -21,4 +21,8 @@ export class NavigationService {
     this.router.navigate(['/home']);
   }
 
+  addMedicine(){
+    this.router.navigate(['/addmedicine']);
+  }
+
 }
