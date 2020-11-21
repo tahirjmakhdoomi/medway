@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 @EnableEurekaClient
 @SpringBootApplication
