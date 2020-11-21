@@ -25,10 +25,10 @@ public class UserDTO implements Serializable {
     private String user_name;
     private String user_email;
     private String user_password;
-    private int user_phone;
+    private long user_phone;
     private String user_storeName;
     private String user_city;
-    private String user_pin;
+    private int user_pin;
     private String user_state;
 
 
