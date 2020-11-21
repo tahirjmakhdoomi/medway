@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.get('user_name').value,
       this.loginForm.get('password_group').get('user_password').value
     );
+    console.log(user)
     this.userService.postUserData(user).subscribe(resp=>{
       if(resp == "Invalid Credentials"){
           Swal.fire({
