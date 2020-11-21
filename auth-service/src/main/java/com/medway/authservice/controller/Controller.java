@@ -3,6 +3,7 @@ package com.medway.authservice.controller;
 
 import com.medway.authservice.configuration.JwtUtil;
 import com.medway.authservice.model.User;
+import com.medway.authservice.model.ValidateDTO;
 import com.medway.authservice.service.UserServiceImpl;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,9 @@ public class Controller {
 //    }
 
     @PostMapping("/validate")
-    public ResponseEntity<?> validate(@RequestBody User u, HttpServletResponse httpServletResponse){
+    public ResponseEntity<?> validate(@RequestBody ValidateDTO u, HttpServletResponse httpServletResponse){
 
-        User fetch = service.find(u);
+        User fetch = service.find(u.getUser_name(), u.getUser_password());
 
         Cookie jwtCookie = new Cookie("token",null);
         jwtCookie.setSecure(false);
