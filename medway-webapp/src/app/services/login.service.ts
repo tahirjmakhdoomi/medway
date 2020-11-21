@@ -15,6 +15,6 @@ export class LoginService {
     
    }
    postUserData(val:LoginModel){
-     return this.http.post('http://localhost:4202/users',val,{responseType : 'text' as 'json'});
+     return this.http.post('http://localhost:8070/validate',val,{responseType : 'text' as 'json'});
    }
 }

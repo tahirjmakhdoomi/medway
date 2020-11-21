@@ -10,10 +10,12 @@ header {
   margin-bottom: 50px;
 }
 
+body{
+  margin-top: 150px ;
+}
 mat-icon {
   cursor: pointer;
 }
-
 .action-container {
   display: flex;
   justify-content: space-between;
@@ -29,10 +31,13 @@ mat-icon {
 .table thead {
   border-left: 1px solid #dee2e6;
   border-right: 1px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 15px;
   padding-bottom: 18px;
+  width: 100%;
 }
 .table thead{
   background-color: darkkhaki;

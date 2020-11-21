@@ -12,6 +12,7 @@ import {
 import {LoginModel} from "../models/loginModel";
 import {LoginService} from "../services/login.service";
 import { NavigationService } from '../services/navigation.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 @Component({
   selector: 'app-login',
@@ -43,7 +44,20 @@ export class LoginComponent implements OnInit {
       this.loginForm.get('user_name').value,
       this.loginForm.get('user_password').value
     );
-    this.userService.postUserData(user).subscribe(resp=>{this.message = resp})
+    this.userService.postUserData(user).subscribe(resp=>{
+      if(resp == "Success"){
+          Swal.fire({
+          icon: 'success',
+          title: resp,
+          text: 'Logged in successfully'});
+      }
+      else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops',
+          text: resp});
+      }
+    })
   }
   
   checked : boolean =  false;
