@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*",allowCredentials = "true")
 @RestController
 @RequestMapping("/api/v1")
 public class Controller {
@@ -58,7 +58,7 @@ public class Controller {
         String token = jwt.generateToken(fetch);
         jwtCookie.setValue(token);
         httpServletResponse.addCookie(jwtCookie);
-        return new ResponseEntity<>("Success",HttpStatus.OK);
+        return new ResponseEntity<>(u.getUser_name(),HttpStatus.OK);
     }
 
 //    @GetMapping("/securedEndpoint")
