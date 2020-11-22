@@ -45,20 +45,16 @@ export class LoginComponent implements OnInit {
     );
     console.log(user)
     this.userService.postUserData(user).subscribe(resp=>{
-      if(resp == "Invalid Credentials"){
-          Swal.fire({
-          icon: 'error',
-          title: 'Oops',
-          text: resp});
-      }
-      else{
+      if(resp === "Success"){
         Swal.fire({
           icon: 'success',
-          title: 'Welcome '+resp,
+          title: resp,
           text: 'Logged in successfully'});
           this.navigate.home();
-      }
-    })
+      }},error => Swal.fire({
+        icon: 'error',
+        title: 'Oops',
+        text: 'Invalid Credentials'}))
   }
   
   checked : boolean =  false;

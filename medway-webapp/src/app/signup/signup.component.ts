@@ -105,13 +105,18 @@ export class SignupComponent implements OnInit {
       this.signupForm.get('supplierInfo_group').get("user_state").value
     );
 
-    this._userServiceObj.addUser(userItem).subscribe((data: any) => {this.signupForm.reset();},error => {});
-    // alert("Registered Successfully!!!");
-    Swal.fire({
-          icon: 'success',
-          title: 'Success',
-          text: 'Welcome '+this.signupForm.get("name").value
+    this._userServiceObj.addUser(userItem).subscribe((data: any) => {this.signupForm.reset();
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Welcome '+userItem.name
+      })},error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops',
+          text: error
         })
+      });
   }
 
 

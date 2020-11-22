@@ -11,12 +11,12 @@ import { UserModel } from '../models/userModel';
 
 export class UserService {
 
-  url = 'http://localhost:8101/api/v1/register';
+  url = 'http://localhost:8100/api/v1/register';
 
   constructor(private _http: HttpClient) {}
 
   getAllUsers() {
-    return this._http.get<UserModel[]>('http://localhost:8101/api/v1/users').pipe(
+    return this._http.get<UserModel[]>('http://localhost:8100/api/v1/users').pipe(
       retry(3),
       catchError(this.handleError)
     );
