@@ -42,7 +42,7 @@ public class Controller {
 //    }
 
     @PostMapping("/validate")
-    public String validate(@RequestBody ValidateDTO u, HttpServletResponse httpServletResponse){
+    public ResponseEntity<?> validate(@RequestBody ValidateDTO u, HttpServletResponse httpServletResponse){
 
         User fetch = service.find(u.getUser_name(), u.getUser_password());
 
@@ -53,13 +53,13 @@ public class Controller {
 
         if(fetch == null) {
             httpServletResponse.addCookie(jwtCookie);
-            return "Invalid Credentials";
+            return new ResponseEntity<>("Invalid Credentials", HttpStatus.FORBIDDEN);
         }
 
         String token = jwt.generateToken(fetch);
         jwtCookie.setValue(token);
         httpServletResponse.addCookie(jwtCookie);
-        return "Success";
+        return new ResponseEntity<>("Success",HttpStatus.OK);
     }
 
 //    @GetMapping("/securedEndpoint")
