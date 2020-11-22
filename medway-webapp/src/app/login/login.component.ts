@@ -12,6 +12,7 @@ import {
 import {LoginModel} from "../models/loginModel";
 import {LoginService} from "../services/login.service";
 import { NavigationService } from '../services/navigation.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 @Component({
   selector: 'app-login',
@@ -40,10 +41,20 @@ export class LoginComponent implements OnInit {
     
     const user:LoginModel=new LoginModel(
       this.loginForm.get('user_name').value,
-      this.loginForm.get('user_password').value
+      this.loginForm.get('password_group').get('user_password').value
     );
+    console.log(user)
     this.userService.postUserData(user).subscribe(resp=>{
-    })
+      if(resp === "Success"){
+        Swal.fire({
+          icon: 'success',
+          title: resp,
+          text: 'Logged in successfully'});
+          this.navigate.home();
+      }},error => Swal.fire({
+        icon: 'error',
+        title: 'Oops',
+        text: 'Invalid Credentials'}))
   }
   
   checked : boolean =  false;

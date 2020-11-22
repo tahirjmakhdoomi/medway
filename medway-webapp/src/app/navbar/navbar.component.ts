@@ -8,7 +8,11 @@ import { NavigationService } from '../services/navigation.service';
 })
 export class NavbarComponent implements OnInit {
 
+<<<<<<< HEAD
   constructor(private navigate: NavigationService) { }
+=======
+  constructor(private navigate:NavigationService) { }
+>>>>>>> 9baee6cb050b39ac8ed724805cdf542ece251036
 
   showcart=true;
   locationOn: boolean = false;
@@ -25,7 +29,6 @@ export class NavbarComponent implements OnInit {
   searchClick(){
     console.log("Search Button Click");
   }
-
   gotoHome(){
     this.navigate.home();
   }

@@ -19,12 +19,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User saveUser(User user) {
-        if(user.getUser_storeName()==null|| user.getUser_storeName().equals("")){
-            user.setRole("Customer");
-        }
-        else {
-            user.setRole("Supplier");
-        }
         return repository.save(user);
     }
 

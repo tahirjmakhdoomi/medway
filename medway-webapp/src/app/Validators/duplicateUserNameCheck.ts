@@ -3,6 +3,7 @@ import { AsyncValidatorFn, AbstractControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserModel } from '../models/userModel';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 export class DuplicateUserNameCheck {
   static checkUserName(_serviceObj: UserService): AsyncValidatorFn {
@@ -32,6 +33,12 @@ export class DuplicateUserNameCheck {
                 return null;
             }
 
+          },error => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops',
+              text: error
+            })
           })
         );
       }
