@@ -9,6 +9,7 @@
         <module name="api-gateway" />
         <module name="config-server" />
         <module name="auth-service" />
+        <module name="Medicine-Service" />
         <module name="eureka-server" />
         <module name="UserService" />
       </profile>
@@ -18,6 +19,7 @@
       <module name="auth-service" target="11" />
       <module name="config-server" target="11" />
       <module name="eureka-server" target="11" />
+      <module name="Medicine-Service" target="11" />
       <module name="medway" target="11" />
       <module name="medway (1) (com.medway)" target="11" />
       <module name="UserService" target="11" />
@@ -25,6 +27,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Medicine-Service" options="-parameters" />
       <module name="UserService" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
       <module name="auth-service" options="-parameters" />

@@ -65,5 +65,27 @@ services:
     hostname: localhost
     ports:
       - 8070:8070
-  
+
+  UserService:
+    build: UserService/
+    container_name: UserService
+    depends_on:
+      - config-server
+      - eureka-server
+      - api-gateway
+      - mongodb
+      - rabbitmq
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8100:8100
+
+  mongodb:
+    image: mongodb:latest
+    container_name: mongodb
+    hostname: localhost
+    ports:
+    - "27017:27017"
+
 
