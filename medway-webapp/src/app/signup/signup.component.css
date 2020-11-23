@@ -1,0 +1,66 @@
+a{
+  cursor: pointer;
+}
+.background-image{
+  background-color: cyan ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+h1 a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.container-fluid{
+  width: 53%;
+  font-family: Poppins;
+  height: 100%;
+}
+@media(max-width:700px){
+  .container-fluid{
+    width: 100%;
+  }
+}
+
+
+
+.lblError{
+  color:red;
+  font-size: small;
+}
+
+.Sign_up_options{
+  text-align: center;
+}
+
+
+
+
+
+.Sign_up_options a {
+  font-size: 18px;
+  display: inline-block;
+  background: #1977cc;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+.Sign_up_options a:hover {
+  background: #1c84e3;
+  color: #fff;
+  text-decoration: none;
+}
