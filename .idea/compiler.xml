@@ -10,6 +10,7 @@
         <module name="config-server" />
         <module name="auth-service" />
         <module name="eureka-server" />
+        <module name="UserService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,14 +19,18 @@
       <module name="config-server" target="11" />
       <module name="eureka-server" target="11" />
       <module name="medway" target="11" />
+      <module name="medway (1) (com.medway)" target="11" />
+      <module name="UserService" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="UserService" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
       <module name="auth-service" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
+      <module name="medway (1) (com.medway)" options="-parameters" />
     </option>
   </component>
 </project>
