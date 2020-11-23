@@ -1,0 +1,90 @@
+
+<div class="background-image">
+    <div class="container-fluid col-md-6 mx-auto">
+      <h1 style="text-align:center"><a (click)="goToHome()">MEDWAY</a></h1>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    
+            <h3 style="text-align:center">
+                Login
+            </h3>
+    
+    
+            
+    
+            <div class="form-row">
+              <div class="col-sm-12 col-lg-12">
+                <div class="form-group">
+                  <!-- Mobile -->
+                  <label for="phone">Username <span class="lblError">*</span></label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                      <input type="text" id="phone" placeholder="username" class="form-control" formControlName="user_name">
+                      
+                    </div>
+                    <p class="lblError" *ngIf="loginForm.get('user_name').hasError('required') && !loginForm.get('user_name').pristine">
+                      Username is Required
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="form-row" formGroupName="password_group">
+                <div class="col-sm-12 col-lg-12">
+                  <div class="form-group">
+                    <div class="control-group">
+                      <!-- Password -->
+                      <label for="password">Password: <span class="lblError">*</span></label>
+                      <div class="controls">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="fa fa-lock" aria-hidden="true"></i>
+                            </span>
+                          </div>
+                          <input [type]="fieldTextType ? 'text' : 'password'" id="password" placeholder="Password" class="form-control" formControlName="user_password">
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                               <i class="fa"
+                               [ngClass]="{
+                                 'fa-eye-slash': !fieldTextType,
+                                 'fa-eye': fieldTextType
+                               }" (click)="toggleFieldTextType()" aria-hidden="true"></i>
+                            </span>
+                          </div>
+                        </div>
+                        <p class="lblError" *ngIf="loginForm.get('password_group').get('user_password').hasError('required') && !loginForm.get('password_group').get('user_password').pristine">
+                          Password is Required
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+    
+            
+    
+            <div class="form-group">
+              <button class="btn btn-primary btn-success" type="submit" [disabled]="loginForm.invalid">
+                Login
+              </button>
+            </div>
+    
+            <p>Don't have an account?<a class="btn" style="margin-left: 10px;" (click)="signUp()">Sign Up</a></p>
+    
+            <div class="Sign_up_options" *ngIf="!checked">
+              <p>Continue with : <br></p>
+              <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            </div>
+    
+      </form>
+    </div>
+    </div>
+    
