@@ -47,7 +47,7 @@ services:
     container_name: mysql
     hostname: localhost
     ports:
-      - "3306:3306"
+      - "3310:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=1234
   
@@ -66,14 +66,14 @@ services:
     ports:
       - 8070:8070
 
-  UserService:
+  user-service:
     build: UserService/
-    container_name: UserService
+    container_name: userService
     depends_on:
       - config-server
       - eureka-server
       - api-gateway
-      - mongodb
+      - mongo
       - rabbitmq
     restart: always
     network_mode: "host"
@@ -81,11 +81,33 @@ services:
     ports:
       - 8100:8100
 
-  mongodb:
-    image: mongodb:latest
-    container_name: mongodb
+  mongo:
+    image: mongo:latest
+    container_name: medwaymongo
     hostname: localhost
     ports:
     - "27017:27017"
 
+  medicine-service:
+    build: Medicine-Service/
+    container_name: medicineService
+    depends_on:
+      - config-server
+      - eureka-server
+      - api-gateway
+      - mysql
+      - rabbitmq
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8105:8105
 
+  medway-webapp:
+    build: medway-webapp/
+    container_name: medwayUI
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+    - 8009:8009
