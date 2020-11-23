@@ -8,13 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
         <module name="config-server" />
-        <module name="medway (1) (com.medway)" />
+        <module name="auth-service" />
         <module name="eureka-server" />
         <module name="UserService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-gateway" target="11" />
+      <module name="auth-service" target="11" />
       <module name="config-server" target="11" />
       <module name="eureka-server" target="11" />
       <module name="medway" target="11" />
@@ -26,6 +27,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="UserService" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
+      <module name="auth-service" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="medway (1) (com.medway)" options="-parameters" />
