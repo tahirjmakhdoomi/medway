@@ -1,9 +1,23 @@
-#stage 1
-FROM node:latest as node
+#FROM nginx:1.17.1-alpine
+#COPY /dist/medway-webapp /usr/share/nginx/html
+
+FROM node:10-alpine as build-step
+
+RUN mkdir -p /app
+
 WORKDIR /app
-COPY . .
+
+COPY package.json /app
+
 RUN npm install
+
+COPY . /app
+
 RUN npm run build --prod
-# stage 2
-FROM nginx:alpine
-COPY --from=node /app/dist/ReactiveFormDemo /usr/share/nginx/html
+
+# Stage 2
+
+FROM nginx:1.17.1-alpine
+
+COPY --from=build-step /medway-webapp /usr/share/nginx/html
+
