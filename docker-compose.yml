@@ -17,7 +17,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8888:8888
+      - 8880:8880
 
   api-gateway:
     build: api-gateway/
@@ -47,9 +47,16 @@ services:
     container_name: mysql
     hostname: localhost
     ports:
-      - "3310:3306"
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=1234
+  
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    hostname: localhost
+    ports:
+    - "27017:27017"
   
   auth-service:
     build: auth-service/
@@ -65,15 +72,15 @@ services:
     hostname: localhost
     ports:
       - 8070:8070
-
+ 
   user-service:
     build: UserService/
-    container_name: userService
+    container_name: user-service
     depends_on:
       - config-server
       - eureka-server
       - api-gateway
-      - mongo
+      - mongodb
       - rabbitmq
     restart: always
     network_mode: "host"
@@ -81,16 +88,10 @@ services:
     ports:
       - 8100:8100
 
-  mongo:
-    image: mongo:latest
-    container_name: medwaymongo
-    hostname: localhost
-    ports:
-    - "27017:27017"
-
+  
   medicine-service:
     build: Medicine-Service/
-    container_name: medicineService
+    container_name: medicine-service
     depends_on:
       - config-server
       - eureka-server
@@ -105,7 +106,7 @@ services:
 
   medway-webapp:
     build: medway-webapp/
-    container_name: medwayUI
+    container_name: medway-webapp
     restart: always
     network_mode: "host"
     hostname: localhost
