@@ -30,6 +30,8 @@
         <module>eureka-server</module>
         <module>api-gateway</module>
         <module>auth-service</module>
+        <module>UserService</module>
+        <module>Medicine-Service</module>
     </modules>
 
     <dependencies>
@@ -155,6 +157,7 @@
                     </execution>
                 </executions>
             </plugin>
+
 
 
             <!--

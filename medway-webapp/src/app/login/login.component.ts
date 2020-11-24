@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           icon: 'success',
           title: resp,
           text: 'Logged in successfully'});
-          this.navigate.home();
+          this.navigate.addMedicine();
       }},error => Swal.fire({
         icon: 'error',
         title: 'Oops',
