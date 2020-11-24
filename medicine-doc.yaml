@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  medicine-service:
+    build: Medicine-Service/
+    container_name: medicineService
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8105:8105

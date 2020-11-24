@@ -58,20 +58,20 @@ services:
     ports:
     - "27017:27017"
 
-  user-service:
-    build: UserService/
-    container_name: user-service
-    depends_on:
-      - config-server
-      - eureka-server
-      - api-gateway
-      - mongodb
-      - rabbitmq
-    restart: always
-    network_mode: "host"
-    hostname: localhost
-    ports:
-      - 8100:8100
+  # user-service:
+  #   build: UserService/
+  #   container_name: user-service
+  #   depends_on:
+  #     - config-server
+  #     - eureka-server
+  #     - api-gateway
+  #     - mongodb
+  #     - rabbitmq
+  #   restart: always
+  #   network_mode: "host"
+  #   hostname: localhost
+  #   ports:
+  #     - 8100:8100
 
   medway-webapp:
     build: medway-webapp/
@@ -82,30 +82,30 @@ services:
     ports:
     - 8009:8009
 
-  auth-service:
-    build: auth-service/
-    container_name: auth-service
-    depends_on:
-      - eureka-server
-      - api-gateway
-      - mysql
-      - rabbitmq
-    restart: always
-    network_mode: "host"
-    hostname: localhost
-    ports:
-      - 8070:8070
+  # auth-service:
+  #   build: auth-service/
+  #   container_name: auth-service
+  #   depends_on:
+  #     - eureka-server
+  #     - api-gateway
+  #     - mysql
+  #     - rabbitmq
+  #   restart: always
+  #   network_mode: "host"
+  #   hostname: localhost
+  #   ports:
+  #     - 8070:8070
 
-  medicine-service:
-    build: Medicine-Service/
-    container_name: medicineService
-    depends_on:
-      - eureka-server
-      - api-gateway
-      - mysql
-      - rabbitmq
-    restart: always
-    network_mode: "host"
-    hostname: localhost
-    ports:
-      - 8105:8105
+  # medicine-service:
+  #   build: Medicine-Service/
+  #   container_name: medicineService
+  #   depends_on:
+  #     - eureka-server
+  #     - api-gateway
+  #     - mysql
+  #     - rabbitmq
+  #   restart: always
+  #   network_mode: "host"
+  #   hostname: localhost
+  #   ports:
+  #     - 8105:8105
