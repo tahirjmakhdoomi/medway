@@ -167,7 +167,7 @@ export class SignupComponent implements OnInit {
 
   goToHome(){
     if(this.name != null){
-      this.navigate.home();
+      this.navigate.addMedicine();
     }
   }
 
@@ -235,7 +235,7 @@ export class SignupComponent implements OnInit {
           }
       });
         if(this.var == "connected"){
-          this.navigate.home();
+          this.navigate.addMedicine();
       }
   }
 
