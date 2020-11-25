@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  medway-webapp:
+    build: medway-webapp/
+    container_name: medway-webapp
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+    - 8009:8009

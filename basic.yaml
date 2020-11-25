@@ -73,14 +73,14 @@ services:
   #   ports:
   #     - 8100:8100
 
-  medway-webapp:
-    build: medway-webapp/
-    container_name: medway-webapp
-    restart: always
-    network_mode: "host"
-    hostname: localhost
-    ports:
-    - 8009:8009
+  # medway-webapp:
+  #   build: medway-webapp/
+  #   container_name: medway-webapp
+  #   restart: always
+  #   network_mode: "host"
+  #   hostname: localhost
+  #   ports:
+  #   - 8009:8009
 
   # auth-service:
   #   build: auth-service/
