@@ -1,10 +1,14 @@
 
 // Data model for Medicine
 export class Medicine {
-    medicineName?: string;
-    expiryDOB: Date;
-    quantity?: number;
-    discount?: string;
-    price?: string;
+    public constructor(
+        public medicineName:string,
+        public mfgdate : Date,
+        public expiryDOB: Date,
+        public quantity: number,
+        public discount: number,
+        public price: number,
+        public supplierName: string
+    ){};
 }
 
