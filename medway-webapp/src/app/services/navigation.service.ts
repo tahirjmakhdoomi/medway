@@ -25,4 +25,8 @@ export class NavigationService {
     this.router.navigate(['/addmedicine']);
   }
 
+  addprescription(){
+    this.router.navigate(['/addprescription']);
+  }
+
 }

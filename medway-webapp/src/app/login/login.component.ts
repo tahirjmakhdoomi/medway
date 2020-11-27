@@ -13,6 +13,7 @@ import {LoginModel} from "../models/loginModel";
 import {LoginService} from "../services/login.service";
 import { NavigationService } from '../services/navigation.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   
   constructor(private userService: LoginService,
-              private navigate : NavigationService) {
+              private navigate : NavigationService,
+              private router : Router) {
      
   }
 
@@ -50,7 +52,7 @@ export class LoginComponent implements OnInit {
           icon: 'success',
           title: resp,
           text: 'Logged in successfully'});
-          this.navigate.addMedicine();
+          this.router.navigate([`/addprescription`],{queryParams : {'username' : user.user_name}});
       }},error => Swal.fire({
         icon: 'error',
         title: 'Oops',

@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { AddPrescriptionComponent } from './add-prescription/add-prescription.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {FormGuard} from './guard/formguard.guard';
 
 
 @NgModule({
@@ -58,7 +59,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDialogModule
   ],
   entryComponents: [DialogComponent],
-  providers: [UserService,NavigationService],
+  providers: [UserService,NavigationService,FormGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

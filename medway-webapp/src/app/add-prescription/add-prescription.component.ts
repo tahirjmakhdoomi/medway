@@ -1,6 +1,7 @@
 import { HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 import { forkJoin, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -13,8 +14,13 @@ import { AddPrescriptionService } from '../services/add-prescription.service';
 })
 export class AddPrescriptionComponent implements OnInit {
   medicines : any[] = [];
-  constructor(private dialog: MatDialog, public uploadService: AddPrescriptionService) { }
-  ngOnInit(){
+  username : String;
+
+  constructor(private dialog: MatDialog, public uploadService: AddPrescriptionService,private route : ActivatedRoute) { }
+  ngOnInit(): void{
+    // this.username = this.route.snapshot.paramMap.get('username');
+    this.username = this.route.snapshot.queryParams.username;
+    console.log("this is ",this.username);
   }
 
   public openUploadDialog() {

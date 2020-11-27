@@ -1,20 +1,27 @@
 import { HttpClient, HttpEventType, HttpRequest, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { LoginComponent } from '../login/login.component';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddPrescriptionService {
+export class AddPrescriptionService implements OnInit{
   medicines : any[] = [];
   s : String[];
 
   url = 'http://localhost:8071/api/v1/upload';
 
   constructor(private http: HttpClient) { }
+  ngOnInit(): void {
+  }
+
+  
 
   public upload(
-    files: Set<File>
+    files: Set<File>,userName : any
   ): { [key: string]: { progress: Observable<any> } } {
     // this will be the our resulting map
     const status: { [key: string]: { progress: Observable<any> } } = {};
@@ -23,9 +30,10 @@ export class AddPrescriptionService {
       // create a new multipart-form for every file
       const formData: FormData = new FormData();
       formData.append('file', file, file.name);
-      formData.append('username',"Romit");
+      formData.append('username',userName);
       formData.append('prescriptionId','1234');
       console.log(formData);
+      console.log(userName);
 
       // create a http-post request and pass the form
       // tell it to report the upload progress
@@ -55,7 +63,7 @@ export class AddPrescriptionService {
           //   this.s[i].split("\"");
           //   <String[]>event.body;
           // }
-          this.medicines = <String[]>event.body;
+          this.medicines.push(<String[]>event.body);
           console.log(this.medicines);
           progress.complete();
         }
