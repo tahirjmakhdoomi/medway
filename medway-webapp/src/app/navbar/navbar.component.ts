@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AddPrescriptionService } from '../services/add-prescription.service';
 import { NavigationService } from '../services/navigation.service';
 
 @Component({
@@ -8,23 +9,13 @@ import { NavigationService } from '../services/navigation.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private navigate:NavigationService) { }
-
-  showcart=true;
-  locationOn: boolean = false;
-  searchOn: boolean = false;
-
+  username;
+  constructor(private navigate:NavigationService,private upload : AddPrescriptionService) { }
   ngOnInit(): void {
-    if(window.screen.width<640){
-      this.showcart = false;
-    }
+    this.username = this.upload.username;
   }
 
-  searchText: String = "";
-
-  searchClick(){
-    console.log("Search Button Click");
-  }
+  
   gotoHome(){
     this.navigate.home();
   }

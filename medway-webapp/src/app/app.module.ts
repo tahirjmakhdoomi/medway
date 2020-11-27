@@ -24,6 +24,7 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { AddPrescriptionComponent } from './add-prescription/add-prescription.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {FormGuard} from './guard/formguard.guard';
+import { NavbarCustomerComponent } from './navbar-customer/navbar-customer.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {FormGuard} from './guard/formguard.guard';
     LoginComponent,
     UserTableComponent,
     AddPrescriptionComponent,
-    DialogComponent
+    DialogComponent,
+    NavbarCustomerComponent
   ],
   imports: [
     BrowserModule,
