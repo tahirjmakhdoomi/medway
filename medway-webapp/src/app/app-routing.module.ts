@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddPrescriptionComponent } from './add-prescription/add-prescription.component';
 import { LandingViewComponent } from './landing-view/landing-view.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
     {path : 'signup' ,component : SignupComponent},
     {path : 'login' , component: LoginComponent},
     {path : 'addmedicine' , component : UserTableComponent},
+    {path : 'addprescription', component : AddPrescriptionComponent},
     {path : '**' , redirectTo : 'home'}
 ];
 

@@ -6,21 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
+import { DialogComponent } from './dialog/dialog.component';
 import { UserService } from './services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
+import{ MatButtonModule,MatIconModule,MatProgressBarModule,MatTableModule,MatListModule,MatDialogModule } from '@angular/material';
 import {MatBadgeModule} from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { LandingViewComponent } from './landing-view/landing-view.component';
 import { NavigationService } from './services/navigation.service';
 import { LoginComponent } from './login/login.component';
 import { UserTableComponent } from './user-table/user-table.component';
+import { AddPrescriptionComponent } from './add-prescription/add-prescription.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { UserTableComponent } from './user-table/user-table.component';
     LandingViewComponent,
     NavbarComponent,
     LoginComponent,
-    UserTableComponent
+    UserTableComponent,
+    AddPrescriptionComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +50,14 @@ import { UserTableComponent } from './user-table/user-table.component';
     MatNativeDateModule,
     MatButtonModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressBarModule,
+    MatTableModule,
+    MatListModule,
+    FlexLayoutModule,
+    MatDialogModule
   ],
+  entryComponents: [DialogComponent],
   providers: [UserService,NavigationService],
   bootstrap: [AppComponent]
 })
