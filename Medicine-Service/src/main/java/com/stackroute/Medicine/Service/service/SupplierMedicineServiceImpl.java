@@ -32,6 +32,7 @@ public class SupplierMedicineServiceImpl implements SupplierMedicineService{
         return (List<SupplierMedicine>) supplierMedicineRepository.findAll();
     }
 
+
     @Override
     public SupplierMedicine getSupplierById(int id) {
 //        return blogRepository.findById(id).get();
@@ -57,11 +58,12 @@ public class SupplierMedicineServiceImpl implements SupplierMedicineService{
 
     @Override
     public SupplierMedicine updateSupplier(SupplierMedicine supplierMedicine) {
+
         Optional<SupplierMedicine> blogDb=this.supplierMedicineRepository.findById(supplierMedicine.getSupplierId());
         if(blogDb.isPresent()){
             SupplierMedicine supplierUpdated =blogDb.get();
             supplierUpdated.setSupplierId(supplierMedicine.getSupplierId());
-            supplierUpdated.setMedicineId(supplierMedicine.getMedicineId());
+            supplierUpdated.setMedicineName(supplierMedicine.getMedicineName());
             supplierUpdated.setPrice(supplierMedicine.getPrice());
             supplierUpdated.setDiscount(supplierMedicine.getDiscount());
             supplierUpdated.setStock(supplierMedicine.getStock());

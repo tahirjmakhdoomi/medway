@@ -25,17 +25,17 @@
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput type = "date" formControlName="mfgdate">
+                  <input matInput type = "date" formControlName="manufacturingDate">
                 </mat-form-field>
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput type = "date" formControlName="expiryDOB">
+                  <input matInput type = "date" formControlName="expDate">
                 </mat-form-field>
               </td>
               <td>
                 <mat-form-field>
-                  <input matInput type="number" formControlName="quantity">
+                  <input matInput type="number" formControlName="stock">
                 </mat-form-field>
               </td>
               <td>
@@ -58,10 +58,13 @@
                 {{group.get('medicineName').value}}
               </td>
               <td>
-                {{group.get('expiryDOB').value}}
+                {{group.get('manufacturingDate').value}}
               </td>
               <td>
-                  {{group.get('quantity').value}}
+                {{group.get('expDate').value}}
+              </td>
+              <td>
+                  {{group.get('stock').value}}
               </td>
               <td>
                   {{group.get('discount').value}}

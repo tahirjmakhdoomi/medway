@@ -32,9 +32,9 @@ export class UserTableComponent implements OnInit {
   initiateForm(): FormGroup {
     return this.fb.group({
       medicineName: ['', Validators.required],
-      mfgdate: ['', Validators.required],
-      expiryDOB: ['', [ Validators.required]],
-      quantity: ['', [Validators.required]],
+      manufacturingDate: ['', Validators.required],
+      expDate: ['', [ Validators.required]],
+      stock: ['', [Validators.required]],
       discount: ['',[Validators.required, Validators.pattern(/^[.\d]+$/)]],
       price: ['', [Validators.required, Validators.pattern(/^[.\d]+$/)]],
       isEditable: [true]
@@ -84,12 +84,12 @@ export class UserTableComponent implements OnInit {
       control.controls.forEach(element => {
         const medicineValues : Medicine = new Medicine(
           element.get("medicineName").value,
-          element.get("mfgdate").value,
-          element.get("expiryDOB").value,
-          element.get("quantity").value,
+          element.get("manufacturingDate").value,
+          element.get("expDate").value,
+          element.get("stock").value,
           element.get("discount").value,
           element.get("price").value,
-          "dm"
+          1
         );
         this.updateMedicineService.addMedicine(medicineValues).subscribe(()=>{this.message="Medicine added";}, 
       ()=>{this.message="Failed to add Medicine!!";});

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /* Add annotation to declare this class as REST Controller */
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("api/v1")
 public class SupplierMedicineController {

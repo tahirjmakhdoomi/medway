@@ -2,30 +2,31 @@ package com.stackroute.Medicine.Service.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
 @Table(name="SupplierMedicine")
-
+//@IdClass(SupplierMedicineId.class)
 
 public class SupplierMedicine {
 
     @Id
+    private String MedicineName;
+   // @Id
     private int SupplierId;
-    private int MedicineId;
     private float Price;
     private float Discount;
     private int Stock;
     private LocalDate ManufactureDate;
     private LocalDate ExpDate;
-
     public SupplierMedicine() {
     }
 
-    public SupplierMedicine(int supplierId, int medicineId, float price, float discount, int stock, LocalDate manufactureDate, LocalDate expDate) {
+    public SupplierMedicine(int supplierId, String medicineName, float price, float discount, int stock, LocalDate manufactureDate, LocalDate expDate) {
         SupplierId = supplierId;
-        MedicineId = medicineId;
+        MedicineName = medicineName;
         Price = price;
         Discount = discount;
         Stock = stock;
@@ -41,12 +42,12 @@ public class SupplierMedicine {
         SupplierId = supplierId;
     }
 
-    public int getMedicineId() {
-        return MedicineId;
+    public String getMedicineName() {
+        return MedicineName;
     }
 
-    public void setMedicineId(int medicineId) {
-        MedicineId = medicineId;
+    public void setMedicineName(String medicineName) {
+        MedicineName = medicineName;
     }
 
     public float getPrice() {
