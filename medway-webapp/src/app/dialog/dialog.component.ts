@@ -50,7 +50,7 @@ export class DialogComponent implements OnInit {
 
     // set the component state to "uploading"
     this.uploading = true;
-
+    this.username = this.uploadService.username;
     // start the upload and save the progress map
     this.progress = this.uploadService.upload(this.files,this.username);
     console.log(this.progress);

@@ -21,6 +21,7 @@ export class AddPrescriptionComponent implements OnInit {
     // this.username = this.route.snapshot.paramMap.get('username');
     this.username = this.route.snapshot.queryParams.username;
     console.log("this is ",this.username);
+    this.uploadService.username = this.username;
   }
 
   public openUploadDialog() {
