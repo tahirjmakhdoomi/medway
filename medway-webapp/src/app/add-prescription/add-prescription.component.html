@@ -1,0 +1,29 @@
+<body>
+  <app-navbar>
+
+    <div class="container-fluid" style="margin-top: 20vh;min-height: 100vh;">
+
+      <button mat-raised-button class="btn btn-primary pull-right" (click)="openUploadDialog()">Upload prescription</button>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Prescription Id</th>
+            <th scope="col">Medicines</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let medicine of medicines">
+            <th scope="row">1</th>
+            <td>{{medicine}}</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </app-navbar>
+</body>
