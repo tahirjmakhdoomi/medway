@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Medicine } from '../models/medicine';
 import { UpdateMedicineService } from '../services/update-medicine.service';
 
 @Component({
@@ -26,14 +27,16 @@ export class UserTableComponent implements OnInit {
   ngAfterOnInit() {
     this.control = this.userTable.get('tableRows') as FormArray;
   }
+  
   message = '';
   initiateForm(): FormGroup {
     return this.fb.group({
       medicineName: ['', Validators.required],
+      mfgdate: ['', Validators.required],
       expiryDOB: ['', [ Validators.required]],
       quantity: ['', [Validators.required]],
-      discount: [''],
-      price: ['', [Validators.required, Validators.maxLength(10)]],
+      discount: ['',[Validators.required, Validators.pattern(/^[.\d]+$/)]],
+      price: ['', [Validators.required, Validators.pattern(/^[.\d]+$/)]],
       isEditable: [true]
     });
   }
@@ -77,8 +80,18 @@ export class UserTableComponent implements OnInit {
       this.message="Please verify entered details!!!";
     }
     else if(this.userTable.status==="VALID"){
-      this.touchedRows.forEach(element => {
-        this.updateMedicineService.addMedicine(element).subscribe(()=>{this.message="Medicine added";}, 
+     
+      control.controls.forEach(element => {
+        const medicineValues : Medicine = new Medicine(
+          element.get("medicineName").value,
+          element.get("mfgdate").value,
+          element.get("expiryDOB").value,
+          element.get("quantity").value,
+          element.get("discount").value,
+          element.get("price").value,
+          "dm"
+        );
+        this.updateMedicineService.addMedicine(medicineValues).subscribe(()=>{this.message="Medicine added";}, 
       ()=>{this.message="Failed to add Medicine!!";});
       });
     }

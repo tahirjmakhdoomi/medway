@@ -6,8 +6,9 @@
   <form [formGroup]="userTable">
       <table class="table table-border" [ngClass]="{'table-dark': mode}" style = "background-color:#DDD6D6;">
         <thead class="text-nowrap">
-          <th>Medicine Name<span class="ui-column-resizer" dragableColumn> </span></th>
-          <th>Expiry Date<span class="ui-column-resizer" dragableColumn> </span></th>
+          <th>Medicine Name<span class="ui-column-resizer" > </span></th>
+          <th>Manufacturing Date<span class="ui-column-resizer" > </span></th>
+          <th>Expiry Date<span class="ui-column-resizer" > </span></th>
           <th>Quantity </th>
           <th>Discount (in %)</th>
           <th>Price (of full unit)</th>
@@ -20,6 +21,11 @@
               <td>
                 <mat-form-field>
                   <input matInput type="text" formControlName="medicineName">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput type = "date" formControlName="mfgdate">
                 </mat-form-field>
               </td>
               <td>
