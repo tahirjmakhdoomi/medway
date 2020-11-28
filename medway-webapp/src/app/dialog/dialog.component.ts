@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { AddPrescriptionService } from '../services/add-prescription.service';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-dialog',
@@ -17,7 +18,7 @@ export class DialogComponent implements OnInit {
   username : String;
 
   constructor(public dialogRef: MatDialogRef<DialogComponent>, public uploadService: AddPrescriptionService,
-              ) { }
+              private navigate:NavigationService) { }
 
   ngOnInit():void {
    }

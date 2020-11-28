@@ -1,8 +1,8 @@
-<mat-sidenav-container>
+<mat-sidenav-container style="font-family: Poppins;">
     <mat-sidenav #sidenav mode="over" class="side-nav" type="button" fixedInViewport="true">
         <nav class="navbar" style="background-color: cyan;">
             <span class="navbar-brand mb-0 h1">
-                <a  [routerLink]="['/signup']">
+                <a>
                     <i class="material-icons nav-icon">account_circle</i>
                     Hello,{{username}}
                 </a>
@@ -19,7 +19,7 @@
                         </button>
                     </form>
                 </li>
-                <li><a href=""><i class="material-icons">home</i>Home</a></li>
+                <li><a [routerLink]="['/addprescription']"><i class="material-icons">home</i>Home</a></li>
                 <li><a [routerLink]="['/addprescription']"><i class="material-icons">article</i>Upload prescription</a></li>
                 <li><a href=""><i class="material-icons">filter_frames</i>My Orders</a></li>
                 <li><a href=""><i class="material-icons">favorite</i>My Wishlist</a></li>
@@ -38,8 +38,8 @@
                 aria-label="Example icon-button with menu icon" class="mr-sm-2">
                 <i class="material-icons menu-icon">menu</i>
             </a>
-            <h4 class="pull-left mr-auto title"><a (click)="gotoHome()">MEDWAY</a></h4>
-            <button mat-raised-button class="btn btn-danger">Log out</button>
+            <h4 class="pull-left mr-auto title">MEDWAY</h4>
+            <button mat-raised-button class="btn btn-danger" (click)="logout()">Log out</button>
         </nav>
         <ng-content></ng-content>
     </mat-sidenav-content>

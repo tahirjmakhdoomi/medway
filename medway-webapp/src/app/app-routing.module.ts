@@ -4,6 +4,7 @@ import { AddPrescriptionComponent } from './add-prescription/add-prescription.co
 import { FormGuard } from './guard/formguard.guard';
 import { LandingViewComponent } from './landing-view/landing-view.component';
 import { LoginComponent } from './login/login.component';
+import { MedicineListComponent } from './medicine-list/medicine-list.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserTableComponent } from './user-table/user-table.component';
 
@@ -14,6 +15,7 @@ const routes: Routes = [
     {path : 'login' , component: LoginComponent},
     {path : 'addmedicine' , component : UserTableComponent},
     {path : 'addprescription', component : AddPrescriptionComponent},
+    {path : 'medicinelist' , component : MedicineListComponent}
 ];
 
 @NgModule({

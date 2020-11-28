@@ -6,6 +6,7 @@ import { forkJoin, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { DialogComponent } from '../dialog/dialog.component';
 import { AddPrescriptionService } from '../services/add-prescription.service';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-add-prescription',
@@ -16,7 +17,8 @@ export class AddPrescriptionComponent implements OnInit {
   medicines : any[] = [];
   username : String;
 
-  constructor(private dialog: MatDialog, public uploadService: AddPrescriptionService,private route : ActivatedRoute) { }
+  constructor(private dialog: MatDialog, public uploadService: AddPrescriptionService,private route : ActivatedRoute,
+              private navigate : NavigationService) { }
   ngOnInit(): void{
     // this.username = this.route.snapshot.paramMap.get('username');
     this.username = this.route.snapshot.queryParams.username;
@@ -30,5 +32,8 @@ export class AddPrescriptionComponent implements OnInit {
     console.log(this.medicines);
   }
 
+  medicineList(){
+    this.navigate.medicinelist();
+  }
 
 }
