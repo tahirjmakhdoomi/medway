@@ -22,6 +22,10 @@ export class NavbarComponent implements OnInit {
     this.navigate.home();
   }
 
+  gotoOrders(){
+    this.navigate.orderSummary();
+  }
+
   logout(){
     Swal.fire({
       title: 'Are you sure?',

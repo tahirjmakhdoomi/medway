@@ -33,4 +33,8 @@ export class NavigationService {
     this.router.navigate(['/medicinelist']);
   }
 
+  orderSummary(){
+    this.router.navigate(['/orders']);
+  }
+
 }
