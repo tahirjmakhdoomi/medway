@@ -7,7 +7,7 @@ import { medicineList } from '../models/medicine-list';
   styleUrls: ['./medicine-list.component.css']
 })
 export class MedicineListComponent implements OnInit {
-  medicineList : medicineList[] = [
+  medicinelist : medicineList[] = [
     {
         medicineName : "Dolo",
         supplierId : 1,
@@ -16,6 +16,7 @@ export class MedicineListComponent implements OnInit {
         stock: 4,
         discount: 10,
         price: 25,
+        quantity:0,
         finalPrice: 20
     },
     {
@@ -26,6 +27,7 @@ export class MedicineListComponent implements OnInit {
       stock: 100,
       discount: 10,
       price: 25,
+      quantity:0,
       finalPrice: 20
   },
   {
@@ -36,27 +38,37 @@ export class MedicineListComponent implements OnInit {
       stock: 100,
       discount: 10,
       price: 25,
+      quantity:0,
       finalPrice: 20
 }
 ];
-count:number[] = new Array(medicineList.length);
-
+sum:number=0;
   constructor() { }
 
   ngOnInit() {
-    for(let i = 0;i<this.count.length;i++) {  
-      this.count[i]=0 ;
-    }
 
   }
 
   increment(index){
-    if(this.count[index]<this.medicineList[index].stock)
-    this.count[index]++;
+    if(this.medicinelist[index].quantity<this.medicinelist[index].stock){
+      this.medicinelist[index].quantity++;
+      this.computeFinalPrice();
+    }
+
   }
   decrement(index){
-    if(this.count[index]>0)
-      this.count[index]--;
+    if(this.medicinelist[index].quantity>0){
+      this.medicinelist[index].quantity--;
+      this.computeFinalPrice();
+    }
+
+  }
+  computeFinalPrice(){
+
+    for(let i=0;i<this.medicinelist.length;i++){
+      this.sum=this.sum+(this.medicinelist[i].quantity)*(this.medicinelist[i].finalPrice);
+    }
+    console.log(this.sum);
   }
 
 }
