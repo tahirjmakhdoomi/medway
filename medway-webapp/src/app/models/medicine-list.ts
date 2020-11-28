@@ -7,6 +7,7 @@ export class medicineList{
         public stock: number,
         public discount: number,
         public price: number,
+        public quantity:number,
         public finalPrice: number
     ){}
 
