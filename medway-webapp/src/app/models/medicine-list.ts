@@ -1,13 +1,13 @@
 export class medicineList{
     public constructor(
-        medicineName : string,
-        supplierId : number,
-        manufactureDate: String,
-        expDate: String, 
-        stock: number,
-        discount: number,
-        price: number,
-        finalPrice: number
+        public medicineName : string,
+        public supplierId : number,
+        public manufactureDate: String,
+        public expDate: String, 
+        public stock: number,
+        public discount: number,
+        public price: number,
+        public finalPrice: number
     ){}
 
 }
