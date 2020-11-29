@@ -27,8 +27,10 @@ import {FormGuard} from './guard/formguard.guard';
 import { NavbarCustomerComponent } from './navbar-customer/navbar-customer.component';
 import { MedicineListComponent } from './medicine-list/medicine-list.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
-
-
+import{DataService} from './services/data.service';
+import { PaymentComponent } from './payment/payment.component'
+import {orderService} from './services/order.service';
+import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     DialogComponent,
     NavbarCustomerComponent,
     MedicineListComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    PaymentComponent,
+    PaymentGatewayComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,7 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     MatDialogModule
   ],
   entryComponents: [DialogComponent],
-  providers: [UserService,NavigationService,FormGuard],
+  providers: [orderService,DataService,UserService,NavigationService,FormGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

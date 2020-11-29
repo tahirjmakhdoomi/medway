@@ -34,8 +34,7 @@ export class SignupComponent implements OnInit {
     this.signupForm = new FormGroup({
 
       name : new FormControl(null,[Validators.required]),
-      orderSummaries : new FormControl(null),
-
+      orderSummaries:new FormControl(null),
       user_name: new FormControl(null, [
         Validators.required,],DuplicateUserNameCheck.checkUserName(this._userServiceObj)),
 
@@ -104,7 +103,7 @@ export class SignupComponent implements OnInit {
       this.signupForm.get('supplierInfo_group').get("user_city").value,
       this.signupForm.get('supplierInfo_group').get("user_pin").value,
       this.signupForm.get('supplierInfo_group').get("user_state").value,
-      this.signupForm.get('orderSummaries').value
+      this.signupForm.get("orderSummaries").value
     );
 
     this._userServiceObj.addUser(userItem).subscribe((data: any) => {this.signupForm.reset();

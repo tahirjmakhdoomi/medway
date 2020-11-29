@@ -1,0 +1,126 @@
+
+<div class="background-image">
+  <div class="container-fluid">
+    <h1 style="text-align:center"><a (click)="gotoHome()">MEDWAY</a></h1>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  
+          <h3 style="text-align:center">
+              PAYMENT PAGE
+          </h3>
+
+            <div class="col-sm-12">
+              <div class="form-group">
+                <!-- E-mail -->
+                <label for="cardNumber">Card Number: <span class="lblError">*</span></label>
+                <div class="controls">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fa fa-credit-card" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                      <input type="number" id="cardNumber" placeholder="Card No" class="form-control" formControlName="cardNumber">
+                      
+                    </div>
+                    <p class="lblError" *ngIf="signupForm.get('cardNumber').hasError('required') && !signupForm.get('cardNumber').pristine">
+                      Please provide your Card Number
+                    </p>
+                    <p class="lblError" *ngIf="signupForm.get('cardNumber').hasError('min') || signupForm.get('cardNumber').hasError('max')">
+                      Card Number is invalid
+                    </p>  
+                    <!-- <p class="lblError" style="color:blue" *ngIf="(signupForm.get('user_email').status == 'PENDING' && !signupForm.get('user_email').pristine)">Checking...</p> -->
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-sm-12">
+              <div class="form-group">
+                <!-- Mobile -->
+                <label for="expMonth">Expiry Month <span class="lblError">*</span></label>
+                <div class="controls">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-credit-card" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input type="number" id="expMonth" placeholder="Expiry Month" class="form-control" formControlName="expMonth">
+                    
+                  </div>
+                  <p class="lblError" *ngIf="signupForm.get('expMonth').hasError('required') && !signupForm.get('expMonth').pristine">
+                    Expiry Month is Required
+                  </p>
+                  <p class="lblError" *ngIf="signupForm.get('expMonth').hasError('min') || signupForm.get('expMonth').hasError('max')">
+                    Month is invalid
+                  </p>
+                  <!-- <p class="lblError" style="color:blue" *ngIf="(signupForm.get('user_phone').status == 'PENDING' && !signupForm.get('user_phone').pristine)">Checking...</p> -->
+                </div>
+              </div>
+            </div>
+  
+          <div class="col-sm-12">
+            <div class="form-group">
+              <!-- Mobile -->
+              <label for="expYear">Expiry Year <span class="lblError">*</span></label>
+              <div class="controls">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa fa-credit-card" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <input type="number" id="expYear" placeholder="Expiry Year" class="form-control" formControlName="expYear">
+                  
+                </div>
+                <p class="lblError" *ngIf="signupForm.get('expYear').hasError('required') && !signupForm.get('expYear').pristine">
+                  Expiry Year is Required
+                </p>
+                <p class="lblError" *ngIf="signupForm.get('expYear').hasError('min') || signupForm.get('expYear').hasError('max')">
+                  Expiry year is invalid
+                </p>
+                <!-- <p class="lblError" style="color:blue" *ngIf="(signupForm.get('user_phone').status == 'PENDING' && !signupForm.get('user_phone').pristine)">Checking...</p> -->
+              </div>
+            </div>
+          </div>
+
+
+        <div class="col-sm-12">
+          <div class="form-group">
+            <!-- Mobile -->
+            <label for="cvv">CVV <span class="lblError">*</span></label>
+            <div class="controls">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                  </span>
+                </div>
+                <input type="number" id="cvv" placeholder="CVV" class="form-control" formControlName="cvv">
+                
+              </div>
+              <p class="lblError" *ngIf="signupForm.get('cvv').hasError('required') && !signupForm.get('cvv').pristine">
+                CVV is Required
+              </p>
+              <p class="lblError" *ngIf="signupForm.get('cvv').hasError('min') || signupForm.get('cvv').hasError('max')">
+                Invalid CVV
+              </p>
+              <!-- <p class="lblError" style="color:blue" *ngIf="(signupForm.get('user_phone').status == 'PENDING' && !signupForm.get('user_phone').pristine)">Checking...</p> -->
+            </div>
+          </div>
+        </div>
+
+  
+
+  
+          <div class="form-group">
+            <button class="btn btn-primary btn-success" type="submit" [disabled]="signupForm.invalid">
+              SUBMIT
+            </button>
+          </div>
+
+  
+    </form>
+  </div>
+  
+  </div>
+  
