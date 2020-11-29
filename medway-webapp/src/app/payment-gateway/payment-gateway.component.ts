@@ -28,6 +28,7 @@ export class PaymentGatewayComponent implements OnInit {
     this.navigate.home();
     const orderItem:orderModel=this.dataService.order;
     this.dataService.order.paymentStatus=true;
+    console.log(orderItem);
     this._orderService.addUser(orderItem).subscribe((data: any) => {this.signupForm.reset();
       Swal.fire({
         icon: 'success',

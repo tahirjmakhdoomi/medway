@@ -30,7 +30,9 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import{DataService} from './services/data.service';
 import { PaymentComponent } from './payment/payment.component'
 import {orderService} from './services/order.service';
-import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component'
+import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
+import {commonService} from './services/common.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +71,7 @@ import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.compo
     MatDialogModule
   ],
   entryComponents: [DialogComponent],
-  providers: [orderService,DataService,UserService,NavigationService,FormGuard],
+  providers: [commonService,orderService,DataService,UserService,NavigationService,FormGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

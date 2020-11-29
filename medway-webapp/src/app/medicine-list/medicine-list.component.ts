@@ -2,6 +2,8 @@ import { Component, OnInit, APP_INITIALIZER } from '@angular/core';
 import { medicineList } from '../models/medicine-list';
 import { AddPrescriptionService } from '../services/add-prescription.service';
 import { NavigationService } from '../services/navigation.service';
+import { OrderBackend } from '../models/orderBackend';
+import { commonService } from '../services/common.service';
 
 @Component({
   selector: 'app-medicine-list',
@@ -48,7 +50,8 @@ export class MedicineListComponent implements OnInit {
   medicinelist : medicineList[];
 
   sum:number=0;
-  constructor(private upload: AddPrescriptionService,private navigate:NavigationService) { 
+  list:OrderBackend[];
+  constructor(private common:commonService,private upload: AddPrescriptionService,private navigate:NavigationService) { 
     this.medicinelist = upload.medicines;
     for(let i=0 ; i<this.medicinelist.length ; i++){
       this.medicinelist[i].quantity=0;
@@ -80,6 +83,15 @@ export class MedicineListComponent implements OnInit {
   }
   onSubmit(){
     this.navigate.payment();
+    for(let i=0;i<this.medicinelist.length;i++){
+      this.list[i].medicineName=this.medicinelist[i].medicineName;
+      this.list[i].finalPrice=this.medicinelist[i].finalPrice;
+      this.list[i].quantity=this.medicinelist[i].quantity;
+      this.list[i].supplierId=this.medicinelist[i].supplierId;
+    }
+    this.common.orderlist=this.list;
+    console.log("medicine list"+this.medicinelist);
+    console.log("common list"+this.common.orderlist);
   }
 
 }

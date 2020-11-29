@@ -6,6 +6,7 @@ import { orderModel } from '../models/orderModel';
 import { orderService } from '../services/order.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import { DataService } from '../services/data.service';
+import { commonService } from '../services/common.service';
 
 @Component({
   selector: 'app-payment',
@@ -14,7 +15,7 @@ import { DataService } from '../services/data.service';
 })
 export class PaymentComponent implements OnInit {
   signupForm : FormGroup;
-  constructor(private dataService:DataService,private _orderService:orderService, private httpClient:HttpClient,private navigate:NavigationService) { }
+  constructor(private common:commonService,private dataService:DataService,private _orderService:orderService, private httpClient:HttpClient,private navigate:NavigationService) { }
 
 ngOnInit() {
   this.signupForm = new FormGroup({
@@ -27,8 +28,8 @@ ngOnInit() {
     ),
 
     user_phone: new FormControl(null,[Validators.required,Validators.min(1000000000),Validators.max(9999999999)]),
-      paymentStatus:new FormControl(false),
-
+    paymentStatus:new FormControl(false),
+      orderDetails:new FormControl(this.common.orderlist),
     supplierInfo_group:new FormGroup(
       {user_address1 : new FormControl(null,[Validators.required]),
         user_address2:new FormControl(null,[Validators.required]),
@@ -47,6 +48,7 @@ gotoHome(){
 onSubmit() {
   
   this.navigate.paymentGateway();
+  console.log(this.common.orderlist);
   const orderItem: orderModel = new orderModel(
     this.signupForm.get("user_email").value,
     this.signupForm.get("user_phone").value,
@@ -55,8 +57,9 @@ onSubmit() {
     this.signupForm.get('supplierInfo_group').get("user_city").value,
     this.signupForm.get('supplierInfo_group').get("user_state").value,
     this.signupForm.get('supplierInfo_group').get("user_pin").value,
+    this.signupForm.get("paymentStatus").value,
+    this.signupForm.get("orderDetails").value
 
-    this.signupForm.get("paymentStatus").value
 
   );
    this.data(orderItem);

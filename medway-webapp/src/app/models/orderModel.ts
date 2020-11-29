@@ -1,3 +1,5 @@
+import { OrderBackend } from './orderBackend';
+
 export class orderModel {
     public constructor(
       public user_email: string,
@@ -5,10 +7,10 @@ export class orderModel {
       public user_address1 : string,
       public user_address2 : string,
       public user_city: string,
-
       public user_state: string,
       public user_pin: number,
-      public paymentStatus:boolean
+      public paymentStatus:boolean,
+      public orderDetails:OrderBackend[]
     ) {}
   }
   
