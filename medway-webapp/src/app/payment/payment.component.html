@@ -1,0 +1,112 @@
+
+<div class="background-image">
+  <div class="container-fluid">
+    <h1 style="text-align:center"><a (click)="gotoHome()">MEDWAY</a></h1>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  
+          <h3 style="text-align:center">
+              SHIPPING DETAILS
+          </h3>
+          <div class="form-row">
+            <div class="col-sm-12 col-lg-6">
+              <div class="form-group">
+                <!-- E-mail -->
+                <label for="email">E-mail: <span class="lblError">*</span></label>
+                <div class="controls">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                      <input type="email" id="email" placeholder="E-mail" class="form-control" formControlName="user_email">
+                      
+                    </div>
+                    <p class="lblError" *ngIf="signupForm.get('user_email').hasError('required') && !signupForm.get('user_email').pristine">
+                      Please provide your E-mail
+                    </p>
+                    <p class="lblError" *ngIf="signupForm.get('user_email').hasError('pattern') && !signupForm.get('user_email').pristine">E-mail is Invalid</p>
+  
+                    <p class="lblError" style="color:blue" *ngIf="(signupForm.get('user_email').status == 'PENDING' && !signupForm.get('user_email').pristine)">Checking...</p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-sm-12 col-lg-6">
+              <div class="form-group">
+                <!-- Mobile -->
+                <label for="phone">Phone <span class="lblError">*</span></label>
+                <div class="controls">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input type="number" id="phone" placeholder="Phone" class="form-control" formControlName="user_phone">
+                    
+                  </div>
+                  <p class="lblError" *ngIf="signupForm.get('user_phone').hasError('required') && !signupForm.get('user_phone').pristine">
+                    Phone is Required
+                  </p>
+                  <p class="lblError" *ngIf="signupForm.get('user_phone').hasError('min') || signupForm.get('user_phone').hasError('max')">
+                    Phone must be of 10 digits
+                  </p>
+                  <p class="lblError" style="color:blue" *ngIf="(signupForm.get('user_phone').status == 'PENDING' && !signupForm.get('user_phone').pristine)">Checking...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+
+  
+          <div class="form-group" formGroupName="supplierInfo_group">
+            <div class="Address">
+              <!-- City -->
+              <div class="form-group">
+                <label for="inputAddress1">Address Line 1 :</label><span class="lblError"> *</span>
+                <input type="text" class="form-control" id="inputAddress1" placeholder="Flat No, House No" formControlName="user_address1">
+                <p class="lblError" *ngIf="signupForm.get('supplierInfo_group').get('user_address1').hasError('required') && !signupForm.get('supplierInfo_group').get('user_address1').pristine">
+                  Address is Required
+                </p>
+              </div>
+              <div class="form-group">
+                  <label for="inputAddress2">Address Line 2 :</label><span class="lblError"> *</span>
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Street Name, Landmark" formControlName="user_address2">
+                  <p class="lblError" *ngIf="signupForm.get('supplierInfo_group').get('user_address2').hasError('required') && !signupForm.get('supplierInfo_group').get('user_address2').pristine">
+                    Address is Required
+                  </p>
+                </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">City</label>
+                  <input type="text" class="form-control" id="inputCity" placeholder="City" formControlName="user_city">
+                  <p class="lblError" *ngIf="signupForm.get('supplierInfo_group').get('user_city').hasError('required') && !signupForm.get('supplierInfo_group').get('user_city').pristine">
+                    City is Required
+                  </p>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputState">State</label>
+                  <input type="text" id="inputState" class="form-control" placeholder="State" formControlName="user_state">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputZip">Pincode</label>
+                  <input type="text" class="form-control" id="Pincode" placeholder="Pincode" formControlName="user_pin">
+                  <p class="lblError" *ngIf="signupForm.get('supplierInfo_group').get('user_pin').hasError('required') && !signupForm.get('supplierInfo_group').get('user_pin').pristine"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <button class="btn btn-primary btn-success" type="submit" [disabled]="signupForm.invalid">
+              GOTO PAYMENT
+            </button>
+          </div>
+
+  
+    </form>
+  </div>
+  
+  </div>
+  

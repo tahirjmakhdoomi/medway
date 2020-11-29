@@ -1,7 +1,7 @@
 <body>
   <app-navbar>
 
-    <div class="container-fluid" style="margin-top: 20vh;min-height: 100vh;">
+    <div class="container-fluid" style="margin-top: 5rem;min-height: 100vh;">
 
       <button mat-raised-button class="btn btn-primary pull-right" (click)="openUploadDialog()">Upload prescription</button>
 
@@ -10,16 +10,16 @@
           <tr>
             <th scope="col">Prescription Id</th>
             <th scope="col">Medicines</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Prescription Content</th>
+            <th scope="col">Use</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let medicine of medicines">
-            <th scope="row">1</th>
-            <td>{{medicine}}</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let prescription of prescriptions;index as i">
+            <th scope="row">{{prescription.prescriptionId}}</th>
+            <td>{{prescription.detectedMedicines}}</td>
+            <td>Content</td>
+            <td><button mat-raised-button (click)="medicineList()">use</button></td>
           </tr>
         </tbody>
       </table>

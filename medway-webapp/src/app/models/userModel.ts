@@ -1,3 +1,5 @@
+import { OrderSummary } from './orderSummary';
+
 export class UserModel {
   public constructor(
     public name: string,
@@ -9,5 +11,6 @@ export class UserModel {
     public user_city: string,
     public user_pin: number,
     public user_state: string,
+    public orderSummaries: OrderSummary[]
   ) {}
 }

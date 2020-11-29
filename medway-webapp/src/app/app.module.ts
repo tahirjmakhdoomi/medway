@@ -25,6 +25,15 @@ import { AddPrescriptionComponent } from './add-prescription/add-prescription.co
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarSupplierComponent } from './navbar-supplier/navbar-supplier.component';
 
+import {FormGuard} from './guard/formguard.guard';
+import { NavbarCustomerComponent } from './navbar-customer/navbar-customer.component';
+import { MedicineListComponent } from './medicine-list/medicine-list.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import{DataService} from './services/data.service';
+import { PaymentComponent } from './payment/payment.component'
+import {orderService} from './services/order.service';
+import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
+import {commonService} from './services/common.service'
 
 @NgModule({
   declarations: [
@@ -36,7 +45,12 @@ import { NavbarSupplierComponent } from './navbar-supplier/navbar-supplier.compo
     UserTableComponent,
     AddPrescriptionComponent,
     DialogComponent,
-    NavbarSupplierComponent
+    NavbarSupplierComponent,
+    NavbarCustomerComponent,
+    MedicineListComponent,
+    OrderSummaryComponent,
+    PaymentComponent,
+    PaymentGatewayComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +74,7 @@ import { NavbarSupplierComponent } from './navbar-supplier/navbar-supplier.compo
     MatDialogModule
   ],
   entryComponents: [DialogComponent],
-  providers: [UserService,NavigationService],
+  providers: [commonService,orderService,DataService,UserService,NavigationService,FormGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

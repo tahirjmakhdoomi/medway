@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService{
     public List<User> getAllUsers() {
         return repository.findAll();
     }
+
+    @Override
+    public User getByUserName(String userName) {
+        return repository.findByUserName(userName);
+    }
 }

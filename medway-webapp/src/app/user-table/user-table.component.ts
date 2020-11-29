@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Medicine } from '../models/medicine';
+import { AddPrescriptionService } from '../services/add-prescription.service';
 import { UpdateMedicineService } from '../services/update-medicine.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class UserTableComponent implements OnInit {
   control: FormArray;
   mode: boolean;
   touchedRows: any;
-  constructor(private fb: FormBuilder, private updateMedicineService : UpdateMedicineService) { }
+  username:String;
+  constructor(private fb: FormBuilder, private updateMedicineService : UpdateMedicineService,private upload:AddPrescriptionService) { }
 
   ngOnInit(): void {
     this.touchedRows = [];
@@ -22,6 +24,7 @@ export class UserTableComponent implements OnInit {
       tableRows: this.fb.array([])
     });
     this.addRow();
+    this.username = this.upload.username;
   }
 
   ngAfterOnInit() {

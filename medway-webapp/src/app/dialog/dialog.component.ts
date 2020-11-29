@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { AddPrescriptionService } from '../services/add-prescription.service';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-dialog',
@@ -13,10 +15,13 @@ export class DialogComponent implements OnInit {
 
   public files: Set<File> = new Set();
   medicines : String[] = [];
+  username : String;
 
-  constructor(public dialogRef: MatDialogRef<DialogComponent>, public uploadService: AddPrescriptionService) { }
+  constructor(public dialogRef: MatDialogRef<DialogComponent>, public uploadService: AddPrescriptionService,
+              private navigate:NavigationService) { }
 
-  ngOnInit() { }
+  ngOnInit():void {
+   }
 
   progress;
   canBeClosed = true;
@@ -46,9 +51,9 @@ export class DialogComponent implements OnInit {
 
     // set the component state to "uploading"
     this.uploading = true;
-
+    this.username = this.uploadService.username;
     // start the upload and save the progress map
-    this.progress = this.uploadService.upload(this.files);
+    this.progress = this.uploadService.upload(this.files,this.username);
     console.log(this.progress);
     for (const key in this.progress) {
       this.progress[key].progress.subscribe(val => {
@@ -87,6 +92,7 @@ export class DialogComponent implements OnInit {
 
       // ... and the component is no longer uploading
       this.uploading = false;
+      this.navigate.medicinelist();
     });
   }
 }

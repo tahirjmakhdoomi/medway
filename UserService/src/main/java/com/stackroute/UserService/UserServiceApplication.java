@@ -47,13 +47,13 @@ public class UserServiceApplication {
 		return ExchangeBuilder.directExchange(exchange).durable(true).build();
 	}
 
-	@Bean
+	/*@Bean
 	public CachingConnectionFactory factory(){
 		CachingConnectionFactory factory = new CachingConnectionFactory(host);
 		factory.setUsername(userName);
 		factory.setPassword(password);
 		return factory;
-	}
+	}*/
 
 	@Bean
 	public MessageConverter messageConverter(){

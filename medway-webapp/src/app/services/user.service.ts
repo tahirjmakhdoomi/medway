@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { endPoints } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -13,7 +13,7 @@ export class UserService {
 
   url = 'http://localhost:8080/UserService/api/v1/register';
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) { }
 
   getAllUsers() {
     return this._http.get<UserModel[]>('http://localhost:8080/UserService/api/v1/users').pipe(
@@ -23,7 +23,7 @@ export class UserService {
   }
 
   addUser(item: UserModel) {
-    return this._http.post(this.url, item, {responseType:'text' as 'json'}).pipe(catchError(this.handleError));
+    return this._http.post(this.url, item, { responseType: 'text' as 'json' }).pipe(catchError(this.handleError));
   }
 
   private handleError(ex: HttpErrorResponse) {
@@ -35,7 +35,11 @@ export class UserService {
     return throwError('Something went wrong!');
   }
 
-//   getUser(){
-//     return this._http.get("https://localhost:8888/google/login",{responseType : 'text' as 'json'});
-//   }
+  //   getUser(){
+  //     return this._http.get("https://localhost:8888/google/login",{responseType : 'text' as 'json'});
+  //   }
+
+  getOrderSummary(name: String): Observable<UserModel> {
+    return this._http.get<UserModel>("http://localhost:8080/UserService/api/v1/orders/" + name);
+  }
 }

@@ -36,4 +36,9 @@ public class UserController {
     public ResponseEntity<List<User>> allUsers(){
         return new ResponseEntity<>(service.getAllUsers(),HttpStatus.OK);
     }
+
+    @GetMapping("orders/{userName}")
+    public ResponseEntity<User> getByUser_name(@PathVariable("userName") String userName){
+        return new ResponseEntity<>(service.getByUserName(userName), HttpStatus.OK);
+    }
 }

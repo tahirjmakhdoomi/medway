@@ -1,20 +1,34 @@
 import { HttpClient, HttpEventType, HttpRequest, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { LoginComponent } from '../login/login.component';
+import { medicineList } from '../models/medicine-list';
+import { Prescription } from '../models/prescription';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddPrescriptionService {
-  medicines : any[] = [];
+export class AddPrescriptionService implements OnInit{
+  medicines : medicineList[] = [];
   s : String[];
+  username: String;
 
   url = 'http://localhost:8071/api/v1/upload';
 
   constructor(private http: HttpClient) { }
+  ngOnInit(): void {
+  }
+
+  getPrescriptions(username):Observable<Prescription[]>{
+    return this.http.get<Prescription[]>('http://localhost:8071/api/v1/getPrescription/'+username);
+  }
+
+  
 
   public upload(
-    files: Set<File>
+    files: Set<File>,userName : any
   ): { [key: string]: { progress: Observable<any> } } {
     // this will be the our resulting map
     const status: { [key: string]: { progress: Observable<any> } } = {};
@@ -23,15 +37,15 @@ export class AddPrescriptionService {
       // create a new multipart-form for every file
       const formData: FormData = new FormData();
       formData.append('file', file, file.name);
-      formData.append('username',"Romit");
+      formData.append('username',userName);
       formData.append('prescriptionId','1234');
       console.log(formData);
+      console.log(userName);
 
       // create a http-post request and pass the form
       // tell it to report the upload progress
       const req = new HttpRequest('POST', this.url, formData, {
-        reportProgress: true,
-        responseType: 'text' as 'json'
+        reportProgress: true
       });
 
       // create a new progress-subject for every file
@@ -55,7 +69,7 @@ export class AddPrescriptionService {
           //   this.s[i].split("\"");
           //   <String[]>event.body;
           // }
-          this.medicines = <String[]>event.body;
+          this.medicines = <medicineList[]>event.body;
           console.log(this.medicines);
           progress.complete();
         }
