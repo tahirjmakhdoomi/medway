@@ -1,38 +1,38 @@
 package com.stackroute.Medicine.Service.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
 import java.time.LocalDate;
 
-@Entity
-@Table(name="SupplierMedicine")
-//@IdClass(SupplierMedicineId.class)
+public class SearchMedicine {
+    public String MedicineName = null;
+    public int SupplierId = 0;
+    public float Price = 0;
+    public float Discount = 0;
+    public int Stock = 0;
+    public LocalDate ManufactureDate = null;
+    public LocalDate ExpDate = null;
+    public float FinalPrice = 0;
 
-public class SupplierMedicine {
-
-    @Id
-    private String MedicineName;
-   // @Id
-    private int SupplierId;
-    private float Price;
-    private float Discount;
-    private int Stock;
-    private LocalDate ManufactureDate;
-    private LocalDate ExpDate;
-
-    public SupplierMedicine() {
+    public SearchMedicine() {
     }
 
-    public SupplierMedicine(int supplierId, String medicineName, float price, float discount, int stock, LocalDate manufactureDate, LocalDate expDate) {
-        SupplierId = supplierId;
+    public SearchMedicine(String medicineName, int supplierId, float price, float discount, int stock, LocalDate manufactureDate, LocalDate expDate, float finalPrice) {
         MedicineName = medicineName;
+        SupplierId = supplierId;
         Price = price;
         Discount = discount;
         Stock = stock;
         ManufactureDate = manufactureDate;
         ExpDate = expDate;
+        FinalPrice = finalPrice;
+    }
+
+    public String getMedicineName() {
+
+        return MedicineName;
+    }
+
+    public void setMedicineName(String medicineName) {
+        MedicineName = medicineName;
     }
 
     public int getSupplierId() {
@@ -41,14 +41,6 @@ public class SupplierMedicine {
 
     public void setSupplierId(int supplierId) {
         SupplierId = supplierId;
-    }
-
-    public String getMedicineName() {
-        return MedicineName;
-    }
-
-    public void setMedicineName(String medicineName) {
-        MedicineName = medicineName;
     }
 
     public float getPrice() {
@@ -90,5 +82,12 @@ public class SupplierMedicine {
     public void setExpDate(LocalDate expDate) {
         ExpDate = expDate;
     }
-}
 
+    public float getFinalPrice() {
+        return FinalPrice;
+    }
+
+    public void setFinalPrice(float finalPrice) {
+        FinalPrice = finalPrice;
+    }
+}

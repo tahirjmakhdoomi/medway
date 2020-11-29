@@ -70,4 +70,10 @@ public class BlogServiceImpl implements BlogService{
         else
             return null;
     }
+
+    public int   getSupplierNameByRawQuery(String SupplierName)
+    {
+        int SupplierId =blogRepository.findBySupplierName(SupplierName);
+        return SupplierId;
+    }
 }

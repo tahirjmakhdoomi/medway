@@ -54,4 +54,9 @@ public class BlogController {
     public ResponseEntity<?> updateBlog(@RequestBody Supplier supplier) {
         return new ResponseEntity<>(blogService.updateSupplier(supplier),HttpStatus.OK);
     }
+    @GetMapping("/blog/raw")
+    public int   getSupplierNameByRawQuery( @RequestParam("SupplierName") String SupplierName)
+    {
+        return blogService.getSupplierNameByRawQuery(SupplierName);
+    }
 }

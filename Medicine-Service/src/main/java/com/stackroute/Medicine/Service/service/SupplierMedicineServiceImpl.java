@@ -2,11 +2,14 @@ package com.stackroute.Medicine.Service.service;
 
 //import com.stackroute.domain.SupplierMedicine;
 //import com.stackroute.repository.SupplierMedicineRepository;
+import com.stackroute.Medicine.Service.domain.SearchMedicine;
 import com.stackroute.Medicine.Service.domain.SupplierMedicine;
 import com.stackroute.Medicine.Service.repository.SupplierMedicineRepository;
+import com.stackroute.Medicine.Service.searchApi.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,10 +19,13 @@ import java.util.Optional;
 public class SupplierMedicineServiceImpl implements SupplierMedicineService{
 
     private SupplierMedicineRepository supplierMedicineRepository;
+    private SearchService searchService;
 
     @Autowired
-    public SupplierMedicineServiceImpl(SupplierMedicineRepository supplierMedicineRepository) {
+    public SupplierMedicineServiceImpl(SupplierMedicineRepository supplierMedicineRepository , SearchService searchService) {
         this.supplierMedicineRepository = supplierMedicineRepository;
+        this.searchService = searchService;
+
     }
 
     @Override
@@ -57,6 +63,20 @@ public class SupplierMedicineServiceImpl implements SupplierMedicineService{
     }
 
     @Override
+    public List<SearchMedicine> allSearchMedicine(List<Integer> medicineId) {
+        List<SearchMedicine> result = new ArrayList<>();
+        for(int i=0;i<medicineId.size();i++){
+            result.add(this.searchService.finalResult(getAllMedicineById(medicineId.get(i))));
+        }
+        return result;
+    }
+
+    @Override
+    public List<SupplierMedicine> getAllMedicineById(int id) {
+        return (List<SupplierMedicine>) supplierMedicineRepository.findAll();
+    }
+
+    @Override
     public SupplierMedicine updateSupplier(SupplierMedicine supplierMedicine) {
 
         Optional<SupplierMedicine> blogDb=this.supplierMedicineRepository.findById(supplierMedicine.getSupplierId());
@@ -76,4 +96,12 @@ public class SupplierMedicineServiceImpl implements SupplierMedicineService{
         else
             return null;
     }
+
+    public List<SupplierMedicine> getSupplierNameByRawQuery1(int SupplierId)
+    {
+
+        List<SupplierMedicine> K=supplierMedicineRepository.findBySupplierId(SupplierId);
+        return K;
+    }
+
 }

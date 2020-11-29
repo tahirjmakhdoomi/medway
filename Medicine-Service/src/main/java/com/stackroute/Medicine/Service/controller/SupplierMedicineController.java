@@ -53,4 +53,9 @@ public class SupplierMedicineController {
     public ResponseEntity<?> updateSupplierMedicine(@RequestBody SupplierMedicine supplierMedicine) {
         return new ResponseEntity<>(supplierMedicineService.updateSupplier(supplierMedicine),HttpStatus.OK);
     }
+    @GetMapping("/blogs/raw")
+    public List<SupplierMedicine> getSupplierNameByRawQuery1(  @RequestParam("SupplierId") int SupplierId)
+    {
+        return supplierMedicineService.getSupplierNameByRawQuery1(SupplierId);    }
 }
+

@@ -30,4 +30,6 @@ public interface BlogService {
      * AbstractMethod to update a blog
      */
     Supplier updateSupplier(Supplier supplier);
+
+    int getSupplierNameByRawQuery(String SupplierName);
 }

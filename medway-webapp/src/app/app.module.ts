@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { AddPrescriptionComponent } from './add-prescription/add-prescription.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NavbarSupplierComponent } from './navbar-supplier/navbar-supplier.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     LoginComponent,
     UserTableComponent,
     AddPrescriptionComponent,
-    DialogComponent
+    DialogComponent,
+    NavbarSupplierComponent
   ],
   imports: [
     BrowserModule,

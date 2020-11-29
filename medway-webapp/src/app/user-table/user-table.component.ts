@@ -89,7 +89,7 @@ export class UserTableComponent implements OnInit {
           element.get("stock").value,
           element.get("discount").value,
           element.get("price").value,
-          1
+          ""
         );
         this.updateMedicineService.addMedicine(medicineValues).subscribe(()=>{this.message="Medicine added";}, 
       ()=>{this.message="Failed to add Medicine!!";});

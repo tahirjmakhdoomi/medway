@@ -1,0 +1,76 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" class="side-nav" type="button" fixedInViewport="true">
+      <nav class="navbar" style="background-color: cyan;">
+          <span class="navbar-brand mb-0 h1">
+              <a  [routerLink]="['/signup']">
+                  <i class="material-icons nav-icon">account_circle</i>
+                  Hello, Sign Up
+              </a>
+          </span>
+      </nav>
+      <div class="sidenav-content">
+          <ul>
+              <li class="location-mob">
+                  <i class="material-icons">location_on</i>
+                  <form class="form-inline my-2 my-lg-0 nav-item">
+                      <input class="form-control" type="search" placeholder="Pincode" aria-label="Search">
+                      <button class="search-button" type="submit">
+                          <i class="material-icons">arrow_forward</i>
+                      </button>
+                  </form>
+              </li>
+              <li><a href=""><i class="material-icons">home</i>Home</a></li>
+              <li><a [routerLink]="['/addprescription']"><i class="material-icons">article</i>Upload prescription</a></li>
+              <li><a  [routerLink]="['/addmedicine']"><i class="material-icons">shopping_bag</i>Sell On Medway</a></li>
+              <hr>
+              <li><a href=""><i class="material-icons">filter_frames</i>My Orders</a></li>
+              <li><a href=""><i class="material-icons">shopping_cart</i>My Cart</a></li>
+              <li><a href=""><i class="material-icons">favorite</i>My Wishlist</a></li>
+              <li><a href=""><i class="material-icons">person</i>My Account</a></li>
+              <li><a href=""><i class="material-icons">notifications</i>Notification</a></li>
+              <li><a href=""><i class="material-icons">settings</i>Settings</a></li>
+              <hr>
+              <li><a href=""><small> Customer Service </small></a></li>
+          </ul>
+      </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+      <nav class="navbar  fixed-top" style="background-color: cyan;">
+          <a class="example-icon btn" (click)="sidenav.toggle()" mat-icon-button 
+              aria-label="Example icon-button with menu icon" class="mr-sm-2">
+              <i class="material-icons menu-icon">menu</i>
+          </a>
+          <h4 class="pull-left mr-auto title"><a (click)="gotoHome()">MEDWAY</a></h4>
+          <div class="nav-item float-lg-left cart-icon d-lg-none">
+              <a href="#"><i class="material-icons loc-icon">shopping_cart</i></a>
+          </div>
+          <div class="mini-nav float-right">
+              <div class="location float-left">
+                  <a (click)="locationOn=!locationOn" class="location-icon mr-sm-1 nav-item float-left btn">
+                      <i class="material-icons loc-icon">location_on</i>
+                  </a>
+                  <form class="form-inline my-2 my-lg-0 nav-item float-left mob-search" *ngIf="locationOn">
+                      <input class="form-control" type="search" placeholder="Pincode" aria-label="Search">
+                      <button class="search-button" type="submit" style="padding: none;border: none;background: none;outline: none;">
+                          <i class="material-icons search-icon">arrow_forward</i>
+                      </button>
+                  </form>
+              </div>
+              <form class="form-inline my-2 my-lg-0 mr-sm-2 float-left mob-search" ngSubmit="searchClick()">
+                  <input class="form-control" type="search" placeholder="Search" aria-label="Search"
+                      [(ngModel)]="searchText" name="search">
+                  <button class="search-button" type="submit"
+                      style="padding: none;border: none;background: none;outline: none;">
+                      <i class="material-icons search-icon">search</i>
+                  </button>
+              </form>
+              <div class="nav-item float-lg-left cart-icon d-none d-lg-block">
+                  <a class="btn cart-icon"><i class="material-icons loc-icon" matBadge="0"
+                          matBadgeColor="warn">shopping_cart</i></a>
+              </div>
+          </div>
+      </nav>
+      <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
