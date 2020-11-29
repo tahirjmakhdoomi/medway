@@ -16,11 +16,16 @@ export class NavigationService {
   loginIn(){
     this.router.navigate(['/login']);
   }
+  payment(){
+    this.router.navigate(['/payment']);
+  }
 
   home(){
     this.router.navigate(['/home']);
   }
-
+  paymentGateway(){
+    this.router.navigate(['/paymentGateway']);
+  }
   addMedicine(){
     this.router.navigate(['/addmedicine']);
   }

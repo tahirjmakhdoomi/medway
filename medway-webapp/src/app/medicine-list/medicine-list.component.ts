@@ -1,6 +1,7 @@
 import { Component, OnInit, APP_INITIALIZER } from '@angular/core';
 import { medicineList } from '../models/medicine-list';
 import { AddPrescriptionService } from '../services/add-prescription.service';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-medicine-list',
@@ -47,7 +48,7 @@ export class MedicineListComponent implements OnInit {
   medicinelist : medicineList[];
 
   sum:number=0;
-  constructor(private upload: AddPrescriptionService) { 
+  constructor(private upload: AddPrescriptionService,private navigate:NavigationService) { 
     this.medicinelist = upload.medicines;
     for(let i=0 ; i<this.medicinelist.length ; i++){
       this.medicinelist[i].quantity=0;
@@ -77,6 +78,8 @@ export class MedicineListComponent implements OnInit {
     }
     console.log(this.sum);
   }
-
+  onSubmit(){
+    this.navigate.payment();
+  }
 
 }
