@@ -32,6 +32,7 @@
         <module>auth-service</module>
         <module>UserService</module>
         <module>Medicine-Service</module>
+        <module>order-service</module>
     </modules>
 
     <dependencies>

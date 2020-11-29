@@ -26,6 +26,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {FormGuard} from './guard/formguard.guard';
 import { NavbarCustomerComponent } from './navbar-customer/navbar-customer.component';
 import { MedicineListComponent } from './medicine-list/medicine-list.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { MedicineListComponent } from './medicine-list/medicine-list.component';
     AddPrescriptionComponent,
     DialogComponent,
     NavbarCustomerComponent,
-    MedicineListComponent
+    MedicineListComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,

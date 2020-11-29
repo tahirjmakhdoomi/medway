@@ -11,15 +11,23 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  username;
+  username: String;
   constructor(private navigate:NavigationService,private upload : AddPrescriptionService,private router : Router) { }
   ngOnInit(): void {
     this.username = this.upload.username;
   }
 
+  addPrescription(){
+    this.router.navigate([`/addprescription`],{queryParams : {'username' : this.username}});
+  }
+
   
   gotoHome(){
     this.navigate.home();
+  }
+
+  gotoOrders(){
+    this.navigate.orderSummary();
   }
 
   logout(){
@@ -43,4 +51,6 @@ export class NavbarComponent implements OnInit {
     })
 
   }
+
+
 }
