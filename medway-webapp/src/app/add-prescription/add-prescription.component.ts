@@ -31,9 +31,10 @@ export class AddPrescriptionComponent implements OnInit,OnChanges {
     this.username = this.route.snapshot.queryParams.username;
     console.log("this is ",this.username);
     this.uploadService.username = this.username;
-    this.uploadService.getPrescriptions().subscribe(data => {
+    this.uploadService.getPrescriptions(this.username).subscribe(data => {
       this.prescriptions = data;
     })
+    console.log(this.prescriptions);
   }
 
   

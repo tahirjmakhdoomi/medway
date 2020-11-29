@@ -21,8 +21,8 @@ export class AddPrescriptionService implements OnInit{
   ngOnInit(): void {
   }
 
-  getPrescriptions():Observable<Prescription[]>{
-    return this.http.get<Prescription[]>('http://localhost:8071/api/v1/'+this.username);
+  getPrescriptions(username):Observable<Prescription[]>{
+    return this.http.get<Prescription[]>('http://localhost:8071/api/v1/getPrescription/'+username);
   }
 
   
