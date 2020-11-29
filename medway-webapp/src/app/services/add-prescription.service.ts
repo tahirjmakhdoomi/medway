@@ -3,13 +3,15 @@ import { Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { LoginComponent } from '../login/login.component';
+import { medicineList } from '../models/medicine-list';
+import { Prescription } from '../models/prescription';
 import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddPrescriptionService implements OnInit{
-  medicines : any[] = [];
+  medicines : medicineList[] = [];
   s : String[];
   username;
 
@@ -17,6 +19,10 @@ export class AddPrescriptionService implements OnInit{
 
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
+  }
+
+  getPrescriptions():Observable<Prescription[]>{
+    return this.http.get<Prescription[]>('http://localhost:8071/api/v1/'+this.username);
   }
 
   
@@ -39,8 +45,7 @@ export class AddPrescriptionService implements OnInit{
       // create a http-post request and pass the form
       // tell it to report the upload progress
       const req = new HttpRequest('POST', this.url, formData, {
-        reportProgress: true,
-        responseType: 'text' as 'json'
+        reportProgress: true
       });
 
       // create a new progress-subject for every file
@@ -64,7 +69,7 @@ export class AddPrescriptionService implements OnInit{
           //   this.s[i].split("\"");
           //   <String[]>event.body;
           // }
-          this.medicines.push(<String[]>event.body);
+          this.medicines = <medicineList[]>event.body;
           console.log(this.medicines);
           progress.complete();
         }

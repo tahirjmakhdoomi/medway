@@ -17,7 +17,7 @@
         <tbody>
           <tr *ngFor="let medicine of medicines;index as i">
             <th scope="row">{{i+1}}</th>
-            <td>{{medicine}}</td>
+            <td>{{medicine.medicineName}}</td>
             <td>Content</td>
             <td><button mat-raised-button (click)="medicineList()">use</button></td>
           </tr>

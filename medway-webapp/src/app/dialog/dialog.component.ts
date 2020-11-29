@@ -92,6 +92,7 @@ export class DialogComponent implements OnInit {
 
       // ... and the component is no longer uploading
       this.uploading = false;
+      this.navigate.medicinelist();
     });
   }
 }
