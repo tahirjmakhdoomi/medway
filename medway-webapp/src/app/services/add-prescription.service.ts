@@ -13,7 +13,7 @@ import { UserService } from './user.service';
 export class AddPrescriptionService implements OnInit{
   medicines : medicineList[] = [];
   s : String[];
-  username;
+  username: String;
 
   url = 'http://localhost:8071/api/v1/upload';
 

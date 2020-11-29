@@ -1,18 +1,13 @@
 package com.stackroute.UserService.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"user_name","user_email","user_phone"})})
@@ -20,7 +15,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private String name;
-    private String user_name;
+    private String userName;
     private String user_email;
     private String user_password;
     private long user_phone;
@@ -29,10 +24,28 @@ public class User implements Serializable {
     private int user_pin;
     private String user_state;
     private String role;
+    private List<Order> order;
 
-    public User(String name,String user_name, String user_email, String user_password, long user_phone, String user_storeName, String user_city, int user_pin, String user_state,String role) {
+    public User(String name, String userName, String user_email, String user_password, long user_phone,
+                String user_storeName, String user_city, int user_pin, String user_state, String role,
+                List<Order> order) {
         this.name = name;
-        this.user_name = user_name;
+        this.userName = userName;
+        this.user_email = user_email;
+        this.user_password = user_password;
+        this.user_phone = user_phone;
+        this.user_storeName = user_storeName;
+        this.user_city = user_city;
+        this.user_pin = user_pin;
+        this.user_state = user_state;
+        this.role = role;
+        this.order = order;
+    }
+
+    public User(String name, String userName, String user_email, String user_password, long user_phone,
+                String user_storeName, String user_city, int user_pin, String user_state, String role) {
+        this.name = name;
+        this.userName = userName;
         this.user_email = user_email;
         this.user_password = user_password;
         this.user_phone = user_phone;
@@ -63,11 +76,11 @@ public class User implements Serializable {
     }
 
     public String getUser_name() {
-        return user_name;
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUser_name(String userName) {
+        this.userName = userName;
     }
 
     public String getUser_email() {
@@ -126,10 +139,18 @@ public class User implements Serializable {
         this.user_state = user_state;
     }
 
+    public List<Order> getOrderSummary() {
+        return order;
+    }
+
+    public void setOrderSummary(List<Order> order) {
+        this.order = order;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "user_name='" + user_name + '\'' +
+                "user_name='" + userName + '\'' +
                 ", user_email='" + user_email + '\'' +
                 ", user_password='" + user_password + '\'' +
                 ", user_phone=" + user_phone +

@@ -15,9 +15,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let medicine of medicines;index as i">
+          <tr *ngFor="let prescription of prescriptions;index as i">
             <th scope="row">{{i+1}}</th>
-            <td>{{medicine.medicineName}}</td>
+            <td>{{prescription.detectedMedicines}}</td>
             <td>Content</td>
             <td><button mat-raised-button (click)="medicineList()">use</button></td>
           </tr>
