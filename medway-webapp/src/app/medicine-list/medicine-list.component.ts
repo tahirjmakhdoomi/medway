@@ -64,11 +64,12 @@ sum:number=0;
 
   }
   computeFinalPrice(){
-
+    this.sum=0;
     for(let i=0;i<this.medicinelist.length;i++){
       this.sum=this.sum+(this.medicinelist[i].quantity)*(this.medicinelist[i].finalPrice);
     }
     console.log(this.sum);
   }
+
 
 }
