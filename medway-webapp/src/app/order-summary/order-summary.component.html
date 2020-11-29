@@ -13,22 +13,22 @@
                 <div class="card-deck mb-3">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">{{summary.orderDetails.medicineName}}</h5>
+                            <h5 class="card-title">{{summary.orderBackend.medicineName}}</h5>
                             <div class="form-inline pull-right">
                                 <p class="card-text" style="font-weight: bold;">Quantity: </p>
-                                <p> {{summary.orderDetails.quantity}}</p>
+                                <p> {{summary.orderBackend.quantity}}</p>
                                 
                             </div>
                             <div class="form-inline">
                                 <p class="card-text" style="font-weight: bold;">Total Price: </p>
-                                <p> {{ summary.orderDetails.finalPrice}}</p>
+                                <p> {{ summary.totalPrice}}</p>
                             </div>
                             <div class="form-inline">
                                 <p class="card-text location pull-left" style="font-weight: bold;">To be Delivered to: </p>
-                                <p class="pull-right"> {{ summary.deliveryLocation.addressLine1 }},
-                                <br>{{summary.deliveryLocation.addressLine2}},
-                                <br>{{summary.deliveryLocation.city}}, {{summary.deliveryLocation.state}}
-                                <br>{{summary.deliveryLocation.pinCode}}</p>
+                                <p class="pull-right"> {{ summary.addressLine1 }},
+                                <br>{{summary.addressLine2}},
+                                <br>{{summary.city}}, {{summary.deliveryLocation.state}}
+                                <br>{{summary.pinCode}}</p>
                             </div>
                            </div>
                     </div>
