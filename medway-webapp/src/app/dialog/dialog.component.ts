@@ -43,6 +43,7 @@ export class DialogComponent implements OnInit {
     this.file.nativeElement.click();
   }
 
+  static counter : number = 1;
   closeDialog() {
     // if everything was uploaded already, just close the dialog
     if (this.uploadSuccessful) {
@@ -53,7 +54,7 @@ export class DialogComponent implements OnInit {
     this.uploading = true;
     this.username = this.uploadService.username;
     // start the upload and save the progress map
-    this.progress = this.uploadService.upload(this.files,this.username);
+    this.progress = this.uploadService.upload(this.files,this.username,DialogComponent.counter++);
     console.log(this.progress);
     for (const key in this.progress) {
       this.progress[key].progress.subscribe(val => {
