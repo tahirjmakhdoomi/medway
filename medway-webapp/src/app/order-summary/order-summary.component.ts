@@ -17,12 +17,13 @@ export class OrderSummaryComponent implements OnInit {
     this.userService.getOrderSummary(this.name).subscribe(data => {
       this.user = data;
       this.orderSummaries = this.user.orderSummaries;
+      console.log(this.orderSummaries);
       console.log(data);
       console.log(this.user);
     })
   }
 
-  orderSummaries: OrderSummary[];
+  orderSummaries: OrderSummary[]= [];
 
   name: String = this.addPrescription.username;
 
