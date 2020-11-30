@@ -1,23 +1,18 @@
 package com.stackroute.orderservice.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
-
-import java.io.Serializable;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import java.time.LocalDate;
 import java.util.List;
 
-@Component
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@Id", scope = Order.class)
 @Entity
 @Document("orders")
 
-public class Order implements Serializable {
-
+public class Order {
     private String orderedBy;
     private LocalDate orderedOn;
     private String user_email;
@@ -32,7 +27,7 @@ public class Order implements Serializable {
 
     public Order(String orderedBy, LocalDate orderedOn, String user_email, long user_phone, String user_address1, String user_address2, String user_city, String user_pin, String user_state, boolean paymentStatus, List<OrderDetails> orderDetails) {
         this.orderedBy = orderedBy;
-        this.orderedOn = orderedOn;
+        this.orderedOn = LocalDate.now();
         this.user_email = user_email;
         this.user_phone = user_phone;
         this.user_address1 = user_address1;

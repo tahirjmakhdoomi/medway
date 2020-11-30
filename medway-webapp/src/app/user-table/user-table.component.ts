@@ -16,7 +16,7 @@ export class UserTableComponent implements OnInit {
   mode: boolean;
   touchedRows: any;
   username:String;
-  constructor(private fb: FormBuilder, private updateMedicineService : UpdateMedicineService, private route : ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private updateMedicineService : UpdateMedicineService, private route : ActivatedRoute,private update:UpdateMedicineService) { }
 
   ngOnInit(): void {
     this.touchedRows = [];
@@ -25,6 +25,7 @@ export class UserTableComponent implements OnInit {
     });
     this.addRow();
     this.username = this.route.snapshot.queryParams.username;
+    this.update.username = this.username;
   }
 
   ngAfterOnInit() {

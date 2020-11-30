@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../services/navigation.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import { Router } from '@angular/router';
+import { AddPrescriptionService } from '../services/add-prescription.service';
+import { UpdateMedicineService } from '../services/update-medicine.service';
 
 
 @Component({
@@ -10,16 +12,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar-supplier.component.css']
 })
 export class NavbarSupplierComponent implements OnInit {
-  constructor(private navigate:NavigationService) { }
+  constructor(private navigate:NavigationService,private upload : UpdateMedicineService) { }
 
   showcart=true;
   locationOn: boolean = false;
   searchOn: boolean = false;
+  username: String;
 
   ngOnInit(): void {
-    if(window.screen.width<640){
-      this.showcart = false;
-    }
+    this.username = this.upload.username;
   }
 
   searchText: String = "";

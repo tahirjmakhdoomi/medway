@@ -2,24 +2,14 @@
   <mat-sidenav #sidenav mode="over" class="side-nav" type="button" fixedInViewport="true">
       <nav class="navbar" style="background-color: cyan;">
           <span class="navbar-brand mb-0 h1">
-              <a  [routerLink]="['/signup']">
+              <a >
                   <i class="material-icons nav-icon">account_circle</i>
-                  Hello, Sign Up
+                  Hello, {{username}}
               </a>
           </span>
       </nav>
       <div class="sidenav-content">
           <ul>
-              <li class="location-mob">
-                  <i class="material-icons">location_on</i>
-                  <form class="form-inline my-2 my-lg-0 nav-item">
-                      <input class="form-control" type="search" placeholder="Pincode" aria-label="Search">
-                      <button class="search-button" type="submit">
-                          <i class="material-icons">arrow_forward</i>
-                      </button>
-                  </form>
-              </li>
-              <li><a href=""><i class="material-icons">home</i>Home</a></li>
               <li><a [routerLink]="['/updatemedicine']"><i class="material-icons">article</i>Update medicine</a></li>
               <li><a  [routerLink]="['/addmedicine']"><i class="material-icons">shopping_bag</i>Sell On Medway</a></li>
               

@@ -17,11 +17,11 @@ export class UpdateMedicineComponent implements OnInit {
   flag = true;
   form: any = {};
   username:String;
-constructor(private updateMedicineService : UpdateMedicineService, private route : AddPrescriptionService) {}
+constructor(private updateMedicineService : UpdateMedicineService, private update : UpdateMedicineService) {}
 // Call UserService and use getAllContacts method to get Contacts data
   ngOnInit() {
 
-    this.username = this.route.username;
+    this.username = this.update.username;
     const supplierName = this.username;
     this.updateMedicineService.getAllMedicine(supplierName).subscribe(
       data => {
@@ -46,7 +46,7 @@ constructor(private updateMedicineService : UpdateMedicineService, private route
           element.stock,
           element.discount,
           element.price,
-          this.route.username
+          this.username
         );
         this.updateMedicineService.updateMedicine(medicineValues).subscribe(()=>{this.message="Medicine added";}, 
       ()=>{this.message="Failed to add Medicine!!";});

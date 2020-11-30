@@ -1,5 +1,6 @@
 package com.stackroute.orderservice;
 
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -12,40 +13,66 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class OrderServiceApplication {
+	@Value("${spring.rabbitmq.queue}")
+	String queue;
+
+	@Value("${spring.rabbitmq.exchange}")
+	String exchange;
 
 	@Value("${spring.rabbitmq.host}")
-	private String host;
+	String host;
 
-	@Value("${spring.rabbitmq.host}")
-	private String username;
+	@Value("${spring.rabbitmq.username}")
+	String userName;
 
-	@Value("${spring.rabbitmq.host}")
-	private String password;
+	@Value("${spring.rabbitmq.password}")
+	String password;
 
-	public static void main(String[] args) {
-		SpringApplication.run(OrderServiceApplication.class, args);
+	@Value("${spring.rabbitmq.routingkey}")
+	String routingKey;
+
+	@Bean
+	Queue queue() {
+		return new Queue(queue, true);
+	}
+
+
+	@Bean
+	Exchange myExchange() {
+		return ExchangeBuilder.directExchange(exchange).durable(true).build();
 	}
 
 	@Bean
-	public CachingConnectionFactory connectionFactory(){
-		CachingConnectionFactory connectionFactory = new CachingConnectionFactory(host);
-		connectionFactory.setPassword(password);
-		connectionFactory.setUsername(username);
-		return connectionFactory;
+	Binding binding() {
+		return BindingBuilder
+				.bind(queue())
+				.to(myExchange())
+				.with(routingKey)
+				.noargs();
 	}
 
 	@Bean
-	public MessageConverter jsonMessageConverter(){
+	public CachingConnectionFactory factory(){
+		CachingConnectionFactory factory = new CachingConnectionFactory(host);
+		factory.setUsername(userName);
+		factory.setPassword(password);
+		return factory;
+	}
+
+	@Bean
+	public MessageConverter messageConverter(){
 		return new Jackson2JsonMessageConverter();
 	}
 
 	@Bean
-	public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory){
-		final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-		rabbitTemplate.setMessageConverter(jsonMessageConverter());
-		return rabbitTemplate;
-
+	public RabbitTemplate template(ConnectionFactory factory){
+		final RabbitTemplate template =  new RabbitTemplate(factory);
+		template.setMessageConverter(messageConverter());
+		return template;
 	}
 
+	public static void main(String[] args) {
+		SpringApplication.run(OrderServiceApplication.class, args);
+	}
 
 }

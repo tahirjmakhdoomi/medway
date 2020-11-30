@@ -8,6 +8,8 @@ import { Medicine } from '../models/medicine';
 })
 export class UpdateMedicineService {
 
+  username;
+
   constructor(private httpclient: HttpClient) {}
   addMedicine(medicine : Medicine) : Observable<Medicine> {
     return this.httpclient.post<Medicine>("http://localhost:8105/api/v1/blogr", medicine);
