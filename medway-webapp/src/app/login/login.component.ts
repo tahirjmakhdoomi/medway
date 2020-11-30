@@ -47,14 +47,23 @@ export class LoginComponent implements OnInit {
     );
     console.log(user)
     this.userService.postUserData(user).subscribe(resp=>{
-      if(resp === "Success"){
+      if(resp === "patient"){
         console.log(resp);
         Swal.fire({
           icon: 'success',
-          title: resp,
+          title: 'Success',
           text: 'Logged in successfully'});
           this.router.navigate([`/addprescription`],{queryParams : {'username' : user.user_name}});
-      }},error => Swal.fire({
+      }
+      else{
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Logged in successfully'});
+          this.router.navigate([`/addmedicine`],{queryParams : {'username' : user.user_name}});
+      }
+    
+    },error => Swal.fire({
         icon: 'error',
         title: 'Oops',
         text: 'Invalid Credentials'}))

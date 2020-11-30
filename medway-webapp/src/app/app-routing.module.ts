@@ -10,6 +10,7 @@ import { SignupComponent } from './signup/signup.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
 import { PaymentComponent } from './payment/payment.component';
+import { UpdateMedicineComponent } from './update-medicine/update-medicine.component';
 
 const routes: Routes = [
     {path : '',redirectTo : 'home',pathMatch: 'full'},
@@ -21,7 +22,9 @@ const routes: Routes = [
     {path : 'medicinelist' , component : MedicineListComponent},
     {path: 'orders', component: OrderSummaryComponent},
     {path:'payment',component:PaymentComponent},
-    {path:'paymentGateway',component:PaymentGatewayComponent}
+    {path:'paymentGateway',component:PaymentGatewayComponent},
+    {path: 'updatemedicine', component : UpdateMedicineComponent},
+    {path: '**', redirectTo : 'home'}
 ];
 
 @NgModule({

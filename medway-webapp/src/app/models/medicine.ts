@@ -8,7 +8,7 @@ export class Medicine {
         public stock: number,
         public discount: number,
         public price: number,
-        public supplierName: string
+        public supplierName: String
     ){};
 }
 

@@ -1,0 +1,79 @@
+<app-navbar-supplier>
+
+  <body>
+
+
+    <div class="container-search">
+
+      <div id="searchContainer">
+        <input id="searchText-id" [(ngModel)]="searchText" placeholder="Search By Name " />
+      </div>
+
+      <div>
+
+        
+        <table>
+          <tr>
+            <th id="th-id">Medicine Name</th>
+            <th id="th-id"> MFG Date</th>
+            <th id="th-id"> EXP Date</th>
+            <th id="th-id"> Stock</th>
+            <th id="th-id"> Discount</th>
+            <th id="th-id"> Price</th>
+
+          </tr>
+          <div *ngIf="flag">
+            <tr *ngFor="let group of medicines | search: searchText">
+
+              <td>{{group.medicineName}}</td>
+              <td>
+                <input type="date" value="group.manufacturingDate">
+              </td>
+              <td>
+                <input type="date" value="group.expDate">
+              </td>
+              <td>
+                <input type="number" value="group.stock">
+              </td>
+              <td>
+                <input type="text" value="group.discount">
+
+              </td>
+              <td>
+                <input type="text" value="group.price">
+
+              </td>
+            </tr>
+            <button  type="submit" (click)="onSubmit()">Submit</button>
+
+          </div>
+          <div *ngIf="!flag">
+            <tr *ngFor="let group of medicines | search: searchText">
+
+              <td>
+                {{group.get('medicineName').value}}
+              </td>
+              <td>
+                {{group.get('manufacturingDate').value}}
+              </td>
+              <td>
+                {{group.get('expDate').value}}
+              </td>
+              <td>
+                {{group.get('stock').value}}
+              </td>
+              <td>
+                {{group.get('discount').value}}
+              </td>
+              <td>
+                {{group.get('price').value}}
+              </td>
+            </tr>
+            <button  type="submit" (click)="editRow()">Update</button>
+
+          </div>
+        </table>
+      </div>
+    </div>
+  </body>
+</app-navbar-supplier>

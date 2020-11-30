@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { Medicine } from '../models/medicine';
-import { AddPrescriptionService } from '../services/add-prescription.service';
 import { UpdateMedicineService } from '../services/update-medicine.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class UserTableComponent implements OnInit {
   mode: boolean;
   touchedRows: any;
   username:String;
-  constructor(private fb: FormBuilder, private updateMedicineService : UpdateMedicineService,private upload:AddPrescriptionService) { }
+  constructor(private fb: FormBuilder, private updateMedicineService : UpdateMedicineService, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.touchedRows = [];
@@ -24,7 +24,7 @@ export class UserTableComponent implements OnInit {
       tableRows: this.fb.array([])
     });
     this.addRow();
-    this.username = this.upload.username;
+    this.username = this.route.snapshot.queryParams.username;
   }
 
   ngAfterOnInit() {
@@ -40,6 +40,7 @@ export class UserTableComponent implements OnInit {
       stock: ['', [Validators.required]],
       discount: ['',[Validators.required, Validators.pattern(/^[.\d]+$/)]],
       price: ['', [Validators.required, Validators.pattern(/^[.\d]+$/)]],
+      supplierName:[this.username],
       isEditable: [true]
     });
   }
@@ -76,6 +77,7 @@ export class UserTableComponent implements OnInit {
   }
 
   submitForm() {
+    
     const control = this.userTable.get('tableRows') as FormArray;
     this.touchedRows = control.controls.filter(row => row.touched).map(row => row.value);
     console.log(this.touchedRows);
@@ -92,7 +94,7 @@ export class UserTableComponent implements OnInit {
           element.get("stock").value,
           element.get("discount").value,
           element.get("price").value,
-          ""
+          element.get("supplierName").value
         );
         this.updateMedicineService.addMedicine(medicineValues).subscribe(()=>{this.message="Medicine added";}, 
       ()=>{this.message="Failed to add Medicine!!";});

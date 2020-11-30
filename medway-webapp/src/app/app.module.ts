@@ -33,7 +33,9 @@ import{DataService} from './services/data.service';
 import { PaymentComponent } from './payment/payment.component'
 import {orderService} from './services/order.service';
 import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
-import {commonService} from './services/common.service'
+import {commonService} from './services/common.service';
+import { UpdateMedicineComponent } from './update-medicine/update-medicine.component';
+import { SearchPipe } from './pipe/search.pipe'
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import {commonService} from './services/common.service'
     MedicineListComponent,
     OrderSummaryComponent,
     PaymentComponent,
-    PaymentGatewayComponent
+    PaymentGatewayComponent,
+    UpdateMedicineComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
