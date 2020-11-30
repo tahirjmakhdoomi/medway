@@ -7,6 +7,7 @@ import { orderService } from '../services/order.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import { DataService } from '../services/data.service';
 import { commonService } from '../services/common.service';
+import { AddPrescriptionService } from '../services/add-prescription.service';
 
 @Component({
   selector: 'app-payment',
@@ -15,7 +16,7 @@ import { commonService } from '../services/common.service';
 })
 export class PaymentComponent implements OnInit {
   signupForm : FormGroup;
-  constructor(private common:commonService,private dataService:DataService,private _orderService:orderService, private httpClient:HttpClient,private navigate:NavigationService) { }
+  constructor(private upload:AddPrescriptionService,private common:commonService,private dataService:DataService,private _orderService:orderService, private httpClient:HttpClient,private navigate:NavigationService) { }
 
 ngOnInit() {
   this.signupForm = new FormGroup({
@@ -27,6 +28,7 @@ ngOnInit() {
       [Validators.email, Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.(com|in)$")],
     ),
 
+    orderedBy : new FormControl(this.upload.username),
     user_phone: new FormControl(null,[Validators.required,Validators.min(1000000000),Validators.max(9999999999)]),
     paymentStatus:new FormControl(false),
       orderDetails:new FormControl(this.common.orderlist),
@@ -50,6 +52,7 @@ onSubmit() {
   this.navigate.paymentGateway();
   console.log(this.common.orderlist);
   const orderItem: orderModel = new orderModel(
+    this.signupForm.get("orderedBy").value,
     this.signupForm.get("user_email").value,
     this.signupForm.get("user_phone").value,
     this.signupForm.get('supplierInfo_group').get("user_address1").value,

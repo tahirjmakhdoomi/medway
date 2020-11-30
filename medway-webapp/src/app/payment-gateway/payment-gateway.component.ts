@@ -5,6 +5,7 @@ import { NavigationService } from '../services/navigation.service';
 import { orderService } from '../services/order.service';
 import { DataService } from '../services/data.service';
 import { orderModel } from '../models/orderModel';
+import { commonService } from '../services/common.service';
 
 @Component({
   selector: 'app-payment-gateway',
@@ -14,8 +15,8 @@ import { orderModel } from '../models/orderModel';
 export class PaymentGatewayComponent implements OnInit {
   signupForm : FormGroup;
 
-  constructor(private dataService:DataService,private navigate:NavigationService,private _orderService:orderService) { }
-
+  constructor(private dataService:DataService,private navigate:NavigationService,private _orderService:orderService,private common : commonService) { }
+  sum : number=0;
   ngOnInit() {
     this.signupForm = new FormGroup({
           cardNumber : new FormControl(null,[Validators.required,Validators.min(1000000000000000),Validators.max(9999999999999999)]),
@@ -23,6 +24,7 @@ export class PaymentGatewayComponent implements OnInit {
           expYear : new FormControl(null,[Validators.required,Validators.min(2021),Validators.max(3000)]),
           cvv : new FormControl(null,[Validators.required,Validators.min(1),Validators.max(999)])
         })
+        this.sum = this.common.total;
   }
   onSubmit(){
     this.navigate.home();

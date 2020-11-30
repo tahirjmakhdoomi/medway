@@ -2,6 +2,7 @@ import { OrderBackend } from './orderBackend';
 
 export class orderModel {
     public constructor(
+      public orderedBy : string,
       public user_email: string,
       public user_phone: number,
       public user_address1 : string,

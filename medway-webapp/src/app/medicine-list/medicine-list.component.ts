@@ -50,9 +50,10 @@ export class MedicineListComponent implements OnInit {
   medicinelist : medicineList[];
 
   sum:number=0;
-  list:OrderBackend[];
+  list:OrderBackend[] ;
   constructor(private common:commonService,private upload: AddPrescriptionService,private navigate:NavigationService) { 
     this.medicinelist = upload.medicines;
+    console.log(upload.medicines);
     for(let i=0 ; i<this.medicinelist.length ; i++){
       this.medicinelist[i].quantity=0;
     }
@@ -83,15 +84,19 @@ export class MedicineListComponent implements OnInit {
   }
   onSubmit(){
     this.navigate.payment();
-    for(let i=0;i<this.medicinelist.length;i++){
-      this.list[i].medicineName=this.medicinelist[i].medicineName;
-      this.list[i].finalPrice=this.medicinelist[i].finalPrice;
-      this.list[i].quantity=this.medicinelist[i].quantity;
-      this.list[i].supplierId=this.medicinelist[i].supplierId;
-    }
-    this.common.orderlist=this.list;
     console.log("medicine list"+this.medicinelist);
-    console.log("common list"+this.common.orderlist);
+    // for(let i=0;i<this.medicinelist.length;i++){
+    //   // this.list[i].medicineName=this.medicinelist[i].medicineName;
+    //   // this.list[i].finalPrice=this.medicinelist[i].finalPrice;
+    //   // this.list[i].quantity=this.medicinelist[i].quantity;
+    //   // this.list[i].supplierId=this.medicinelist[i].supplierId;
+    //   this.common.orderlist[i].finalPrice = this.upload.medicines[i].finalPrice;
+    // }
+    this.common.orderlist = this.medicinelist;
+    this.common.total = this.sum;
+    for(let i=0;i<this.medicinelist.length;i++){
+      console.log(this.medicinelist[i].quantity);
+    }
   }
 
 }

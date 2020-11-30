@@ -28,7 +28,7 @@ export class AddPrescriptionService implements OnInit{
   
 
   public upload(
-    files: Set<File>,userName : any
+    files: Set<File>,userName : any,prescriptionId : any
   ): { [key: string]: { progress: Observable<any> } } {
     // this will be the our resulting map
     const status: { [key: string]: { progress: Observable<any> } } = {};
@@ -38,7 +38,7 @@ export class AddPrescriptionService implements OnInit{
       const formData: FormData = new FormData();
       formData.append('file', file, file.name);
       formData.append('username',userName);
-      formData.append('prescriptionId','1234');
+      formData.append('prescriptionId',prescriptionId);
       console.log(formData);
       console.log(userName);
 
