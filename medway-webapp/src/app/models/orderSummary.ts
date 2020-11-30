@@ -5,7 +5,7 @@ export class OrderSummary{
         public orderId: number,
         public orderedBy: String,
         public orderedOn: Date,
-        public totalprice: number,
+        public totalPrice: number,
         public contactNumber: number,
         public paymentCompleted: boolean,
         public addressLine1: String,
@@ -13,6 +13,6 @@ export class OrderSummary{
         public city: String,
         public state: String,
         public pinCode: number,
-        public orderDetails: OrderBackend
+        public orderDetails: OrderBackend[]
     ){}
 }
