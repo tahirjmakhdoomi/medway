@@ -21,6 +21,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate([`/addprescription`],{queryParams : {'username' : this.username}});
   }
 
+  orders(){
+    this.router.navigate([`/orders`],{queryParams : {'username' : this.username}});
+  }
   
   gotoHome(){
     this.navigate.home();

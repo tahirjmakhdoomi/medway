@@ -6,6 +6,8 @@ import { orderService } from '../services/order.service';
 import { DataService } from '../services/data.service';
 import { orderModel } from '../models/orderModel';
 import { commonService } from '../services/common.service';
+import { Router } from '@angular/router';
+import { AddPrescriptionService } from '../services/add-prescription.service';
 
 @Component({
   selector: 'app-payment-gateway',
@@ -15,7 +17,7 @@ import { commonService } from '../services/common.service';
 export class PaymentGatewayComponent implements OnInit {
   signupForm : FormGroup;
 
-  constructor(private dataService:DataService,private navigate:NavigationService,private _orderService:orderService,private common : commonService) { }
+  constructor(private dataService:DataService,private navigate:NavigationService,private _orderService:orderService,private common : commonService,private route:Router,private upload:AddPrescriptionService) { }
   sum : number=0;
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -27,7 +29,6 @@ export class PaymentGatewayComponent implements OnInit {
         this.sum = this.common.total;
   }
   onSubmit(){
-    this.navigate.home();
     const orderItem:orderModel=this.dataService.order;
     this.dataService.order.paymentStatus=true;
     console.log(orderItem);
@@ -36,7 +37,9 @@ export class PaymentGatewayComponent implements OnInit {
         icon: 'success',
         title: 'Success',
         text: 'Order Placed'
-      })},error => {
+      })
+      this.route.navigate([`/orders`],{queryParams : {'username' : this.upload.username}});
+    },error => {
         Swal.fire({
           icon: 'error',
           title: 'Oops',

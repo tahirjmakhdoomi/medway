@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { OrderBackend } from '../models/orderBackend';
 import { OrderSummary } from '../models/orderSummary';
 import { UserModel } from '../models/userModel';
@@ -12,23 +13,21 @@ import { UserService } from '../services/user.service';
 })
 export class OrderSummaryComponent implements OnInit {
 
-  constructor(private userService: UserService, private addPrescription: AddPrescriptionService) { }
+  constructor(private userService: UserService, private addPrescription: AddPrescriptionService,private route:ActivatedRoute) { }
 
   ngOnInit() {
+    this.name = this.route.snapshot.queryParams.username;
     this.userService.getOrderSummary(this.name).subscribe(data => {
       this.user = data;
-      this.orderSummaries = this.user.orderSummaries;
-      this.orderDetails = this.orderDetails;
-      console.log(data);
+      this.orderSummaries = this.user.orderSummary;
+      console.log(this.user.orderSummary);
       console.log(this.user);
     })
   }
 
-  orderSummaries: OrderSummary[]= [];
+  orderSummaries: OrderSummary[];
 
-  orderDetails: OrderBackend[];
-
-  name: String = this.addPrescription.username;
+  name: String;
 
   user: UserModel;
 

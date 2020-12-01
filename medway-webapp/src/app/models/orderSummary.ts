@@ -2,17 +2,16 @@ import { OrderBackend } from './orderBackend';
 
 export class OrderSummary{
     public constructor(
-        public orderId: number,
+        public orderDetails: OrderBackend[],
         public orderedBy: String,
         public orderedOn: Date,
-        public totalPrice: number,
-        public contactNumber: number,
-        public paymentCompleted: boolean,
-        public addressLine1: String,
-        public addressLine2: String,
-        public city: String,
-        public state: String,
-        public pinCode: number,
-        public orderDetails: OrderBackend[]
+        public paymentStatus: boolean,
+        public user_address1: String,
+        public user_address2: String,
+        public user_city: String,
+        public user_email : String,
+        public user_phone: number,
+        public user_pin: number,
+        public user_state: String,
     ){}
 }
