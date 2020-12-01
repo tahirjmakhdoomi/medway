@@ -18,11 +18,7 @@ export class OrderSummaryComponent implements OnInit {
     this.userService.getOrderSummary(this.name).subscribe(data => {
       this.user = data;
       this.orderSummaries = this.user.orderSummaries;
-<<<<<<< HEAD
-      console.log(this.orderSummaries);
-=======
       this.orderDetails = this.orderDetails;
->>>>>>> 458a1ab7438f1301c6b411f4ffa8dd54552ac973
       console.log(data);
       console.log(this.user);
     })

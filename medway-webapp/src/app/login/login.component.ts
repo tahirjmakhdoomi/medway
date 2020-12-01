@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     );
     console.log(user)
     this.userService.postUserData(user).subscribe(resp=>{
-      if(resp === "Success"){
+      if(resp === "patient"){
         console.log(resp);
         Swal.fire({
           icon: 'success',
