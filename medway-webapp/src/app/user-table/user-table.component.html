@@ -2,8 +2,6 @@
 <app-navbar-supplier>
 
   <body>
-  <div class="container-fluid">
-    
   <form [formGroup]="userTable">
       <table class="table table-border" [ngClass]="{'table-dark': mode}" style = "background-color:#DDD6D6;">
         <thead class="text-nowrap">
@@ -18,10 +16,9 @@
         <tbody>
           <ng-container formArrayName="tableRows" *ngFor="let group of getFormControls.controls ; let i=index">
             <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
-             
               <td>
                 <mat-form-field>
-                  <input matInput type="text" formControlName="medicineName">
+                  <input matInput type = "text" formControlName="medicineName">
                 </mat-form-field>
               </td>
               <td>
@@ -85,6 +82,5 @@
         <button mat-raised-button [disabled]="userTable.invalid" type="submit" (click)="submitForm()">Submit</button>
       </div>
     </form>
-  </div>
   </body>
 </app-navbar-supplier>
