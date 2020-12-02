@@ -4,7 +4,7 @@
     </div>
 
     <div class="yourOrders" *ngIf="orderSummaries" style="margin-top: 5rem;">
-        <h5><strong>{{ name }}'s Orders</strong></h5>
+        <h5><strong>Order Summary for {{ name }}</strong></h5>
     </div>
 
     <div class="card" *ngFor="let summary of orderSummaries;index as i">
