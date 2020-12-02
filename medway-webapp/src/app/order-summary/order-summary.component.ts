@@ -21,10 +21,9 @@ export class OrderSummaryComponent implements OnInit {
     this.userService.getOrderSummary(this.name).subscribe(data => {
       this.user = data;
       this.orderSummaries = this.user.orderSummary;
-      // for(let i=0;i<this.orderSummaries.length;i++){
-      //   this.date[i] = moment(this.user.orderSummary[i].orderedOn).format('DD/MM/YYYY');
-      //   console.log(this.date[i]);
-      // }
+      for(let i=0;i<this.orderSummaries.length;i++){
+        this.orderSummaries[i].orderedOn = moment(this.user.orderSummary[i].orderedOn).format('DD/MM/YYYY');
+      }
       console.log(this.user.orderSummary);
       console.log(this.user);
     })

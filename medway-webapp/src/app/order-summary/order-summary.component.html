@@ -4,17 +4,17 @@
     </div>
 
     <div class="yourOrders" *ngIf="orderSummaries" style="margin-top: 5rem;">
-        <h6>{{ name }} Orders</h6>
+        <h5><strong>{{ name }}'s Orders</strong></h5>
     </div>
 
-    <div class="card" *ngFor="let summary of orderSummaries">
+    <div class="card" *ngFor="let summary of orderSummaries;index as i">
         <div class="card-body">
             <div class="d-block" *ngFor="let details of summary.orderDetails;">
                 <p class="d-inline-flex pull-left"><strong>{{ details.medicineName }}</strong></p>
                 <p class="d-inline-flex ">Price: {{ details.finalPrice }}</p>
                 <p class="d-inline-flex pull-right">Quantity: {{ details.quantity }}</p>
             </div>
-            
+            <p><strong>Ordered On:</strong>{{summary.orderedOn}}</p>
             <p><strong>Deliver To:</strong>
             <br>
                 {{ summary.user_address1 }},
