@@ -1,5 +1,5 @@
 <app-navbar>
-    <div class="noOrders" *ngIf="!orderSummaries" style="margin-top: 5rem;text-align: center;">
+    <div class="noOrders" *ngIf="!orderSummaries" style="margin-top: 5rem;text-align: center;min-height: 27.3rem;">
         <h2>No Orders Placed!</h2>
     </div>
 
@@ -10,6 +10,7 @@
                     <div class="card-deck mb-3">
                         <div class="card" style="width: 18rem;">
                             <div class="card-body" *ngFor="let details of summary.orderDetails;index as i">
+                                
                                 <h5 class="card-title">{{details.medicineName}}</h5>
                                 <div class="form-inline">
                                     <p class="card-text" style="font-weight: bold;">Date: </p>
