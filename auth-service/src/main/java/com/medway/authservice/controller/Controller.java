@@ -59,9 +59,8 @@ public class Controller {
         String token = jwt.generateToken(fetch);
         jwtCookie.setValue(token);
         httpServletResponse.addCookie(jwtCookie);
-        return new ResponseEntity<>("Success",HttpStatus.OK);
+        return new ResponseEntity<>(fetch.getRole(),HttpStatus.OK);
     }
-
 //    @GetMapping("/securedEndpoint")
 //    public String secured(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
 //        System.out.println(httpServletRequest.getCookies()[0].getValue());
