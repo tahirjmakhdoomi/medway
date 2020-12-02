@@ -4,7 +4,7 @@ export class OrderSummary{
     public constructor(
         public orderDetails: OrderBackend[],
         public orderedBy: String,
-        public orderedOn: Date,
+        public orderedOn: any,
         public paymentStatus: boolean,
         public user_address1: String,
         public user_address2: String,

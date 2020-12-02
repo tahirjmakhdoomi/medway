@@ -5,7 +5,7 @@
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
   
           <h3 style="text-align:center">
-              PAYMENT PAGE
+              PAYMENT GATEWAY
           </h3>
 
             <div class="col-sm-12">
@@ -19,7 +19,7 @@
                           <i class="fa fa-credit-card" aria-hidden="true"></i>
                         </span>
                       </div>
-                      <input type="number" id="cardNumber" placeholder="Card No" class="form-control" formControlName="cardNumber">
+                      <input type="number" id="cardNumber" placeholder="e" class="form-control" formControlName="cardNumber">
                       
                     </div>
                     <p class="lblError" *ngIf="signupForm.get('cardNumber').hasError('required') && !signupForm.get('cardNumber').pristine">

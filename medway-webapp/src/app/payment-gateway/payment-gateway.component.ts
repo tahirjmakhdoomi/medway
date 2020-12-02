@@ -8,6 +8,7 @@ import { orderModel } from '../models/orderModel';
 import { commonService } from '../services/common.service';
 import { Router } from '@angular/router';
 import { AddPrescriptionService } from '../services/add-prescription.service';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-payment-gateway',
@@ -17,7 +18,7 @@ import { AddPrescriptionService } from '../services/add-prescription.service';
 export class PaymentGatewayComponent implements OnInit {
   signupForm : FormGroup;
 
-  constructor(private dataService:DataService,private navigate:NavigationService,private _orderService:orderService,private common : commonService,private route:Router,private upload:AddPrescriptionService) { }
+  constructor(private http:HttpClient,private dataService:DataService,private navigate:NavigationService,private _orderService:orderService,private common : commonService,private route:Router,private upload:AddPrescriptionService) { }
   sum : number=0;
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -29,6 +30,21 @@ export class PaymentGatewayComponent implements OnInit {
         this.sum = this.common.total;
   }
   onSubmit(){
+    console.log(this.signupForm.value);
+    (<any>window).Stripe.card.createToken({
+      number: this.signupForm.get('cardNumber').value,
+      exp_month: this.signupForm.get('expMonth').value,
+      exp_year: this.signupForm.get('expYear').value,
+      cvc: this.signupForm.get('cvv').value
+    }, (status: number, response: any) => {
+      if (status === 200) {
+        let token = response.id;
+        this.chargeCard(token);
+        console.log(token);
+      } else {
+        console.log(response.error.message);
+      }
+    });
     const orderItem:orderModel=this.dataService.order;
     this.dataService.order.paymentStatus=true;
     console.log(orderItem);
@@ -46,5 +62,14 @@ export class PaymentGatewayComponent implements OnInit {
           text: error
         })
       });
+  }
+
+
+  chargeCard(token: string) {
+    const headers = new HttpHeaders({ 'token': token, 'amount': this.sum.toString(),'username':this.upload.username.toString(),'email':this.dataService.order.user_email.toString() })
+    this.http.post('http://localhost:8300/payment/charge', {}, {headers})
+      .subscribe(resp => {
+        console.log(resp);
+      })
   }
 }
