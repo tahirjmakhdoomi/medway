@@ -19,7 +19,7 @@
             <th scope="row">{{i+1}}</th>
             <td>{{prescription.detectedMedicines}}</td>
             <td>{{prescription.prescriptionContent}}</td>
-            <td><button mat-raised-button (click)="medicineList()">use</button></td>
+            <td><button mat-raised-button (click)="medicineList(i+1)">use</button></td>
           </tr>
         </tbody>
       </table>

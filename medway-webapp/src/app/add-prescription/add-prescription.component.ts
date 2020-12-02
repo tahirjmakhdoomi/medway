@@ -19,6 +19,7 @@ export class AddPrescriptionComponent implements OnInit,OnChanges {
   medicines : medicineList[] = [];
   username : String;
   prescriptions : Prescription[];
+  detectedMedicines: any[];
 
   constructor(private dialog: MatDialog, public uploadService: AddPrescriptionService,private route : ActivatedRoute,
               private navigate : NavigationService) { }
@@ -44,7 +45,13 @@ export class AddPrescriptionComponent implements OnInit,OnChanges {
     this.medicines = this.uploadService.medicines;
   }
 
-  medicineList(){
+  medicineList(index){
+    this.detectedMedicines = this.prescriptions[index].detectedMedicines;
+    this.uploadService.getDetails(this.detectedMedicines.toString()).subscribe(
+      data => {
+        this.uploadService.medicines = data;
+      }
+    );
     this.navigate.medicinelist();
   }
 

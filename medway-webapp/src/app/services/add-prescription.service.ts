@@ -25,6 +25,12 @@ export class AddPrescriptionService implements OnInit{
     return this.http.get<Prescription[]>('http://localhost:8071/api/v1/getPrescription/'+username);
   }
 
+  getDetails(detetctedMedicines):Observable<any>{
+    const formdata = new FormData();
+    formdata.append('MedicineNames',detetctedMedicines);
+    return this.http.post("http://localhost:8811/api/v1/blogs/raw2",formdata);
+  }
+
   
 
   public upload(
