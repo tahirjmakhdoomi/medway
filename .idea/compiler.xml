@@ -12,7 +12,7 @@
         <module name="UserService" />
         <module name="prescription-service" />
         <module name="api-gateway" />
-        <module name="prescription-service (1)" />
+        <module name="stripe" />
         <module name="order-service" />
         <module name="eureka-server" />
       </profile>
@@ -28,6 +28,7 @@
       <module name="order-service" target="11" />
       <module name="prescription-service" target="11" />
       <module name="prescription-service (1)" target="11" />
+      <module name="stripe" target="1.8" />
       <module name="UserService" target="11" />
     </bytecodeTargetLevel>
   </component>

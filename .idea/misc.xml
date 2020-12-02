@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/Medicine-Service/pom.xml" />
         <option value="$PROJECT_DIR$/Medway-Prescription/prescription-service/pom.xml" />
         <option value="$PROJECT_DIR$/prescription-service/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringBoot-with-stripe/pom.xml" />
       </list>
     </option>
   </component>
