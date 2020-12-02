@@ -9,9 +9,11 @@ header {
   justify-content: space-between;
   margin-bottom: 50px;
 }
-
 body{
-  margin-top: 150px ;
+  margin-top: 5rem ;
+  margin-left: 0%;
+  width: 100%;
+  
 }
 mat-icon {
   cursor: pointer;
@@ -19,11 +21,15 @@ mat-icon {
 .action-container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding-left: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 0px;
 }
 
 .table {
   padding: 20px;
+  width: 100%;
 }
 
 .table tbody tr td,
@@ -37,10 +43,9 @@ mat-icon {
   padding-right: 10px;
   padding-top: 15px;
   padding-bottom: 18px;
-  width: 100%;
 }
 .table thead{
-  background-color: darkkhaki;
+  background-color:rgb(183, 183, 255);
 }
 .table thead th{
   text-align: center;
@@ -61,7 +66,7 @@ mat-icon {
 }
 
 .edit {
-  color: yellow;
+  color: rgb(25, 0, 247);
 }
 span.ui-column-resizer {
   width: 100%;

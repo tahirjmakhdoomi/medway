@@ -1,55 +1,59 @@
+
 <app-navbar-supplier>
-
+  
+      
   <body>
-
-
-    <div class="container-search">
-
-      <div id="searchContainer">
-        <input id="searchText-id" [(ngModel)]="searchText" placeholder="Search By Name " />
-      </div>
-
-      <div>
-
-        
-        <table>
-          <tr>
-            <th id="th-id">Medicine Name</th>
-            <th id="th-id"> MFG Date</th>
-            <th id="th-id"> EXP Date</th>
-            <th id="th-id"> Stock</th>
-            <th id="th-id"> Discount</th>
-            <th id="th-id"> Price</th>
-
-          </tr>
-          <div *ngIf="flag">
-            <tr *ngFor="let group of medicines | search: searchText">
-
-              <td>{{group.medicineName}}</td>
+    <div class = "form-inline search-bar">
+      <input class = "form-control mr-sm-2 "  [(ngModel)]="searchText" placeholder="Search By Name " />
+      <button class="btn btn-outline-success my-2 my-sm-0" type = "submit" (click) = "search()">search</button>
+    </div>
+  <form class = "table-content" [formGroup]="userTable">
+      <table class="table table-border" [ngClass]="{'table-dark': mode}" style = "background-color:#DDD6D6;">
+        <thead class="text-nowrap">
+          <th>Medicine Name </th>
+          <th>Manufacturing Date </th>
+          <th>Expiry Date </th>
+          <th>Quantity </th>
+          <th>Discount (in %)</th>
+          <th>Price (of single unit)</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <ng-container formArrayName="tableRows" *ngFor="let group of getFormControls.controls ; let i=index">
+            <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
               <td>
-                <input type="date" value="group.manufacturingDate">
+                {{group.get('medicineName').value}}
               </td>
               <td>
-                <input type="date" value="group.expDate">
+                <mat-form-field>
+                  <input matInput type = "date" formControlName="manufacturingDate">
+                </mat-form-field>
               </td>
               <td>
-                <input type="number" value="group.stock">
+                <mat-form-field>
+                  <input matInput type = "date" formControlName="expDate">
+                </mat-form-field>
               </td>
               <td>
-                <input type="text" value="group.discount">
-
+                <mat-form-field>
+                  <input matInput type="number" formControlName="stock">
+                </mat-form-field>
               </td>
               <td>
-                <input type="text" value="group.price">
-
+                <mat-form-field>
+                    <input matInput type="text" formControlName = "discount">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput type="text" formControlName="price">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-icon class="done" (click)="doneRow(group)">done</mat-icon>
               </td>
             </tr>
-            <button  type="submit" (click)="onSubmit()">Submit</button>
-
-          </div>
-          <div *ngIf="!flag">
-            <tr *ngFor="let group of medicines | search: searchText">
-
+            <tr *ngIf="!group.get('isEditable').value" >
               <td>
                 {{group.get('medicineName').value}}
               </td>
@@ -60,20 +64,24 @@
                 {{group.get('expDate').value}}
               </td>
               <td>
-                {{group.get('stock').value}}
+                  {{group.get('stock').value}}
               </td>
               <td>
-                {{group.get('discount').value}}
+                  {{group.get('discount').value}}
               </td>
               <td>
                 {{group.get('price').value}}
               </td>
+              <td>
+                <mat-icon class="edit" (click)="editRow(group)">edit</mat-icon>
+              </td>
             </tr>
-            <button  type="submit" (click)="editRow()">Update</button>
-
-          </div>
-        </table>
+          </ng-container>
+        </tbody>
+      </table>
+      <div class="pull-right">
+        <button class = "btn btn-primary" [disabled]="userTable.invalid" type="submit" (click)="submitForm()">Submit</button>
       </div>
-    </div>
+    </form>
   </body>
 </app-navbar-supplier>

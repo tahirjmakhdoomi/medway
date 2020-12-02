@@ -3,29 +3,32 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { Medicine } from '../models/medicine';
 import { UpdateMedicineService } from '../services/update-medicine.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 @Component({
   selector: 'app-user-table',
   templateUrl: './user-table.component.html',
-  styleUrls: ['./user-table.component.scss']
+  styleUrls: ['./user-table.component.css']
 })
 export class UserTableComponent implements OnInit {
-
   userTable: FormGroup;
   control: FormArray;
   mode: boolean;
   touchedRows: any;
-  username:String;
-  constructor(private fb: FormBuilder, private updateMedicineService : UpdateMedicineService, private route : ActivatedRoute,private update:UpdateMedicineService) { }
-
+  username: string;
+  // material1 : Medicine[];
+  // material = [{medicineName : "dolo", manufactureDate : "2002-11-11", expDate : "2022-11-11",stock : 10, discount :20, price : 20, supplierName : "rajesh1"}];
+  constructor(private fb: FormBuilder, private updateMedicineService : UpdateMedicineService, private route : ActivatedRoute) { }
+  
   ngOnInit(): void {
     this.touchedRows = [];
+    // console.log(this.material1);
     this.userTable = this.fb.group({
       tableRows: this.fb.array([])
     });
     this.addRow();
     this.username = this.route.snapshot.queryParams.username;
-    this.update.username = this.username;
+    this.updateMedicineService.username = this.username;
   }
 
   ngAfterOnInit() {
@@ -95,10 +98,21 @@ export class UserTableComponent implements OnInit {
           element.get("stock").value,
           element.get("discount").value,
           element.get("price").value,
-          element.get("supplierName").value
+          element.get(this.username).value
+          // "rajesh1"
         );
-        this.updateMedicineService.addMedicine(medicineValues).subscribe(()=>{this.message="Medicine added";}, 
-      ()=>{this.message="Failed to add Medicine!!";});
+        this.updateMedicineService.addMedicine(medicineValues).subscribe(()=>{
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Medicine successfully uploaded'});
+          }, 
+      (error)=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'oops',
+          text: 'Medicine not updated'});
+        })
       });
     }
     this.clearForm();
