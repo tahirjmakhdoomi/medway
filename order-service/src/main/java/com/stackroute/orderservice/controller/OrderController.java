@@ -24,6 +24,9 @@ public class OrderController {
     }
     @PostMapping("/entry")
     public ResponseEntity<Order> entry(@RequestBody Order order){
+        order.setOrderedOn(System.currentTimeMillis());
+        System.out.println("order class sent:"+order.getClass());
+        System.out.println("order to be sent:"+order);
         sender.send(order);
         return new ResponseEntity<>(service.saveOrder(order), HttpStatus.CREATED);
     }

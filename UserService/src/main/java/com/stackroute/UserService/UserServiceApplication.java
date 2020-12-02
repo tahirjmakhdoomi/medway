@@ -3,6 +3,7 @@ package com.stackroute.UserService;
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.ExchangeBuilder;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 import javax.print.attribute.standard.MediaSize;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+@EnableRabbit
 @EnableEurekaClient
 @SpringBootApplication
 @EnableDiscoveryClient

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -11,9 +12,9 @@ import java.util.List;
 @Component
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id",
         scope = Order.class)
-public class Order {
+public class Order implements Serializable {
     private String orderedBy;
-    private LocalDate orderedOn;
+    private Long orderedOn;
     private String user_email;
     private long user_phone;
     private String user_address1;
@@ -24,7 +25,11 @@ public class Order {
     private boolean paymentStatus;
     private List<OrderDetails> orderDetails;
 
-    public Order(String orderedBy, LocalDate orderedOn, String user_email, long user_phone,
+    public Order(){
+
+    }
+
+    public Order(String orderedBy, Long orderedOn, String user_email, long user_phone,
                  String user_address1, String user_address2, String user_city, String user_pin,
                  String user_state, boolean paymentStatus, List<OrderDetails> orderDetails) {
         this.orderedBy = orderedBy;
@@ -48,11 +53,11 @@ public class Order {
         this.orderedBy = orderedBy;
     }
 
-    public LocalDate getOrderedOn() {
+    public Long getOrderedOn() {
         return orderedOn;
     }
 
-    public void setOrderedOn(LocalDate orderedOn) {
+    public void setOrderedOn(Long orderedOn) {
         this.orderedOn = orderedOn;
     }
 

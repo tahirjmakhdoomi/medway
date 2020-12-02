@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<User>> allUsers(){
+    public ResponseEntity<?> allUsers(){
         return new ResponseEntity<>(service.getAllUsers(),HttpStatus.OK);
     }
 

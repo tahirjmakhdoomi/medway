@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Order {
     private String orderedBy;
-    private LocalDate orderedOn;
+    private Long orderedOn;
     private String user_email;
     private long user_phone;
     private String user_address1;
@@ -25,9 +25,9 @@ public class Order {
     private boolean paymentStatus;
     private List<OrderDetails> orderDetails;
 
-    public Order(String orderedBy, LocalDate orderedOn, String user_email, long user_phone, String user_address1, String user_address2, String user_city, String user_pin, String user_state, boolean paymentStatus, List<OrderDetails> orderDetails) {
+    public Order(String orderedBy, Long orderedOn, String user_email, long user_phone, String user_address1, String user_address2, String user_city, String user_pin, String user_state, boolean paymentStatus, List<OrderDetails> orderDetails) {
         this.orderedBy = orderedBy;
-        this.orderedOn = LocalDate.now();
+        this.orderedOn = orderedOn;
         this.user_email = user_email;
         this.user_phone = user_phone;
         this.user_address1 = user_address1;
@@ -47,11 +47,11 @@ public class Order {
         this.orderedBy = orderedBy;
     }
 
-    public LocalDate getOrderedOn() {
+    public Long getOrderedOn() {
         return orderedOn;
     }
 
-    public void setOrderedOn(LocalDate orderedOn) {
+    public void setOrderedOn(Long orderedOn) {
         this.orderedOn = orderedOn;
     }
 
