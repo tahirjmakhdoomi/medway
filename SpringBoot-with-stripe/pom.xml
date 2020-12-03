@@ -13,9 +13,9 @@
     </properties>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.7.RELEASE</version>
+        <groupId>com.stackroute</groupId>
+        <artifactId>medway</artifactId>
+        <version>1.0.0</version>
     </parent>
 
     <dependencies>

@@ -20,6 +20,10 @@
                                 <p> {{ medicine.finalPrice }}</p>
                             </div>
                             <div class="form-inline" *ngIf = "medicine.stock > 0">
+                              <p class="card-text" style="font-weight: bold;">Stock: </p>
+                              <p> {{ medicine.stock }}</p>
+                            </div>
+                            <div class="form-inline" *ngIf = "medicine.stock > 0">
                                 <p class="card-text" style="font-weight: bold;">Mfgdate: </p>
                                 <p> {{ medicine.manufactureDate }}</p>
                             </div>
@@ -30,11 +34,11 @@
                             <div class="form-inline" *ngIf = "medicine.stock > 0">
                               <p class="card-text" style="font-weight: bold;">Supplier: </p>
                               <p> {{ medicine.supplierName }}</p>
-                          </div>
+                            </div>
                             <div class="form-inline" *ngIf = "medicine.stock === 0">
-                              <p class="card-text" style="font-weight: bold;">Out of stock</p>
+                              <p class="card-text" style="font-weight: bold;">Not available</p>
                               <p></p>
-                          </div>
+                            </div>
                             <div *ngIf = "medicine.stock > 0">
                               <h4>
                                 <button (click)="decrement(i)" class="btn btn-danger">-</button>
@@ -53,7 +57,7 @@
           <h2>Total Price : <span>&#8377;</span> {{sum}}</h2>
         </div>
         <div class="col-6" style="text-align: center;">
-          <button mat-raised-button class="btn btn-success" (click)="onSubmit()">Order now</button>
+          <button mat-raised-button class="btn btn-success" [disabled]="sum==0" (click)="onSubmit()">Order now</button>
         </div>
       </div>
     </div>

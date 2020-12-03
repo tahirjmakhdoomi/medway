@@ -113,6 +113,9 @@ public class SupplierMedicineServiceImpl implements SupplierMedicineService{
 
             SearchMedicine x = new SearchMedicine();
              x.setMedicineName(MedicineName.get(i));
+             if(dummy.size() == 0){
+                 result.add(x);
+             }
             for (int j = 0; j < dummy.size(); j++) {
               //  System.out.println(dummy.size());
                 x.setSupplierName(dummy.get(j).getCompositeKey().getSupplierName());

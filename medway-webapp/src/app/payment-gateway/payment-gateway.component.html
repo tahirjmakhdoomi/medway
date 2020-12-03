@@ -19,7 +19,7 @@
                           <i class="fa fa-credit-card" aria-hidden="true"></i>
                         </span>
                       </div>
-                      <input type="number" id="cardNumber" placeholder="e" class="form-control" formControlName="cardNumber">
+                      <input type="number" id="cardNumber" placeholder="Card Number" class="form-control" formControlName="cardNumber">
                       
                     </div>
                     <p class="lblError" *ngIf="signupForm.get('cardNumber').hasError('required') && !signupForm.get('cardNumber').pristine">

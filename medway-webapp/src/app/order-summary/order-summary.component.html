@@ -10,9 +10,9 @@
     <div class="card" *ngFor="let summary of orderSummaries;index as i">
         <div class="card-body">
             <div class="d-block" *ngFor="let details of summary.orderDetails;">
-                <p class="d-inline-flex pull-left"><strong>{{ details.medicineName }}</strong></p>
-                <p class="d-inline-flex ">Price: {{ details.finalPrice }}</p>
-                <p class="d-inline-flex pull-right">Quantity: {{ details.quantity }}</p>
+                <p class="d-inline-flex pull-left" *ngIf="!(details.quantity==0)"><strong>{{ details.medicineName }}</strong></p>
+                <p class="d-inline-flex " *ngIf="!(details.quantity==0)">Price: {{ details.finalPrice }}</p>
+                <p class="d-inline-flex pull-right" *ngIf="!(details.quantity==0)">Quantity: {{ details.quantity }}</p>
             </div>
             <p><strong>Ordered On:</strong>{{summary.orderedOn}}</p>
             <p><strong>Deliver To:</strong>

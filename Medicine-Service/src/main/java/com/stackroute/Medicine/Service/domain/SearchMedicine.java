@@ -3,13 +3,13 @@ package com.stackroute.Medicine.Service.domain;
 import java.time.LocalDate;
 
 public class SearchMedicine {
-    private String MedicineName ;
-    private String SupplierName ;
-    private float Price ;
-    private float Discount ;
-    private int Stock ;
-    private LocalDate ManufactureDate ;
-    private LocalDate ExpDate ;
+    private String MedicineName ="";
+    private String SupplierName ="";
+    private float Price =0;
+    private float Discount =0;
+    private int Stock =0;
+    private LocalDate ManufactureDate =null;
+    private LocalDate ExpDate =null;
 
     public String getMedicineName() {
         return MedicineName;
