@@ -45,15 +45,14 @@ export class AddPrescriptionComponent implements OnInit {
 
   medicineList(index){
     this.detectedMedicines = this.prescriptions[index].detectedMedicines;
-    this.detectedMedicines.join(" ");
     console.log(this.detectedMedicines.join(" "));
     this.uploadService.getDetails(this.detectedMedicines.join(" ")).subscribe(
       data => {
         this.uploadService.medicines = data;
         console.log(this.uploadService.medicines);
+        this.navigate.medicinelist();
       }
     );
-    this.navigate.medicinelist();
   }
 
 }

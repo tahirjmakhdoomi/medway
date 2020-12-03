@@ -1,9 +1,10 @@
-import { Component, OnInit, APP_INITIALIZER } from '@angular/core';
+import { Component, OnInit, APP_INITIALIZER, ViewChild, Injectable } from '@angular/core';
 import { medicineList } from '../models/medicine-list';
 import { AddPrescriptionService } from '../services/add-prescription.service';
 import { NavigationService } from '../services/navigation.service';
 import { OrderBackend } from '../models/orderBackend';
 import { commonService } from '../services/common.service';
+import { AddPrescriptionComponent } from '../add-prescription/add-prescription.component';
 
 @Component({
   selector: 'app-medicine-list',
