@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SpringBoot-with-stripe" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/prescription-service" vcs="Git" />
   </component>
 </project>

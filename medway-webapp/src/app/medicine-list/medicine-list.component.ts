@@ -1,9 +1,10 @@
-import { Component, OnInit, APP_INITIALIZER } from '@angular/core';
+import { Component, OnInit, APP_INITIALIZER, ViewChild, Injectable } from '@angular/core';
 import { medicineList } from '../models/medicine-list';
 import { AddPrescriptionService } from '../services/add-prescription.service';
 import { NavigationService } from '../services/navigation.service';
 import { OrderBackend } from '../models/orderBackend';
 import { commonService } from '../services/common.service';
+import { AddPrescriptionComponent } from '../add-prescription/add-prescription.component';
 
 @Component({
   selector: 'app-medicine-list',
@@ -52,14 +53,17 @@ export class MedicineListComponent implements OnInit {
   sum:number=0;
   list:OrderBackend[] ;
   constructor(private common:commonService,private upload: AddPrescriptionService,private navigate:NavigationService) { 
-    this.medicinelist = upload.medicines;
-    console.log(upload.medicines);
-    for(let i=0 ; i<this.medicinelist.length ; i++){
-      this.medicinelist[i].quantity=0;
-    }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.medicinelist = this.upload.medicines;
+    console.log(this.upload.medicines);
+    for(let i=0 ; i<this.medicinelist.length ; i++){
+      this.medicinelist[i].finalPrice= this.medicinelist[i].price*(100 - this.medicinelist[i].discount)/100;
+      this.medicinelist[i].quantity=0;
+      console.log(this.medicinelist[i].quantity);
+    }
+  }
 
   increment(index){
     if(this.medicinelist[index].quantity<this.medicinelist[index].stock){

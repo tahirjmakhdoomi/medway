@@ -5,16 +5,16 @@ public class OrderDetails {
     private String medicineName;
     private int quantity;
     private int finalPrice;
-    private int supplierId;
+    private String supplierName;
 
     public OrderDetails() {
     }
 
-    public OrderDetails(String medicineName, int quantity, int finalPrice, int supplierId) {
+    public OrderDetails(String medicineName, int quantity, int finalPrice, String supplierName) {
         this.medicineName = medicineName;
         this.quantity = quantity;
         this.finalPrice = finalPrice;
-        this.supplierId = supplierId;
+        this.supplierName = supplierName;
     }
 
     public String getMedicineName() {
@@ -41,21 +41,11 @@ public class OrderDetails {
         this.finalPrice = finalPrice;
     }
 
-    public int getSupplierId() {
-        return supplierId;
+    public String getSupplierName() {
+        return supplierName;
     }
 
-    public void setSupplierId(int supplierId) {
-        this.supplierId = supplierId;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDetails{" +
-                "medicineName='" + medicineName + '\'' +
-                ", quantity=" + quantity +
-                ", finalPrice=" + finalPrice +
-                ", supplierId=" + supplierId +
-                '}';
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
     }
 }

@@ -8,6 +8,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { medicineList } from '../models/medicine-list';
 import { Prescription } from '../models/prescription';
 import { AddPrescriptionService } from '../services/add-prescription.service';
+import { commonService } from '../services/common.service';
 import { NavigationService } from '../services/navigation.service';
 
 @Component({
@@ -15,18 +16,14 @@ import { NavigationService } from '../services/navigation.service';
   templateUrl: './add-prescription.component.html',
   styleUrls: ['./add-prescription.component.css']
 })
-export class AddPrescriptionComponent implements OnInit,OnChanges {
+export class AddPrescriptionComponent implements OnInit {
   medicines : medicineList[] = [];
   username : String;
   prescriptions : Prescription[];
   detectedMedicines: any[];
 
-  constructor(private dialog: MatDialog, public uploadService: AddPrescriptionService,private route : ActivatedRoute,
+  constructor(private common:commonService,private dialog: MatDialog, public uploadService: AddPrescriptionService,private route : ActivatedRoute,
               private navigate : NavigationService) { }
-  ngOnChanges(): void {
-    this.medicines = this.uploadService.medicines;
-    console.log(this.medicines);
-  }
   ngOnInit(): void{
     // this.username = this.route.snapshot.paramMap.get('username');
     this.username = this.route.snapshot.queryParams.username;
@@ -34,8 +31,9 @@ export class AddPrescriptionComponent implements OnInit,OnChanges {
     this.uploadService.username = this.username;
     this.uploadService.getPrescriptions(this.username).subscribe(data => {
       this.prescriptions = data;
+      console.log(data);
+      console.log(this.prescriptions[1].detectedMedicines);
     })
-    console.log(this.prescriptions);
   }
 
   
@@ -47,12 +45,14 @@ export class AddPrescriptionComponent implements OnInit,OnChanges {
 
   medicineList(index){
     this.detectedMedicines = this.prescriptions[index].detectedMedicines;
-    this.uploadService.getDetails(this.detectedMedicines.toString()).subscribe(
+    console.log(this.detectedMedicines.join(" "));
+    this.uploadService.getDetails(this.detectedMedicines.join(" ")).subscribe(
       data => {
         this.uploadService.medicines = data;
+        console.log(this.uploadService.medicines);
+        this.navigate.medicinelist();
       }
     );
-    this.navigate.medicinelist();
   }
 
 }

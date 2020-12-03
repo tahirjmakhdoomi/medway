@@ -1,9 +1,9 @@
 export class OrderBackend{
     constructor(
-        public medicineName : string,
+        public medicineName : String,
         public quantity:number,
         public finalPrice: number,
-        public supplierId : number
+        public supplierName : String
  
     ){}
 }

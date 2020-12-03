@@ -10,7 +10,9 @@
         <module name="auth-service" />
         <module name="Medicine-Service" />
         <module name="UserService" />
+        <module name="prescription-service" />
         <module name="api-gateway" />
+        <module name="stripe" />
         <module name="order-service" />
         <module name="eureka-server" />
       </profile>
@@ -24,6 +26,9 @@
       <module name="medway" target="11" />
       <module name="medway (1) (com.medway)" target="11" />
       <module name="order-service" target="11" />
+      <module name="prescription-service" target="11" />
+      <module name="prescription-service (1)" target="11" />
+      <module name="stripe" target="1.8" />
       <module name="UserService" target="11" />
     </bytecodeTargetLevel>
   </component>
@@ -37,6 +42,8 @@
       <module name="eureka-server" options="-parameters" />
       <module name="medway (1) (com.medway)" options="-parameters" />
       <module name="order-service" options="-parameters" />
+      <module name="prescription-service" options="-parameters" />
+      <module name="prescription-service (1)" options="-parameters" />
     </option>
   </component>
 </project>

@@ -2,9 +2,8 @@
   <app-navbar>
 
     <div class="container-fluid" style="margin-top: 5rem;min-height: 100vh;">
-
+      
       <button mat-raised-button class="btn btn-primary pull-right" (click)="openUploadDialog()">Upload prescription</button>
-
       <table class="table table-striped">
         <thead>
           <tr>
@@ -18,7 +17,7 @@
           <tr *ngFor="let prescription of prescriptions;index as i">
             <th scope="row">{{i+1}}</th>
             <td>{{prescription.detectedMedicines}}</td>
-            <td>{{prescription.prescriptionContent}}</td>
+            <a href="{{prescription.prescriptionPDFLink}}"><td>{{prescription.prescriptionPDFLink}}</td></a>
             <td><button mat-raised-button (click)="medicineList(i+1)">use</button></td>
           </tr>
         </tbody>
