@@ -29,6 +29,7 @@ export class UserTableComponent implements OnInit {
     this.addRow();
     this.username = this.route.snapshot.queryParams.username;
     this.updateMedicineService.username = this.username;
+    console.log(this.username);
   }
 
   ngAfterOnInit() {
@@ -40,7 +41,7 @@ export class UserTableComponent implements OnInit {
     return this.fb.group({
       compositeKey : this.fb.group
       ({medicineName: ['', Validators.required],
-      supplierName:[this.username]}),
+      supplierName:["subham"]}),
       manufacturingDate: ['', Validators.required],
       expDate: ['', [ Validators.required]],
       stock: ['', [Validators.required]],
@@ -101,6 +102,7 @@ export class UserTableComponent implements OnInit {
           element.get("price").value
           // "rajesh1"
         );
+        console.log(element.get("compositekey").value);
         // console.log("abs");
         // console.log(element.value.compositKey.medicineName);
         // console.log(control.controls);

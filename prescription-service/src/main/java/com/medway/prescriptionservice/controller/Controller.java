@@ -69,7 +69,7 @@ public class Controller {
         med = med.trim();
         Prescriptions p = new Prescriptions(psid, handler.toString(),medicines, preUrl);
 
-        String url = "http://localhost:8811/api/v1/blogs/raw2";
+        String url = "http://localhost:8105/api/v1/blogs/raw2";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
@@ -85,20 +85,20 @@ public class Controller {
         return response;
     }
 
-    @PostMapping("/search")
-    public ResponseEntity<?> dummy(@RequestParam("mednames") List<String> medicine){
-        for (String med: medicine
-             ) {
-            System.out.println(med);
-
-        }
-        ArrayList<MedicineModel> mm = new ArrayList<>();
-        mm.add(new MedicineModel("Crocin",001, LocalDate.now(),LocalDate.now(),27,50,20,10));
-        mm.add(new MedicineModel("Dolo",002, LocalDate.now(),LocalDate.now(),27,50,20,10));
-        mm.add(new MedicineModel("Paracetamol",002, LocalDate.now(),LocalDate.now(),0,50,20,10));
-
-        return new ResponseEntity(mm,HttpStatus.OK);
-    }
+//    @PostMapping("/search")
+//    public ResponseEntity<?> dummy(@RequestParam("mednames") List<String> medicine){
+//        for (String med: medicine
+//             ) {
+//            System.out.println(med);
+//
+//        }
+//        ArrayList<MedicineModel> mm = new ArrayList<>();
+//        mm.add(new MedicineModel("Crocin",001, LocalDate.now(),LocalDate.now(),27,50,20,10));
+//        mm.add(new MedicineModel("Dolo",002, LocalDate.now(),LocalDate.now(),27,50,20,10));
+//        mm.add(new MedicineModel("Paracetamol",002, LocalDate.now(),LocalDate.now(),0,50,20,10));
+//
+//        return new ResponseEntity(mm,HttpStatus.OK);
+//    }
 
         @GetMapping("/getPrescription/{username}")
         public ResponseEntity<?> getPrescriptionData(@PathVariable("username") String username){
