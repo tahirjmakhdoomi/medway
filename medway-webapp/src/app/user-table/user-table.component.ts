@@ -41,7 +41,7 @@ export class UserTableComponent implements OnInit {
     return this.fb.group({
       compositeKey : this.fb.group
       ({medicineName: ['', Validators.required],
-      supplierName:["subham"]}),
+      supplierName:[this.route.snapshot.queryParams.username]}),
       manufacturingDate: ['', Validators.required],
       expDate: ['', [ Validators.required]],
       stock: ['', [Validators.required]],
@@ -102,11 +102,11 @@ export class UserTableComponent implements OnInit {
           element.get("price").value
           // "rajesh1"
         );
-        console.log(element.get("compositekey").value);
-        // console.log("abs");
+        // console.log(element.get("compositekey").value);
+        console.log(control.controls);
+        console.log("abs");
         // console.log(element.value.compositKey.medicineName);
-        // console.log(control.controls);
-        // console.log(medicineValues);
+        console.log(medicineValues);
         this.updateMedicineService.addMedicine(medicineValues).subscribe(()=>{
           Swal.fire({
             icon: 'success',
