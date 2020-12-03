@@ -31,8 +31,7 @@ export class AddPrescriptionComponent implements OnInit {
     this.uploadService.username = this.username;
     this.uploadService.getPrescriptions(this.username).subscribe(data => {
       this.prescriptions = data;
-      console.log(data);
-      console.log(this.prescriptions[1].detectedMedicines);
+      console.log(this.prescriptions);
     })
   }
 
@@ -44,7 +43,7 @@ export class AddPrescriptionComponent implements OnInit {
   }
 
   medicineList(index){
-    this.detectedMedicines = this.prescriptions[index].detectedMedicines;
+    this.detectedMedicines = this.prescriptions[index-1].detectedMedicines;
     console.log(this.detectedMedicines.join(" "));
     this.uploadService.getDetails(this.detectedMedicines.join(" ")).subscribe(
       data => {
