@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  order-service:
+    build: order-service/
+    container_name: orderService
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8110:8110

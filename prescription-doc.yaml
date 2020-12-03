@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  prescription-service:
+    build: prescription-service/
+    container_name: prescriptionService
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8071:8071
+    

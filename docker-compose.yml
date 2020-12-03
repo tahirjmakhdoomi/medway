@@ -109,3 +109,44 @@ services:
     hostname: localhost
     ports:
       - 8105:8105
+
+  prescription-service:
+    build: prescription-Service/
+    container_name: prescriptionService
+    depends_on:
+      - eureka-server
+      - api-gateway
+      - mongodb
+      - rabbitmq
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8071:8071
+
+  order-service:
+    build: order-Service/
+    container_name: orderService
+    depends_on:
+      - eureka-server
+      - api-gateway
+      - mongodb
+      - rabbitmq
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8110:8110
+
+  stripe:
+    build: SpringBoot-with-stripe/
+    container_name: stripeService
+    depends_on:
+      - eureka-server
+      - api-gateway
+      - rabbitmq
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8300:8300

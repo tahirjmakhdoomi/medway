@@ -6,15 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="config-server" />
-        <module name="auth-service" />
-        <module name="Medicine-Service" />
-        <module name="UserService" />
-        <module name="prescription-service" />
-        <module name="api-gateway" />
-        <module name="stripe" />
-        <module name="order-service" />
         <module name="eureka-server" />
+        <module name="config-server" />
+        <module name="order-service" />
+        <module name="UserService" />
+        <module name="api-gateway" />
+        <module name="Medicine-Service" />
+        <module name="prescription-service" />
+        <module name="auth-service" />
+        <module name="stripe" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -28,7 +28,7 @@
       <module name="order-service" target="11" />
       <module name="prescription-service" target="11" />
       <module name="prescription-service (1)" target="11" />
-      <module name="stripe" target="1.8" />
+      <module name="stripe" target="11" />
       <module name="UserService" target="11" />
     </bytecodeTargetLevel>
   </component>
