@@ -8,7 +8,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 @Component({
   selector: 'app-user-table',
   templateUrl: './user-table.component.html',
-  styleUrls: ['./user-table.component.css']
+  styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
   userTable: FormGroup;
@@ -38,13 +38,14 @@ export class UserTableComponent implements OnInit {
   message = '';
   initiateForm(): FormGroup {
     return this.fb.group({
-      medicineName: ['', Validators.required],
+      compositeKey : this.fb.group
+      ({medicineName: ['', Validators.required],
+      supplierName:[this.username]}),
       manufacturingDate: ['', Validators.required],
       expDate: ['', [ Validators.required]],
       stock: ['', [Validators.required]],
       discount: ['',[Validators.required, Validators.pattern(/^[.\d]+$/)]],
       price: ['', [Validators.required, Validators.pattern(/^[.\d]+$/)]],
-      supplierName:[this.username],
       isEditable: [true]
     });
   }
@@ -84,7 +85,7 @@ export class UserTableComponent implements OnInit {
     
     const control = this.userTable.get('tableRows') as FormArray;
     this.touchedRows = control.controls.filter(row => row.touched).map(row => row.value);
-    console.log(this.touchedRows);
+    // console.log(this.touchedRows);
     if(this.userTable.status==="INVALID"){
       this.message="Please verify entered details!!!";
     }
@@ -92,15 +93,18 @@ export class UserTableComponent implements OnInit {
      
       control.controls.forEach(element => {
         const medicineValues : Medicine = new Medicine(
-          element.get("medicineName").value,
+          element.get("compositeKey").value,
           element.get("manufacturingDate").value,
           element.get("expDate").value,
           element.get("stock").value,
           element.get("discount").value,
-          element.get("price").value,
-          element.get(this.username).value
+          element.get("price").value
           // "rajesh1"
         );
+        // console.log("abs");
+        // console.log(element.value.compositKey.medicineName);
+        // console.log(control.controls);
+        // console.log(medicineValues);
         this.updateMedicineService.addMedicine(medicineValues).subscribe(()=>{
           Swal.fire({
             icon: 'success',

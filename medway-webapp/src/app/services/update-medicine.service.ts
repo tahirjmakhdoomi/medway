@@ -15,9 +15,9 @@ export class UpdateMedicineService {
     return this.httpclient.post<Medicine>("http://localhost:8105/api/v1/blogr", medicine);
   }
   getAllMedicine(supplierName : String ) : Observable<any> {
-    return this.httpclient.get<any>("http://localhost:8105/api/v1/getMedicine/"+supplierName);
+    return this.httpclient.get<any>("http://localhost:8105/api/v1/blogs/"+supplierName); 
   }
   updateMedicine(medicine : Medicine) : Observable<Medicine> {
-    return this.httpclient.post<Medicine>("http://localhost:8105/api/v1/updateMedicine", medicine);
+    return this.httpclient.post<Medicine>("http://localhost:8105/api/v1/blogr", medicine);
   }
 }

@@ -17,9 +17,11 @@
           <ng-container formArrayName="tableRows" *ngFor="let group of getFormControls.controls ; let i=index">
             <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
               <td>
+                <div formGroupName = "compositeKey">
                 <mat-form-field>
                   <input matInput type = "text" formControlName="medicineName">
                 </mat-form-field>
+              </div>
               </td>
               <td>
                 <mat-form-field>
@@ -53,22 +55,22 @@
             </tr>
             <tr *ngIf="!group.get('isEditable').value" >
               <td>
-                {{group.get('medicineName').value}}
+                {{group.value.compositeKey.medicineName}}
               </td>
               <td>
-                {{group.get('manufacturingDate').value}}
+                {{group.value.manufacturingDate}}
               </td>
               <td>
-                {{group.get('expDate').value}}
+                {{group.value.manufacturingDate}}
               </td>
               <td>
-                  {{group.get('stock').value}}
+                  {{group.value.stock}}
               </td>
               <td>
-                  {{group.get('discount').value}}
+                  {{group.value.discount}}
               </td>
               <td>
-                {{group.get('price').value}}
+                {{group.value.price}}
               </td>
               <td>
                 <mat-icon class="edit" (click)="editRow(group)">edit</mat-icon>

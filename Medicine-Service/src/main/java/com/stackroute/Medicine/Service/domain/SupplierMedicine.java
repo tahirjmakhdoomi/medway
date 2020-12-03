@@ -1,9 +1,6 @@
 package com.stackroute.Medicine.Service.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -11,84 +8,73 @@ import java.time.LocalDate;
 //@IdClass(SupplierMedicineId.class)
 
 public class SupplierMedicine {
+        @EmbeddedId
+        private CompositeKey compositeKey;
+        private float price;
+        private float discount;
+        private int stock;
+        private LocalDate manufactureDate;
+        private LocalDate expDate;
 
-    @Id
-    private String MedicineName;
-   // @Id
-    private int SupplierId;
-    private float Price;
-    private float Discount;
-    private int Stock;
-    private LocalDate ManufactureDate;
-    private LocalDate ExpDate;
+        public SupplierMedicine() {
+        }
 
-    public SupplierMedicine() {
-    }
+        public SupplierMedicine(CompositeKey compositeKey, float price, float discount, int stock, LocalDate manufactureDate, LocalDate expDate) {
+                this.compositeKey = compositeKey;
+                this.price = price;
+                this.discount = discount;
+                this.stock = stock;
+                this.manufactureDate = manufactureDate;
+                this.expDate = expDate;
+        }
 
-    public SupplierMedicine(int supplierId, String medicineName, float price, float discount, int stock, LocalDate manufactureDate, LocalDate expDate) {
-        SupplierId = supplierId;
-        MedicineName = medicineName;
-        Price = price;
-        Discount = discount;
-        Stock = stock;
-        ManufactureDate = manufactureDate;
-        ExpDate = expDate;
-    }
+        public CompositeKey getCompositeKey() {
+                return compositeKey;
+        }
 
-    public int getSupplierId() {
-        return SupplierId;
-    }
+        public void setCompositeKey(CompositeKey compositeKey) {
+                this.compositeKey = compositeKey;
+        }
 
-    public void setSupplierId(int supplierId) {
-        SupplierId = supplierId;
-    }
+        public float getPrice() {
+                return price;
+        }
 
-    public String getMedicineName() {
-        return MedicineName;
-    }
+        public void setPrice(float price) {
+                this.price = price;
+        }
 
-    public void setMedicineName(String medicineName) {
-        MedicineName = medicineName;
-    }
+        public float getDiscount() {
+                return discount;
+        }
 
-    public float getPrice() {
-        return Price;
-    }
+        public void setDiscount(float discount) {
+                this.discount = discount;
+        }
 
-    public void setPrice(float price) {
-        Price = price;
-    }
+        public int getStock() {
+                return stock;
+        }
 
-    public float getDiscount() {
-        return Discount;
-    }
+        public void setStock(int stock) {
+                this.stock = stock;
+        }
 
-    public void setDiscount(float discount) {
-        Discount = discount;
-    }
+        public LocalDate getManufactureDate() {
+                return manufactureDate;
+        }
 
-    public int getStock() {
-        return Stock;
-    }
+        public void setManufactureDate(LocalDate manufactureDate) {
+                this.manufactureDate = manufactureDate;
+        }
 
-    public void setStock(int stock) {
-        Stock = stock;
-    }
+        public LocalDate getExpDate() {
+                return expDate;
+        }
 
-    public LocalDate getManufactureDate() {
-        return ManufactureDate;
-    }
-
-    public void setManufactureDate(LocalDate manufactureDate) {
-        ManufactureDate = manufactureDate;
-    }
-
-    public LocalDate getExpDate() {
-        return ExpDate;
-    }
-
-    public void setExpDate(LocalDate expDate) {
-        ExpDate = expDate;
-    }
+        public void setExpDate(LocalDate expDate) {
+                this.expDate = expDate;
+        }
 }
+
 

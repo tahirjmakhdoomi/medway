@@ -1,14 +1,14 @@
+import { CompositeKey } from './supplier-composit-key';
 
 // Data model for Medicine
 export class Medicine {
     public constructor(
-        public medicineName:string,
+        public compositeKey : CompositeKey,
         public manufactureDate : Date,
         public expDate: Date,
         public stock: number,
         public discount: number,
-        public price: number,
-        public supplierName: String
+        public price: number
     ){};
 }
 

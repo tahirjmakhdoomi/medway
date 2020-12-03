@@ -26,20 +26,12 @@ export class UpdateMedicineComponent implements OnInit {
     
   ngOnInit(): void {
     this.touchedRows = []; 
-    console.log(this.material);
+    // console.log(this.material);
     this.userTable = this.fb.group({
       tableRows: this.fb.array([])
     });
     this.username = this.updateMedicineService.username;
-    const supplierName = this.username;
     const control =  this.userTable.get('tableRows') as FormArray;
-    this.updateMedicineService.getAllMedicine(supplierName).subscribe(data => {
-      console.log(data);
-      this.medicines = Object.assign([],data);
-      // data.forEach(element => {
-      //   control.push(this.initiateForm(element.medicineName,element.manufactureDate,element.expDate,element.stock,element.discount,element.price));
-      // });
-    });
     // this.addRow();
   }
 
@@ -49,25 +41,37 @@ export class UpdateMedicineComponent implements OnInit {
   search(){
     this.clearForm();
     if(this.searchText){
-      const control =  this.userTable.get('tableRows') as FormArray;
-      this.material = this.medicines.filter(x=>x.medicineName.toLowerCase().includes(this.searchText.toLowerCase()));
-      console.log(this.material);
+      this.updateMedicineService.getAllMedicine(this.username).subscribe(data => {
+        // console.log(data);
+        // this.medicines = Object.assign([],data);
+        // console.log(this.medicines);
+        // data.forEach(element => {
+        //   control.push(this.initiateForm(element.medicineName,element.manufactureDate,element.expDate,element.stock,element.discount,element.price));
+        // });
+        const control =  this.userTable.get('tableRows') as FormArray;
+      this.material = data.filter(x=>x.compositeKey.medicineName.toLowerCase().includes(this.searchText.toLowerCase()));
+      //console.log(this.material);
       this.material.forEach(element =>{ 
-        control.push(this.initiateForm(element.medicineName,element.manufactureDate, element.expDate, element.stock, element.discount, element.price))
+       // console.log(element);
+        control.push(this.initiateForm(element.compositeKey.medicineName,element.manufactureDate, element.expDate, element.stock, element.discount, element.price))
       });
+      });
+ 
+      
     }
   }
   
   message = '';
   initiateForm(medicineName : string, manufactureDate : Date, expDate : Date, stock : number, discount : number, price : number): FormGroup {
     return this.fb.group({
-      medicineName: [medicineName, Validators.required],
+      compositeKey : this.fb.group
+      ({medicineName: [medicineName, Validators.required],
+      supplierName:[this.username]}),
       manufacturingDate: [manufactureDate, Validators.required],
       expDate: [expDate, [ Validators.required]],
       stock: [stock, [Validators.required]],
       discount: [discount,[Validators.required, Validators.pattern(/^[.\d]+$/)]],
       price: [price, [Validators.required, Validators.pattern(/^[.\d]+$/)]],
-      supplierName:[this.username],
       isEditable: [false]
     });
   }
@@ -107,7 +111,7 @@ export class UpdateMedicineComponent implements OnInit {
     
     const control = this.userTable.get('tableRows') as FormArray;
     this.touchedRows = control.controls.filter(row => row.touched).map(row => row.value);
-    console.log(this.touchedRows);
+    //console.log(this.touchedRows);
     if(this.userTable.status==="INVALID"){
       this.message="Please verify entered details!!!";
     }
@@ -115,15 +119,18 @@ export class UpdateMedicineComponent implements OnInit {
      
       control.controls.forEach(element => {
         const medicineValues : Medicine = new Medicine(
-          element.get("medicineName").value,
+          element.get("compositeKey").value,
           element.get("manufacturingDate").value,
           element.get("expDate").value,
           element.get("stock").value,
           element.get("discount").value,
-          element.get("price").value,
-          element.get("supplierName").value
+          element.get("price").value
           // "rajesh1"
         );
+        // console.log("abs");
+        // console.log(element.value.compositKey.medicineName);
+        // console.log(control.controls);
+        // console.log(medicineValues);
         this.updateMedicineService.addMedicine(medicineValues).subscribe(()=>{
           Swal.fire({
             icon: 'success',
@@ -135,8 +142,7 @@ export class UpdateMedicineComponent implements OnInit {
           icon: 'error',
           title: 'oops',
           text: 'Medicine not updated'});
-        
-      });
+        })
       });
     }
     this.clearForm();
@@ -146,9 +152,6 @@ export class UpdateMedicineComponent implements OnInit {
     while(control.length >0){
       control.removeAt(0);
     }
-  //  control.push(this.initiateForm());
+  //  control.push(this.initiateForm()); 
   }
-  // toggleTheme() {
-  //   this.mode = !this.mode;
-  // }
 }

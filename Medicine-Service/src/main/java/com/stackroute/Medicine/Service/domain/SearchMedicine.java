@@ -3,31 +3,15 @@ package com.stackroute.Medicine.Service.domain;
 import java.time.LocalDate;
 
 public class SearchMedicine {
-    public String MedicineName = null;
-    public int SupplierId = 0;
-    public float Price = 0;
-    public float Discount = 0;
-    public int Stock = 0;
-    public LocalDate ManufactureDate = null;
-    public LocalDate ExpDate = null;
-    public float FinalPrice = 0;
-
-    public SearchMedicine() {
-    }
-
-    public SearchMedicine(String medicineName, int supplierId, float price, float discount, int stock, LocalDate manufactureDate, LocalDate expDate, float finalPrice) {
-        MedicineName = medicineName;
-        SupplierId = supplierId;
-        Price = price;
-        Discount = discount;
-        Stock = stock;
-        ManufactureDate = manufactureDate;
-        ExpDate = expDate;
-        FinalPrice = finalPrice;
-    }
+    private String MedicineName ;
+    private String SupplierName ;
+    private float Price ;
+    private float Discount ;
+    private int Stock ;
+    private LocalDate ManufactureDate ;
+    private LocalDate ExpDate ;
 
     public String getMedicineName() {
-
         return MedicineName;
     }
 
@@ -35,12 +19,12 @@ public class SearchMedicine {
         MedicineName = medicineName;
     }
 
-    public int getSupplierId() {
-        return SupplierId;
+    public String getSupplierName() {
+        return SupplierName;
     }
 
-    public void setSupplierId(int supplierId) {
-        SupplierId = supplierId;
+    public void setSupplierName(String supplierName) {
+        SupplierName = supplierName;
     }
 
     public float getPrice() {
@@ -81,13 +65,5 @@ public class SearchMedicine {
 
     public void setExpDate(LocalDate expDate) {
         ExpDate = expDate;
-    }
-
-    public float getFinalPrice() {
-        return FinalPrice;
-    }
-
-    public void setFinalPrice(float finalPrice) {
-        FinalPrice = finalPrice;
     }
 }

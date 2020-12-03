@@ -11,6 +11,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 public class MedicineServiceApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(MedicineServiceApplication.class, args);
 	}
 
