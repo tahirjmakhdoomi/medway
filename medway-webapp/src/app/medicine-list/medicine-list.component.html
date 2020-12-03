@@ -27,6 +27,10 @@
                                 <p class="card-text" style="font-weight: bold;">ExpDate: </p>
                                 <p> {{ medicine.expDate }}</p>
                             </div>
+                            <div class="form-inline" *ngIf = "medicine.stock > 0">
+                              <p class="card-text" style="font-weight: bold;">Supplier: </p>
+                              <p> {{ medicine.supplierName }}</p>
+                          </div>
                             <div class="form-inline" *ngIf = "medicine.stock === 0">
                               <p class="card-text" style="font-weight: bold;">Out of stock</p>
                               <p></p>

@@ -5,5 +5,5 @@ export class SupplierMedicine {
     stock?: number;
     discount?: number;
     price?: number
-    supplierId?: string;
+    supplierName?: string;
 }
