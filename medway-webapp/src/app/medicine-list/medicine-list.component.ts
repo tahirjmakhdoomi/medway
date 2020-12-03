@@ -59,7 +59,9 @@ export class MedicineListComponent implements OnInit {
     this.medicinelist = this.upload.medicines;
     console.log(this.upload.medicines);
     for(let i=0 ; i<this.medicinelist.length ; i++){
+      this.medicinelist[i].finalPrice= this.medicinelist[i].price*(100 - this.medicinelist[i].discount)/100;
       this.medicinelist[i].quantity=0;
+      console.log(this.medicinelist[i].quantity);
     }
   }
 
