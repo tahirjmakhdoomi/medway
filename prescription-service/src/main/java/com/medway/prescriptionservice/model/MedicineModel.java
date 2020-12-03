@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class MedicineModel {
     private String medicineName;
-    private int SupplierId;
+    private String SupplierName;
     private LocalDate manufactureDate;
     private LocalDate expDate;
     private int stock;
