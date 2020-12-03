@@ -8,7 +8,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 @Component({
   selector: 'app-user-table',
   templateUrl: './user-table.component.html',
-  styleUrls: ['./user-table.component.css']
+  styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
   userTable: FormGroup;
