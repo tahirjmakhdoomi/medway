@@ -103,4 +103,5 @@ export class MedicineListComponent implements OnInit {
     }
   }
 
+
 }
