@@ -16,7 +16,7 @@ public interface SupplierMedicineRepository extends CrudRepository<SupplierMedic
     @Query(nativeQuery = true,value = rawQuery)
     List<SupplierMedicine> findBySupplierName (String SupplierName);
 
-    String rawQuery1 = "SELECT * FROM supplier_medicine WHERE medicine_name=?1";
+    String rawQuery1 = "select * from supplier_medicine where medicine_name = ?1 order by (price-((discount/100)*price)) limit 1";
     @Query(nativeQuery = true,value = rawQuery1)
     List<SupplierMedicine> findByMedicineName (String medicineName);
 }
