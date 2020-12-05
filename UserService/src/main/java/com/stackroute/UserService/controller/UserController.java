@@ -2,14 +2,13 @@ package com.stackroute.UserService.controller;
 
 
 import com.stackroute.UserService.model.User;
+import com.stackroute.UserService.model.UserDTO;
 import com.stackroute.UserService.service.RabbitMqSender;
 import com.stackroute.UserService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -27,9 +26,10 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user){
+    public ResponseEntity<User> register(@RequestBody UserDTO user){
         sender.send(user);
-        return new ResponseEntity<>(service.saveUser(user), HttpStatus.CREATED);
+        User u = new User(user);
+        return new ResponseEntity<>(service.saveUser(u), HttpStatus.CREATED);
     }
 
     @GetMapping("/users")

@@ -22,6 +22,8 @@ public class Consumer {
 
         System.out.println(data);
         UserDTO dto = objectMapper.readValue(data,UserDTO.class);
+
+        System.out.println(dto.toString());
         String userrole = "patient";
         if(dto.getUser_storeName() != null) userrole = "supplier";
         System.out.println(dto.getUser_name());

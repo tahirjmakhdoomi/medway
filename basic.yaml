@@ -58,3 +58,9 @@ services:
     ports:
     - "27017:27017"
     
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    hostname: localhost
+    ports:
+      - "9411:9411"

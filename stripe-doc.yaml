@@ -2,7 +2,7 @@ version: '2'
 
 services:
   stripe:
-    build: SpringBoot-with-stripe/
+    build: stripe-service/
     container_name: stripeService
     restart: always
     network_mode: "host"

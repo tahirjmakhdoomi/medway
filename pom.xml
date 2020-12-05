@@ -33,6 +33,8 @@
         <module>UserService</module>
         <module>Medicine-Service</module>
         <module>order-service</module>
+        <module>prescription-service</module>
+        <module>stripe-service</module>
     </modules>
 
     <dependencies>

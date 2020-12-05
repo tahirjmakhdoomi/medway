@@ -1,6 +1,7 @@
 package com.stackroute.UserService.service;
 
 import com.stackroute.UserService.model.User;
+import com.stackroute.UserService.model.UserDTO;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +22,7 @@ public class RabbitMqSender {
     @Value("${spring.rabbitmq.routingkey}")
     String routingKey;
 
-    public void send(User user){
+    public void send(UserDTO user){
         template.convertAndSend(exchange,routingKey,user);
     }
 }

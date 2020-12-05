@@ -29,10 +29,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public User saveUser(User user) {
         if(user.getUser_storeName()==null|| user.getUser_storeName().equals("")){
-            user.setRole("Customer");
+            user.setRole("patient");
         }
         else {
-            user.setRole("Supplier");
+            user.setRole("supplier");
         }
         return repository.save(user);
     }

@@ -9,10 +9,9 @@
       <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/medway.iml" filepath="$PROJECT_DIR$/medway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/auth-service/medway (1) (com.medway).iml" filepath="$PROJECT_DIR$/auth-service/medway (1) (com.medway).iml" />
       <module fileurl="file://$PROJECT_DIR$/order-service/order-service.iml" filepath="$PROJECT_DIR$/order-service/order-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/prescription-service/prescription-service.iml" filepath="$PROJECT_DIR$/prescription-service/prescription-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SpringBoot-with-stripe/stripe.iml" filepath="$PROJECT_DIR$/SpringBoot-with-stripe/stripe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stripe-service/stripe-service.iml" filepath="$PROJECT_DIR$/stripe-service/stripe-service.iml" />
     </modules>
   </component>
 </project>

@@ -50,7 +50,14 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=1234
-  
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    hostname: localhost
+    ports:
+      - "9411:9411"
+
   mongodb:
     image: mongo:latest
     container_name: mongodb
@@ -111,7 +118,7 @@ services:
       - 8105:8105
 
   prescription-service:
-    build: prescription-Service/
+    build: prescription-service/
     container_name: prescriptionService
     depends_on:
       - eureka-server
@@ -125,7 +132,7 @@ services:
       - 8071:8071
 
   order-service:
-    build: order-Service/
+    build: order-service/
     container_name: orderService
     depends_on:
       - eureka-server
@@ -138,8 +145,8 @@ services:
     ports:
       - 8110:8110
 
-  stripe:
-    build: SpringBoot-with-stripe/
+  stripe-service:
+    build: stripe-service/
     container_name: stripeService
     depends_on:
       - eureka-server

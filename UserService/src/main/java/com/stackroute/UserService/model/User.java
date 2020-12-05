@@ -17,7 +17,7 @@ public class User implements Serializable {
     private String name;
     private String userName;
     private String user_email;
-    private String user_password;
+    //private String user_password;
     private long user_phone;
     private String user_storeName;
     private String user_city;
@@ -26,13 +26,27 @@ public class User implements Serializable {
     private String role;
     private List<Order> order;
 
-    public User(String name, String userName, String user_email, String user_password, long user_phone,
+    public User(UserDTO d){
+        this.role = d.getRole();
+        this.name = d.getName();
+        this.order = d.getOrderSummary();
+        this.user_city = d.getUser_city();
+        this.user_email = d.getUser_email();
+      //  this.user_password = d.getUser_password();
+        this.user_phone = d.getUser_phone();
+        this.user_pin = d.getUser_pin();
+        this.user_state = d.getUser_state();
+        this.user_storeName = d.getUser_storeName();
+        this.userName = d.getUser_name();
+    }
+
+    public User(String name, String userName, String user_email, long user_phone,
                 String user_storeName, String user_city, int user_pin, String user_state, String role,
                 List<Order> order) {
         this.name = name;
         this.userName = userName;
         this.user_email = user_email;
-        this.user_password = user_password;
+        //this.user_password = user_password;
         this.user_phone = user_phone;
         this.user_storeName = user_storeName;
         this.user_city = user_city;
@@ -42,12 +56,12 @@ public class User implements Serializable {
         this.order = order;
     }
 
-    public User(String name, String userName, String user_email, String user_password, long user_phone,
+    public User(String name, String userName, String user_email, long user_phone,
                 String user_storeName, String user_city, int user_pin, String user_state, String role) {
         this.name = name;
         this.userName = userName;
         this.user_email = user_email;
-        this.user_password = user_password;
+        //this.user_password = user_password;
         this.user_phone = user_phone;
         this.user_storeName = user_storeName;
         this.user_city = user_city;
@@ -91,13 +105,13 @@ public class User implements Serializable {
         this.user_email = user_email;
     }
 
-    public String getUser_password() {
-        return user_password;
-    }
+//    public String getUser_password() {
+//        return user_password;
+//    }
 
-    public void setUser_password(String user_password) {
-        this.user_password = user_password;
-    }
+//    public void setUser_password(String user_password) {
+//        this.user_password = user_password;
+//    }
 
     public long getUser_phone() {
         return user_phone;
@@ -152,7 +166,6 @@ public class User implements Serializable {
         return "User{" +
                 "user_name='" + userName + '\'' +
                 ", user_email='" + user_email + '\'' +
-                ", user_password='" + user_password + '\'' +
                 ", user_phone=" + user_phone +
                 ", user_storeName='" + user_storeName + '\'' +
                 ", user_city='" + user_city + '\'' +
