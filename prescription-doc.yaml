@@ -1,4 +1,4 @@
-version: '2'
+version: '3.2'
 
 services:
   prescription-service:
@@ -7,6 +7,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8071:8071
     

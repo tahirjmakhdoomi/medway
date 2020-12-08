@@ -1,4 +1,4 @@
-version: '2'
+version: '3.2'
 
 services:
   eureka-server:
@@ -7,6 +7,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8085:8085
 
@@ -16,6 +21,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8880:8880
 
@@ -28,6 +38,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8080:8080
       
@@ -77,6 +92,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8100:8100
 
@@ -100,6 +120,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8070:8070
 
@@ -114,6 +139,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8105:8105
 
@@ -128,6 +158,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8071:8071
 
@@ -142,6 +177,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8110:8110
 
@@ -155,5 +195,64 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8300:8300
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    container_name: elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+    hostname: localhost
+    environment:
+      cluster.name: "docker-cluster"
+      #network.host: 0.0.0.0
+      ES_JAVA_OPTS: "-Xmx1g -Xms1g"
+      discovery.type: single-node
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.10.0
+    ports:
+      - 5601:5601
+    environment:
+      SERVER_NAME: kibana
+      ELASTICSEARCH_HOSTS: "http://elasticsearch:9200"
+      ELASTICSEARCH_URL: "http://localhost:9200"
+      #      SERVER_HOST: localhost
+      KIBANA_DEFAULTAPPID: "dashboards"
+      #     ELASTICSEARCH_USERNAME: elastic
+      #     ELASTICSEARCH_PASSWORD: elastic
+      XPACK_MONITORING_UI_CONTAINER_ELASTICSEARCH_ENABLED: "true"
+    depends_on:
+      - elasticsearch
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.6.1
+    volumes:
+      - type: bind
+        source: ./config/logstash.yml
+        target: /usr/share/logstash/config/logstash.yml
+        read_only: true
+      - type: bind
+        source: ./config/logstash.conf
+        target: /usr/share/logstash/pipeline/logstash.conf
+        read_only: true
+      - type: bind
+        source: ./logs
+        target:  /usr/share/logstash/pipeline/logs
+        read_only: false
+    #    network_mode: "host"
+    #    hostname: localhost
+    ports:
+      - "5000:5000"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx1g -Xms1g"
+    depends_on:
+      - elasticsearch

@@ -1,4 +1,4 @@
-version: '2'
+version: '3.2'
 
 services:
   eureka-server:
@@ -7,6 +7,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8085:8085
 
@@ -16,6 +21,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8880:8880
 
@@ -28,6 +38,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /usr/src/logs
+        read_only: false
     ports:
       - 8080:8080
       
